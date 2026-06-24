@@ -32,11 +32,13 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
 
     if (!result.length) {
       // Someone else saved first — hand back the current value.
+      console.warn(`[items PATCH] conflict id=${id} expected=${expected} actual=${oldRow.version}`);
       return NextResponse.json(
         { error: "conflict", current: rowToItem(oldRow) },
         { status: 409 },
       );
     }
+    console.log(`[items PATCH] saved id=${id} ${expected}->${result[0].version} by=${actor ?? "anon"}`);
 
     const [cat] = await db.select().from(categories).where(eq(categories.id, oldRow.categoryId));
     const events = diffItemActivity(rowToItem(oldRow), rowToItem(result[0]), cat?.name ?? "", actor);
@@ -58,6 +60,7 @@ export async function DELETE(_req: NextRequest, { params }: { params: { id: stri
 
     const actor = await getActor();
     await db.delete(items).where(eq(items.id, id));
+    console.log(`[items DELETE] id=${id} by=${actor ?? "anon"}`);
     const title = (oldRow.data as ItemRowData).title;
     await appendActivity([ev("remove", title, `Removed “${title}”`, actor)]);
     await refreshSnapshot();

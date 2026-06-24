@@ -49,6 +49,7 @@ export async function POST(req: NextRequest) {
     await appendActivity([ev("add", title, `Added “${title}”`, actor)]);
     await refreshSnapshot();
 
+    console.log(`[items POST] created id=${id} cat=${categoryId} by=${actor ?? "anon"}`);
     return NextResponse.json({ item: rowToItem(row) }, { status: 201 });
   } catch (e) {
     console.error("POST /api/items failed", e);
