@@ -197,17 +197,55 @@ export function usePlan() {
     [pushToast, setItemInCache],
   );
 
-  // Edit one initiative — instant local update, debounced version-guarded save.
+  // Edit one initiative — instant local update, then save. Discrete actions
+  // (add/remove/toggle checkpoint, status, dates…) save immediately; free-text
+  // typing is debounced. Either way it always reaches the database.
   const mutateItem = useCallback(
-    (next: Item) => {
+    (next: Item, immediate = false) => {
       setItemInCache(next.id, next);
       dirty.current.add(next.id);
       refreshBusy();
       clearTimeout(timers.current[next.id]);
-      timers.current[next.id] = setTimeout(() => save(next.id), 500);
+      if (immediate) {
+        save(next.id);
+      } else {
+        timers.current[next.id] = setTimeout(() => save(next.id), 400);
+      }
     },
     [save, setItemInCache],
   );
+
+  // Last-resort guarantee: if the page is hidden/closed/reloaded while edits
+  // are still pending, fire them now with keepalive so they finish in flight.
+  const flushAll = useCallback(() => {
+    for (const id of Array.from(dirty.current)) {
+      const item = cacheItem(id);
+      if (!item) continue;
+      const expected = versionRef.current[id] ?? item.version;
+      try {
+        fetch(`/api/items/${id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ version: expected, data: toData(item) }),
+          keepalive: true,
+        });
+      } catch {
+        /* nothing more we can do as the page unloads */
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const onHide = () => {
+      if (document.visibilityState === "hidden") flushAll();
+    };
+    window.addEventListener("pagehide", flushAll);
+    document.addEventListener("visibilitychange", onHide);
+    return () => {
+      window.removeEventListener("pagehide", flushAll);
+      document.removeEventListener("visibilitychange", onHide);
+    };
+  }, [flushAll]);
 
   const createItem = useCallback(
     async (categoryId: string, title: string) => {

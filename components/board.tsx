@@ -18,7 +18,7 @@ function Initiative({
 }: {
   item: Item;
   color: string;
-  onChange: (next: Item) => void;
+  onChange: (next: Item, immediate?: boolean) => void;
   onDelete: () => void;
   ask: Ask;
 }) {
@@ -29,19 +29,20 @@ function Initiative({
   const health = healthOf(item);
   const rg = RAG[health];
 
-  const set = (patch: Partial<Item>) => onChange({ ...item, ...patch });
-  const setCp = (cid: string, patch: any) =>
-    set({ checkpoints: item.checkpoints.map((c) => (c.id === cid ? { ...c, ...patch } : c)) });
+  // immediate=true → save right away (discrete actions); false → debounced (typing)
+  const set = (patch: Partial<Item>, immediate = false) => onChange({ ...item, ...patch }, immediate);
+  const setCp = (cid: string, patch: any, immediate = false) =>
+    set({ checkpoints: item.checkpoints.map((c) => (c.id === cid ? { ...c, ...patch } : c)) }, immediate);
   const changeStatus = (v: string) => {
     const patch: Partial<Item> = { status: v as Item["status"] };
     if (v === "done" && !item.completedAt) patch.completedAt = todayISO();
     if (v !== "done" && item.completedAt) patch.completedAt = null;
-    set(patch);
+    set(patch, true);
   };
   const addNote = () => {
     const t = noteDraft.trim();
     if (!t) return;
-    set({ notes: [...item.notes, { id: uid(), text: t, date: todayISO() }] });
+    set({ notes: [...item.notes, { id: uid(), text: t, date: todayISO() }] }, true);
     setNoteDraft("");
   };
 
@@ -99,7 +100,7 @@ function Initiative({
             </div>
             <div className="field">
               <label>Health (RAG)</label>
-              <select value={item.health || "auto"} onChange={(e) => set({ health: e.target.value as Item["health"] })}>
+              <select value={item.health || "auto"} onChange={(e) => set({ health: e.target.value as Item["health"] }, true)}>
                 <option value="auto">Auto · {RAG[autoHealth(item)].l}</option>
                 <option value="green">Green · on track</option>
                 <option value="amber">Amber · at risk</option>
@@ -108,17 +109,17 @@ function Initiative({
             </div>
             <div className="field">
               <label>Phase</label>
-              <select value={item.phase} onChange={(e) => set({ phase: Number(e.target.value) })}>
+              <select value={item.phase} onChange={(e) => set({ phase: Number(e.target.value) }, true)}>
                 {[1, 2, 3].map((n) => <option key={n} value={n}>Phase {n}</option>)}
               </select>
             </div>
             <div className="field">
               <label>Start</label>
-              <input type="date" value={item.start} onChange={(e) => set({ start: e.target.value })} />
+              <input type="date" value={item.start} onChange={(e) => set({ start: e.target.value }, true)} />
             </div>
             <div className="field">
               <label>Target date</label>
-              <input type="date" value={item.due} onChange={(e) => set({ due: e.target.value })} />
+              <input type="date" value={item.due} onChange={(e) => set({ due: e.target.value }, true)} />
             </div>
           </div>
 
@@ -127,12 +128,12 @@ function Initiative({
           </div>
           {item.checkpoints.map((c) => (
             <div className={`cp${c.done ? " done" : ""}`} key={c.id}>
-              <button className={`cp-check${c.done ? " done" : ""}`} onClick={() => setCp(c.id, { done: !c.done })}>
+              <button className={`cp-check${c.done ? " done" : ""}`} onClick={() => setCp(c.id, { done: !c.done }, true)}>
                 {c.done ? <CheckCircle2 size={18} /> : <Circle size={18} />}
               </button>
               <input className="cp-label" value={c.label} onChange={(e) => setCp(c.id, { label: e.target.value })} />
-              <input className="cp-date" type="date" value={c.date} onChange={(e) => setCp(c.id, { date: e.target.value })} />
-              <button className="icon-btn" onClick={() => set({ checkpoints: item.checkpoints.filter((x) => x.id !== c.id) })}>
+              <input className="cp-date" type="date" value={c.date} onChange={(e) => setCp(c.id, { date: e.target.value }, true)} />
+              <button className="icon-btn" onClick={() => set({ checkpoints: item.checkpoints.filter((x) => x.id !== c.id) }, true)}>
                 <X size={14} />
               </button>
             </div>
@@ -140,7 +141,7 @@ function Initiative({
           <div className="add-row">
             <button
               className="btn ghost"
-              onClick={() => set({ checkpoints: [...item.checkpoints, { id: uid(), label: "New checkpoint", date: item.due, done: false }] })}
+              onClick={() => set({ checkpoints: [...item.checkpoints, { id: uid(), label: "New checkpoint", date: item.due, done: false }] }, true)}
             >
               <Plus size={13} /> Add checkpoint
             </button>
@@ -150,7 +151,7 @@ function Initiative({
           {item.notes.map((n) => (
             <div className="note" key={n.id}>
               <p>{n.text}<br /><span className="stamp">{fmtShort(n.date)}</span></p>
-              <button className="icon-btn" onClick={() => set({ notes: item.notes.filter((x) => x.id !== n.id) })}>
+              <button className="icon-btn" onClick={() => set({ notes: item.notes.filter((x) => x.id !== n.id) }, true)}>
                 <X size={14} />
               </button>
             </div>
@@ -176,7 +177,7 @@ export function Board({
 }: {
   data: Plan;
   owners: string[];
-  onItemChange: (next: Item) => void;
+  onItemChange: (next: Item, immediate?: boolean) => void;
   onItemDelete: (id: string) => void;
   onAddItem: (categoryId: string, title: string) => void;
   ask: Ask;

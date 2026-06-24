@@ -202,7 +202,7 @@ export default function TrackerApp({
           <Board
             data={plan}
             owners={owners}
-            onItemChange={(next: Item) => mutateItem(next)}
+            onItemChange={(next: Item, immediate?: boolean) => mutateItem(next, immediate)}
             onItemDelete={(id: string) => deleteItem(id)}
             onAddItem={(catId: string, title: string) => createItem(catId, title)}
             ask={ask}
