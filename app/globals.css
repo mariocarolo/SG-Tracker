@@ -301,3 +301,38 @@ html, body { margin: 0; padding: 0; background: #f4f2ec; }
   .pm *, .pm *::before, .pm *::after { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .pm .report-sheet + .report-sheet { page-break-before:always; }
 }
+
+/* ───────── Header theme: burgundy bar with light, high-contrast content ─────────
+   Scoped to .pm .top so only the header changes; the page body is untouched. */
+.pm .top {
+  --head-ink:#fdf7f2;     /* primary text on burgundy */
+  --head-soft:#e6cabb;    /* secondary text / small labels */
+  --head-hair:rgba(255,255,255,.28); /* borders on dark */
+  background:#692730;
+  border-bottom-color:#4d1c22;
+}
+.pm .top .brand h1 { color:var(--head-ink); }
+.pm .top .brand .sub { color:var(--head-soft); }
+
+/* start-date controls */
+.pm .top .startbar { color:var(--head-soft); }
+.pm .top .startbar input {
+  background:rgba(255,255,255,.12);
+  border-color:var(--head-hair);
+  color:var(--head-ink);
+  color-scheme:dark; /* light text + light picker glyph in the native date field */
+}
+.pm .top .startbar input::-webkit-calendar-picker-indicator { filter:invert(1); opacity:.85; }
+
+/* tabs / nav */
+.pm .top .tab { color:var(--head-soft); }
+.pm .top .tab:hover { background:rgba(255,255,255,.12); color:var(--head-ink); }
+.pm .top .tab.on { color:#ffffff; border-bottom-color:#ffffff; }
+
+/* ghost buttons (Reset) */
+.pm .top .btn.ghost { color:var(--head-ink); border-color:var(--head-hair); }
+.pm .top .btn.ghost:hover { color:#ffffff; background:rgba(255,255,255,.14); }
+
+/* save/live status text (the green/amber dots already read well on dark) */
+.pm .top .saved { color:var(--head-soft); }
+
