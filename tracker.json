@@ -1,0 +1,4758 @@
+{
+  "version": 1,
+  "start": "2026-06-16",
+  "cats": [
+    {
+      "id": "ey3mnra1",
+      "name": "Team & Culture",
+      "color": "#c2683a",
+      "items": [
+        {
+          "id": "wbfpfvnz",
+          "title": "Reestablish the weekly process meeting",
+          "owner": "Luisa Reis",
+          "status": "not_started",
+          "priority": "high",
+          "phase": 1,
+          "start": "2026-06-16",
+          "due": "2026-08-23",
+          "checkpoints": [
+            {
+              "id": "q5zi7a16",
+              "label": "Define agenda, owner & cadence",
+              "date": "2026-07-09",
+              "done": false
+            },
+            {
+              "id": "o3i12e53",
+              "label": "Hold first weekly meeting",
+              "date": "2026-07-31",
+              "done": false
+            },
+            {
+              "id": "d9is33dd",
+              "label": "30-day cadence review",
+              "date": "2026-08-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "geetms6s",
+          "title": "Introduce a dedicated AI projects best-practices & status meeting",
+          "owner": "Alexandre",
+          "status": "not_started",
+          "priority": "high",
+          "phase": 1,
+          "start": "2026-06-16",
+          "due": "2026-08-23",
+          "checkpoints": [
+            {
+              "id": "tp234asx",
+              "label": "Set format & invite list",
+              "date": "2026-07-09",
+              "done": false
+            },
+            {
+              "id": "stqlthlj",
+              "label": "Run first session",
+              "date": "2026-07-31",
+              "done": false
+            },
+            {
+              "id": "6qvvtj05",
+              "label": "Capture best-practices doc",
+              "date": "2026-08-23",
+              "done": false
+            },
+            {
+              "id": "q5j931hk",
+              "label": "Initial Report to Compliance",
+              "date": "2026-08-23",
+              "done": false
+            },
+            {
+              "id": "sbdse46p",
+              "label": "AI training best practices",
+              "date": "2026-08-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": "Lorenzo"
+        },
+        {
+          "id": "1c1nrr4n",
+          "title": "Upgrade office environment and furniture",
+          "owner": "Carla Biasi",
+          "status": "not_started",
+          "priority": "med",
+          "phase": 2,
+          "start": "2026-09-16",
+          "due": "2026-11-23",
+          "checkpoints": [
+            {
+              "id": "5l0r7axs",
+              "label": "Assess needs & budget",
+              "date": "2026-10-09",
+              "done": false
+            },
+            {
+              "id": "kwiiuf2u",
+              "label": "Order furniture / fit-out",
+              "date": "2026-10-31",
+              "done": false
+            },
+            {
+              "id": "g0vzuws6",
+              "label": "Complete installation",
+              "date": "2026-11-23",
+              "done": false
+            },
+            {
+              "id": "j81220mi",
+              "label": "Improve audio infrastructure for video conferences",
+              "date": "2026-11-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "diclhuge",
+          "title": "Define and communicate clear roles for all team members",
+          "owner": "Cesar Collier",
+          "status": "not_started",
+          "priority": "high",
+          "phase": 1,
+          "start": "2026-06-16",
+          "due": "2026-08-23",
+          "checkpoints": [
+            {
+              "id": "b10j4xsb",
+              "label": "Draft role descriptions",
+              "date": "2026-07-09",
+              "done": false
+            },
+            {
+              "id": "nc210x7n",
+              "label": "Review with team",
+              "date": "2026-07-31",
+              "done": false
+            },
+            {
+              "id": "kiq3cyh6",
+              "label": "Publish & communicate",
+              "date": "2026-08-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "wct4c5v4",
+          "title": "CC to individually coach each team member",
+          "owner": "Cesar Collier",
+          "status": "not_started",
+          "priority": "med",
+          "phase": 2,
+          "start": "2026-09-16",
+          "due": "2026-11-23",
+          "checkpoints": [
+            {
+              "id": "i7npr632",
+              "label": "Schedule 1:1 cadence",
+              "date": "2026-10-09",
+              "done": false
+            },
+            {
+              "id": "7uwgnlzd",
+              "label": "First coaching round",
+              "date": "2026-10-31",
+              "done": false
+            },
+            {
+              "id": "mpyf8uic",
+              "label": "Quarterly progress review",
+              "date": "2026-11-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "434l1vsv",
+          "title": "Schedule an offsite & implement a recurring culture meeting",
+          "owner": "Luisa Reis",
+          "status": "not_started",
+          "priority": "med",
+          "phase": 2,
+          "start": "2026-09-16",
+          "due": "2026-11-23",
+          "checkpoints": [
+            {
+              "id": "4nc4z10p",
+              "label": "Pick date & venue",
+              "date": "2026-10-09",
+              "done": false
+            },
+            {
+              "id": "5s59ptrt",
+              "label": "Run offsite",
+              "date": "2026-10-31",
+              "done": false
+            },
+            {
+              "id": "7cqh409g",
+              "label": "Launch recurring culture meeting",
+              "date": "2026-11-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "health": "green",
+          "owner2": ""
+        },
+        {
+          "id": "tqdg1uwq",
+          "title": "Deliver two to three HBS case-study classes",
+          "owner": "Cesar Collier",
+          "status": "not_started",
+          "priority": "med",
+          "phase": 3,
+          "start": "2026-12-16",
+          "due": "2027-02-22",
+          "checkpoints": [
+            {
+              "id": "4nlk8nue",
+              "label": "Select cases & facilitator",
+              "date": "2027-01-08",
+              "done": false
+            },
+            {
+              "id": "pvquig1z",
+              "label": "Run first class",
+              "date": "2027-01-30",
+              "done": false
+            },
+            {
+              "id": "0ilfhul5",
+              "label": "Complete class series",
+              "date": "2027-02-22",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "npg0apd3",
+          "title": "Provide training in public speaking & meeting facilitation",
+          "owner": "Cesar Collier",
+          "status": "not_started",
+          "priority": "low",
+          "phase": 3,
+          "start": "2026-12-16",
+          "due": "2027-02-22",
+          "checkpoints": [
+            {
+              "id": "q772cmrx",
+              "label": "Choose program / trainer",
+              "date": "2027-01-08",
+              "done": false
+            },
+            {
+              "id": "o3il01xw",
+              "label": "First training session",
+              "date": "2027-01-30",
+              "done": false
+            },
+            {
+              "id": "cuj0d9xe",
+              "label": "Practice & feedback round",
+              "date": "2027-02-22",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "1yqdyajl",
+          "title": "Expand team social events (happy hours, lunches, sports)",
+          "owner": "Bernardo Piquet",
+          "status": "not_started",
+          "priority": "low",
+          "phase": 2,
+          "start": "2026-09-16",
+          "due": "2026-11-23",
+          "checkpoints": [
+            {
+              "id": "168zap56",
+              "label": "Plan events calendar",
+              "date": "2026-10-09",
+              "done": false
+            },
+            {
+              "id": "wnb9w65h",
+              "label": "Host first events",
+              "date": "2026-10-31",
+              "done": false
+            },
+            {
+              "id": "w8kk74hf",
+              "label": "Review engagement",
+              "date": "2026-11-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "9dmty80f",
+          "title": "Stablish Values Moto",
+          "owner": "Pedro Aranha",
+          "status": "not_started",
+          "priority": "high",
+          "phase": 1,
+          "start": "2026-06-16",
+          "due": "2026-07-16",
+          "checkpoints": [],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "5prlmmae",
+          "title": "Plan Risk and Control Function",
+          "owner": "Marcos Tage",
+          "status": "not_started",
+          "priority": "med",
+          "phase": 1,
+          "start": "2026-06-16",
+          "due": "2026-07-16",
+          "checkpoints": [],
+          "notes": [],
+          "owner2": ""
+        }
+      ]
+    },
+    {
+      "id": "hnutbqp0",
+      "name": "Portfolio Management",
+      "color": "#2f6b5e",
+      "items": [
+        {
+          "id": "7zx801c6",
+          "title": "Build an AI-powered online deal-flow panel",
+          "owner": "Alexandre",
+          "status": "not_started",
+          "priority": "high",
+          "phase": 2,
+          "start": "2026-09-16",
+          "due": "2026-11-23",
+          "checkpoints": [
+            {
+              "id": "jbk1htvp",
+              "label": "Define requirements",
+              "date": "2026-10-09",
+              "done": false
+            },
+            {
+              "id": "opqt8zg0",
+              "label": "Build MVP",
+              "date": "2026-10-31",
+              "done": false
+            },
+            {
+              "id": "3rh08ev6",
+              "label": "Roll out to team",
+              "date": "2026-11-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": "Lorenzo"
+        },
+        {
+          "id": "thit1rtm",
+          "title": "Implement a local ERP system with AI integration",
+          "owner": "Alexandre",
+          "status": "not_started",
+          "priority": "high",
+          "phase": 3,
+          "start": "2026-12-16",
+          "due": "2027-02-22",
+          "checkpoints": [
+            {
+              "id": "8oseaam2",
+              "label": "Select ERP & scope",
+              "date": "2027-01-08",
+              "done": false
+            },
+            {
+              "id": "1phbk9oy",
+              "label": "Configure & integrate AI",
+              "date": "2027-01-30",
+              "done": false
+            },
+            {
+              "id": "x382h1nl",
+              "label": "Go live",
+              "date": "2027-02-22",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": "Lorenzo"
+        },
+        {
+          "id": "o0sjed42",
+          "title": "Develop an AI-assisted exit calculator tool",
+          "owner": "Lorenzo",
+          "status": "not_started",
+          "priority": "med",
+          "phase": 2,
+          "start": "2026-09-16",
+          "due": "2026-11-23",
+          "checkpoints": [
+            {
+              "id": "nnu9iegr",
+              "label": "Define model logic",
+              "date": "2026-10-09",
+              "done": false
+            },
+            {
+              "id": "0ago8y6k",
+              "label": "Build prototype",
+              "date": "2026-10-31",
+              "done": false
+            },
+            {
+              "id": "2kj3plrk",
+              "label": "Validate with real deals",
+              "date": "2026-11-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": "Marcos"
+        },
+        {
+          "id": "72a2r2hd",
+          "title": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+          "owner": "Alexandre",
+          "status": "not_started",
+          "priority": "high",
+          "phase": 3,
+          "start": "2026-12-16",
+          "due": "2027-02-22",
+          "checkpoints": [
+            {
+              "id": "0qroms08",
+              "label": "Map existing systems",
+              "date": "2027-01-08",
+              "done": false
+            },
+            {
+              "id": "t34m4bss",
+              "label": "Design unified schema",
+              "date": "2027-01-30",
+              "done": false
+            },
+            {
+              "id": "f4io9fg3",
+              "label": "Migrate & validate data",
+              "date": "2027-02-22",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": "Lorenzo"
+        },
+        {
+          "id": "jyqwl8mx",
+          "title": "Integrate daily legal claims & portfolio movements into the AI ERP",
+          "owner": "Lorenzo",
+          "status": "not_started",
+          "priority": "med",
+          "phase": 3,
+          "start": "2027-03-16",
+          "due": "2027-05-23",
+          "checkpoints": [
+            {
+              "id": "zlns2hb4",
+              "label": "Define data feeds",
+              "date": "2027-04-08",
+              "done": false
+            },
+            {
+              "id": "i13u97xg",
+              "label": "Build integration",
+              "date": "2027-04-30",
+              "done": false
+            },
+            {
+              "id": "6s05qe6o",
+              "label": "Confirm daily sync",
+              "date": "2027-05-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": "Guilherme"
+        },
+        {
+          "id": "4rwbp3f5",
+          "title": "Improve communication & visibility on settlements & exits",
+          "owner": "Luiza de Munno",
+          "status": "not_started",
+          "priority": "high",
+          "phase": 1,
+          "start": "2026-06-16",
+          "due": "2026-08-23",
+          "checkpoints": [
+            {
+              "id": "63kt140v",
+              "label": "Define reporting format",
+              "date": "2026-07-09",
+              "done": false
+            },
+            {
+              "id": "w19qew2r",
+              "label": "Set update cadence",
+              "date": "2026-07-31",
+              "done": false
+            },
+            {
+              "id": "aqa51y9x",
+              "label": "First distribution",
+              "date": "2026-08-23",
+              "done": false
+            }
+          ],
+          "notes": [
+            {
+              "id": "noaq4nh2",
+              "text": "Discutir formato para ter um weekly de news tb",
+              "date": "2026-06-19"
+            }
+          ],
+          "owner2": "Mario"
+        }
+      ]
+    },
+    {
+      "id": "sp2a28mp",
+      "name": "Partners & SG Ecosystem",
+      "color": "#5b6aa8",
+      "items": [
+        {
+          "id": "qls9n8mv",
+          "title": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+          "owner": "Daniel Vieira",
+          "status": "not_started",
+          "priority": "high",
+          "phase": 2,
+          "start": "2026-09-16",
+          "due": "2026-11-23",
+          "checkpoints": [
+            {
+              "id": "vs2xzaxk",
+              "label": "Define reports, meetings & controls",
+              "date": "2026-10-09",
+              "done": false
+            },
+            {
+              "id": "q73jonl9",
+              "label": "Agree cadence with partners",
+              "date": "2026-10-31",
+              "done": false
+            },
+            {
+              "id": "clmqzk2q",
+              "label": "First governance cycle",
+              "date": "2026-11-23",
+              "done": false
+            }
+          ],
+          "notes": [
+            {
+              "id": "evgtpp52",
+              "text": "Discutir template de informações e formato de reporting padrão entre as investidas",
+              "date": "2026-06-19"
+            }
+          ],
+          "owner2": "Pedro Aranha"
+        },
+        {
+          "id": "drint81w",
+          "title": "Standardize the Consignado proposal for partners",
+          "owner": "Daniel Vieira",
+          "status": "not_started",
+          "priority": "high",
+          "phase": 1,
+          "start": "2026-06-16",
+          "due": "2026-08-23",
+          "checkpoints": [
+            {
+              "id": "9lybwvdw",
+              "label": "Draft standard proposal",
+              "date": "2026-07-09",
+              "done": false
+            },
+            {
+              "id": "gk34x9jw",
+              "label": "Internal review",
+              "date": "2026-07-31",
+              "done": false
+            },
+            {
+              "id": "bgpspczd",
+              "label": "Approve & circulate",
+              "date": "2026-08-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "mji0qtl3",
+          "title": "Formalize the BLC proposal for partners",
+          "owner": "Luiza de Munno",
+          "status": "not_started",
+          "priority": "med",
+          "phase": 1,
+          "start": "2026-06-16",
+          "due": "2026-08-23",
+          "checkpoints": [
+            {
+              "id": "2358n931",
+              "label": "Document framework",
+              "date": "2026-07-09",
+              "done": false
+            },
+            {
+              "id": "wcaofx90",
+              "label": "Legal / IC review",
+              "date": "2026-07-31",
+              "done": false
+            },
+            {
+              "id": "a2e3lsk9",
+              "label": "Publish final proposal",
+              "date": "2026-08-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "jdx3pt29",
+          "title": "Standardize the onboarding process for new partners",
+          "owner": "Daniel Vieira",
+          "status": "not_started",
+          "priority": "med",
+          "phase": 2,
+          "start": "2026-09-16",
+          "due": "2026-11-23",
+          "checkpoints": [
+            {
+              "id": "4bv78a0d",
+              "label": "Map onboarding steps",
+              "date": "2026-10-09",
+              "done": false
+            },
+            {
+              "id": "xrr2t9qj",
+              "label": "Build checklist & templates",
+              "date": "2026-10-31",
+              "done": false
+            },
+            {
+              "id": "px89cicd",
+              "label": "Pilot with one partner",
+              "date": "2026-11-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "x7dd9ihs",
+          "title": "Designate a single point of contact for each partner",
+          "owner": "Marcos Tage",
+          "status": "not_started",
+          "priority": "high",
+          "phase": 1,
+          "start": "2026-06-16",
+          "due": "2026-08-23",
+          "checkpoints": [
+            {
+              "id": "9k0hymvx",
+              "label": "Map partners to owners",
+              "date": "2026-07-09",
+              "done": false
+            },
+            {
+              "id": "ixbyk1es",
+              "label": "Communicate to partners",
+              "date": "2026-07-31",
+              "done": false
+            },
+            {
+              "id": "9b0tpmxw",
+              "label": "Confirm coverage",
+              "date": "2026-08-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "0ax5on97",
+          "title": "Implement a partner risk report (admin, regulatory, development)",
+          "owner": "Daniel Vieira",
+          "status": "not_started",
+          "priority": "med",
+          "phase": 3,
+          "start": "2026-12-16",
+          "due": "2027-02-22",
+          "checkpoints": [
+            {
+              "id": "hfh6k5i2",
+              "label": "Define risk indicators",
+              "date": "2027-01-08",
+              "done": false
+            },
+            {
+              "id": "hh17vvui",
+              "label": "Build report template",
+              "date": "2027-01-30",
+              "done": false
+            },
+            {
+              "id": "uk0wr5x4",
+              "label": "First reporting cycle",
+              "date": "2027-02-22",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": "Luisa Reis"
+        },
+        {
+          "id": "ziikl2cj",
+          "title": "Explore creation of a Consignado company modeled on Lass",
+          "owner": "Daniel Vieira",
+          "status": "not_started",
+          "priority": "low",
+          "phase": 3,
+          "start": "2027-03-16",
+          "due": "2027-05-23",
+          "checkpoints": [
+            {
+              "id": "vhrubpu3",
+              "label": "Feasibility study",
+              "date": "2027-04-08",
+              "done": false
+            },
+            {
+              "id": "r1r6dz98",
+              "label": "Business case & structure",
+              "date": "2027-04-30",
+              "done": false
+            },
+            {
+              "id": "ha2276kh",
+              "label": "Go / no-go decision",
+              "date": "2027-05-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": "Pedro Aranha"
+        }
+      ]
+    },
+    {
+      "id": "eoitkq5a",
+      "name": "Investing, Due Diligence & Risk",
+      "color": "#a8443a",
+      "items": [
+        {
+          "id": "we7xjxbw",
+          "title": "Develop a go/no-go checklist for new deals (pre-IC)",
+          "owner": "Lorenzo",
+          "status": "not_started",
+          "priority": "high",
+          "phase": 1,
+          "start": "2026-06-16",
+          "due": "2026-08-23",
+          "checkpoints": [
+            {
+              "id": "xkjkvfct",
+              "label": "Draft checklist",
+              "date": "2026-07-09",
+              "done": false
+            },
+            {
+              "id": "ya57vjiq",
+              "label": "Pilot on next deal",
+              "date": "2026-07-31",
+              "done": false
+            },
+            {
+              "id": "4senl026",
+              "label": "Mandate before IC",
+              "date": "2026-08-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "47q8liim",
+          "title": "Establish a pipeline meeting without CC",
+          "owner": "Marcos Tage",
+          "status": "not_started",
+          "priority": "med",
+          "phase": 1,
+          "start": "2026-06-16",
+          "due": "2026-08-23",
+          "checkpoints": [
+            {
+              "id": "ip1ukf4m",
+              "label": "Set format & attendees",
+              "date": "2026-07-09",
+              "done": false
+            },
+            {
+              "id": "h1ngtqtv",
+              "label": "Run first meeting",
+              "date": "2026-07-31",
+              "done": false
+            },
+            {
+              "id": "jb2gagzb",
+              "label": "Cadence review",
+              "date": "2026-08-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "x5uer5ce",
+          "title": "Merge the global BLC IC with the Consignado IC",
+          "owner": "Cesar Collier",
+          "status": "not_started",
+          "priority": "med",
+          "phase": 2,
+          "start": "2026-09-16",
+          "due": "2026-11-23",
+          "checkpoints": [
+            {
+              "id": "3wqhntzd",
+              "label": "Align agendas & members",
+              "date": "2026-10-09",
+              "done": false
+            },
+            {
+              "id": "fb4h3vea",
+              "label": "Define merged process",
+              "date": "2026-10-31",
+              "done": false
+            },
+            {
+              "id": "q4anz542",
+              "label": "First combined IC",
+              "date": "2026-11-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "l3pyi5oa",
+          "title": "Receive regular reports on legal status of cases & theses",
+          "owner": "Manoel Tavares",
+          "status": "not_started",
+          "priority": "high",
+          "phase": 1,
+          "start": "2026-06-16",
+          "due": "2026-08-23",
+          "checkpoints": [
+            {
+              "id": "jyxz6fkw",
+              "label": "Define report scope",
+              "date": "2026-07-09",
+              "done": false
+            },
+            {
+              "id": "pkbm0vn0",
+              "label": "Set cadence",
+              "date": "2026-07-31",
+              "done": false
+            },
+            {
+              "id": "ayq55ud2",
+              "label": "First report delivered",
+              "date": "2026-08-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "75a4oldj",
+          "title": "Sharpen focus & communication in local IC meetings",
+          "owner": "Cesar Collier",
+          "status": "not_started",
+          "priority": "med",
+          "phase": 1,
+          "start": "2026-06-16",
+          "due": "2026-08-23",
+          "checkpoints": [
+            {
+              "id": "4hkhfsoy",
+              "label": "Define IC standards",
+              "date": "2026-07-09",
+              "done": false
+            },
+            {
+              "id": "zrwih1oo",
+              "label": "Update agenda template",
+              "date": "2026-07-31",
+              "done": false
+            },
+            {
+              "id": "r51xt7ba",
+              "label": "Review after 2 ICs",
+              "date": "2026-08-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "qcyzdlrk",
+          "title": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+          "owner": "Daniel Vieira",
+          "status": "not_started",
+          "priority": "high",
+          "phase": 3,
+          "start": "2026-12-16",
+          "due": "2027-02-22",
+          "checkpoints": [
+            {
+              "id": "10lgp1ya",
+              "label": "Define flag criteria",
+              "date": "2027-01-08",
+              "done": false
+            },
+            {
+              "id": "iog702dw",
+              "label": "Build AI monitoring",
+              "date": "2027-01-30",
+              "done": false
+            },
+            {
+              "id": "jzo3r37q",
+              "label": "Roll out dashboard",
+              "date": "2027-02-22",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": "Luisa Reis"
+        },
+        {
+          "id": "z88elq9n",
+          "title": "Establish an in-office CCO function with AI support",
+          "owner": "Cesar Collier",
+          "status": "not_started",
+          "priority": "high",
+          "phase": 3,
+          "start": "2026-12-16",
+          "due": "2027-02-22",
+          "checkpoints": [
+            {
+              "id": "icnqcgx2",
+              "label": "Define CCO mandate",
+              "date": "2027-01-08",
+              "done": false
+            },
+            {
+              "id": "fyqtdvhd",
+              "label": "Assign & tool up",
+              "date": "2027-01-30",
+              "done": false
+            },
+            {
+              "id": "dhfyh21c",
+              "label": "Operational review",
+              "date": "2027-02-22",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": "Carla Biasi"
+        }
+      ]
+    },
+    {
+      "id": "2fbvnvuq",
+      "name": "Fundraising, PR & Investor Relations",
+      "color": "#b08527",
+      "items": [
+        {
+          "id": "yj4sirqu",
+          "title": "Provide IR with regular portfolio updates",
+          "owner": "Luisa Reis",
+          "status": "not_started",
+          "priority": "high",
+          "phase": 1,
+          "start": "2026-06-16",
+          "due": "2026-08-23",
+          "checkpoints": [
+            {
+              "id": "bfewbkbv",
+              "label": "Define update pack",
+              "date": "2026-07-09",
+              "done": false
+            },
+            {
+              "id": "5ljaj8w4",
+              "label": "Set cadence",
+              "date": "2026-07-31",
+              "done": false
+            },
+            {
+              "id": "4z0a0h6p",
+              "label": "First update sent",
+              "date": "2026-08-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "dfhslp2s",
+          "title": "Enhance investor communication with AI-assisted tools",
+          "owner": "Luisa Reis",
+          "status": "not_started",
+          "priority": "med",
+          "phase": 2,
+          "start": "2026-09-16",
+          "due": "2026-11-23",
+          "checkpoints": [
+            {
+              "id": "1wo64ajg",
+              "label": "Select tools",
+              "date": "2026-10-09",
+              "done": false
+            },
+            {
+              "id": "4duw50p6",
+              "label": "Build templates",
+              "date": "2026-10-31",
+              "done": false
+            },
+            {
+              "id": "63606wl0",
+              "label": "Roll out to IR",
+              "date": "2026-11-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "dmov8gup",
+          "title": "Increase events with local partners",
+          "owner": "Luisa Reis",
+          "status": "not_started",
+          "priority": "med",
+          "phase": 2,
+          "start": "2026-09-16",
+          "due": "2026-11-23",
+          "checkpoints": [
+            {
+              "id": "n1xqel7n",
+              "label": "Plan event calendar",
+              "date": "2026-10-09",
+              "done": false
+            },
+            {
+              "id": "2775whj2",
+              "label": "Host first event",
+              "date": "2026-10-31",
+              "done": false
+            },
+            {
+              "id": "sp0epfwo",
+              "label": "Review pipeline impact",
+              "date": "2026-11-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "b6xgow97",
+          "title": "Strengthen local fundraising efforts",
+          "owner": "Luisa Reis",
+          "status": "not_started",
+          "priority": "high",
+          "phase": 2,
+          "start": "2026-09-16",
+          "due": "2026-11-23",
+          "checkpoints": [
+            {
+              "id": "qgoxzwp3",
+              "label": "Define target investors",
+              "date": "2026-10-09",
+              "done": false
+            },
+            {
+              "id": "zsvlrnb0",
+              "label": "Outreach plan",
+              "date": "2026-10-31",
+              "done": false
+            },
+            {
+              "id": "u973e88f",
+              "label": "First commitments",
+              "date": "2026-11-23",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        },
+        {
+          "id": "y5j75ikv",
+          "title": "Develop a local fundraising strategy for US products (e.g., XP)",
+          "owner": "Luisa Reis",
+          "status": "not_started",
+          "priority": "med",
+          "phase": 3,
+          "start": "2026-12-16",
+          "due": "2027-02-22",
+          "checkpoints": [
+            {
+              "id": "mwo5zge6",
+              "label": "Market & product analysis",
+              "date": "2027-01-08",
+              "done": false
+            },
+            {
+              "id": "w0yo97pp",
+              "label": "Draft strategy",
+              "date": "2027-01-30",
+              "done": false
+            },
+            {
+              "id": "aprjtgts",
+              "label": "Approve & launch",
+              "date": "2027-02-22",
+              "done": false
+            }
+          ],
+          "notes": [],
+          "owner2": ""
+        }
+      ]
+    }
+  ],
+  "history": [
+    {
+      "week": "2026-W25",
+      "date": "2026-06-19",
+      "overall": 0,
+      "done": 0,
+      "total": 36,
+      "cats": [
+        {
+          "name": "Team & Culture",
+          "color": "#c2683a",
+          "pct": 0
+        },
+        {
+          "name": "Portfolio Management",
+          "color": "#2f6b5e",
+          "pct": 0
+        },
+        {
+          "name": "Partners & SG Ecosystem",
+          "color": "#5b6aa8",
+          "pct": 0
+        },
+        {
+          "name": "Investing, Due Diligence & Risk",
+          "color": "#a8443a",
+          "pct": 0
+        },
+        {
+          "name": "Fundraising, PR & Investor Relations",
+          "color": "#b08527",
+          "pct": 0
+        }
+      ]
+    },
+    {
+      "week": "2026-W26",
+      "date": "2026-06-23",
+      "overall": 0,
+      "done": 0,
+      "total": 36,
+      "cats": [
+        {
+          "name": "Team & Culture",
+          "color": "#c2683a",
+          "pct": 0
+        },
+        {
+          "name": "Portfolio Management",
+          "color": "#2f6b5e",
+          "pct": 0
+        },
+        {
+          "name": "Partners & SG Ecosystem",
+          "color": "#5b6aa8",
+          "pct": 0
+        },
+        {
+          "name": "Investing, Due Diligence & Risk",
+          "color": "#a8443a",
+          "pct": 0
+        },
+        {
+          "name": "Fundraising, PR & Investor Relations",
+          "color": "#b08527",
+          "pct": 0
+        }
+      ]
+    }
+  ],
+  "activity": [
+    {
+      "id": "ayap76p9",
+      "ts": "2026-06-19T16:31:48.533Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Luis → Luisa"
+    },
+    {
+      "id": "j2updc1x",
+      "ts": "2026-06-19T16:31:48.656Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Luisa → Luisa "
+    },
+    {
+      "id": "xwvw8wul",
+      "ts": "2026-06-19T16:31:48.882Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Luisa  → Luisa R"
+    },
+    {
+      "id": "02pd21xd",
+      "ts": "2026-06-19T16:31:49.034Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Luisa R → Luisa Re"
+    },
+    {
+      "id": "u8nkrf5x",
+      "ts": "2026-06-19T16:31:49.167Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Luisa Re → Luisa Rei"
+    },
+    {
+      "id": "t21gf5i8",
+      "ts": "2026-06-19T16:31:49.233Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Luisa Rei → Luisa Reis"
+    },
+    {
+      "id": "m3gxmmop",
+      "ts": "2026-06-19T16:31:53.924Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Luisa Reis → B"
+    },
+    {
+      "id": "wqxt9k0a",
+      "ts": "2026-06-19T16:31:54.076Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner B → Be"
+    },
+    {
+      "id": "rj694c4l",
+      "ts": "2026-06-19T16:31:54.201Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Be → Ber"
+    },
+    {
+      "id": "u9d1ydh2",
+      "ts": "2026-06-19T16:31:54.765Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Ber → Bern"
+    },
+    {
+      "id": "0urfmkwn",
+      "ts": "2026-06-19T16:31:54.835Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Bern → Berna"
+    },
+    {
+      "id": "gl8pig0d",
+      "ts": "2026-06-19T16:31:54.909Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Berna → Bernar"
+    },
+    {
+      "id": "92qftgkk",
+      "ts": "2026-06-19T16:31:55.100Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Bernar → Bernard"
+    },
+    {
+      "id": "uka94m8w",
+      "ts": "2026-06-19T16:31:55.244Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Bernard → Bernardo"
+    },
+    {
+      "id": "89vl2w3p",
+      "ts": "2026-06-19T16:31:55.789Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Bernardo → Bernardo "
+    },
+    {
+      "id": "z8izexj2",
+      "ts": "2026-06-19T16:31:56.006Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Bernardo  → Bernardo P"
+    },
+    {
+      "id": "pej5ejy3",
+      "ts": "2026-06-19T16:31:56.236Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Bernardo P → Bernardo Pi"
+    },
+    {
+      "id": "hmsnnq6x",
+      "ts": "2026-06-19T16:31:56.438Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Bernardo Pi → Bernardo Piq"
+    },
+    {
+      "id": "v83e3n6v",
+      "ts": "2026-06-19T16:31:56.562Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Bernardo Piq → Bernardo Piqu"
+    },
+    {
+      "id": "l1o9pw7i",
+      "ts": "2026-06-19T16:31:56.682Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Bernardo Piqu → Bernardo Pique"
+    },
+    {
+      "id": "kgz32zts",
+      "ts": "2026-06-19T16:31:56.850Z",
+      "type": "owner",
+      "topic": "Expand team social events (happy hours, lunches, sports)",
+      "msg": "“Expand team social events (happy hours, lunches, sports)”: owner Bernardo Pique → Bernardo Piquet"
+    },
+    {
+      "id": "9u22oyvh",
+      "ts": "2026-06-19T16:32:52.361Z",
+      "type": "owner",
+      "topic": "Build an AI-powered online deal-flow panel",
+      "msg": "“Build an AI-powered online deal-flow panel”: owner unassigned → Alexandre e Lorenzo"
+    },
+    {
+      "id": "60p4vcdj",
+      "ts": "2026-06-19T16:33:22.990Z",
+      "type": "owner",
+      "topic": "Implement a local ERP system with AI integration",
+      "msg": "“Implement a local ERP system with AI integration”: owner unassigned → Alexandre e Lorenzo"
+    },
+    {
+      "id": "48bmh9yi",
+      "ts": "2026-06-19T16:36:35.811Z",
+      "type": "add",
+      "topic": "Plan Risk and Control Function",
+      "msg": "Added “Plan Risk and Control Function” to Team & Culture"
+    },
+    {
+      "id": "sp2fld39",
+      "ts": "2026-06-19T16:36:47.839Z",
+      "type": "owner",
+      "topic": "Plan Risk and Control Function",
+      "msg": "“Plan Risk and Control Function”: owner unassigned → M"
+    },
+    {
+      "id": "660100b7",
+      "ts": "2026-06-19T16:36:48.012Z",
+      "type": "owner",
+      "topic": "Plan Risk and Control Function",
+      "msg": "“Plan Risk and Control Function”: owner M → Ma"
+    },
+    {
+      "id": "672wqqmz",
+      "ts": "2026-06-19T16:36:48.149Z",
+      "type": "owner",
+      "topic": "Plan Risk and Control Function",
+      "msg": "“Plan Risk and Control Function”: owner Ma → Mar"
+    },
+    {
+      "id": "bm2m9gus",
+      "ts": "2026-06-19T16:36:48.318Z",
+      "type": "owner",
+      "topic": "Plan Risk and Control Function",
+      "msg": "“Plan Risk and Control Function”: owner Mar → Marc"
+    },
+    {
+      "id": "25ep2xuw",
+      "ts": "2026-06-19T16:36:48.359Z",
+      "type": "owner",
+      "topic": "Plan Risk and Control Function",
+      "msg": "“Plan Risk and Control Function”: owner Marc → Marco"
+    },
+    {
+      "id": "ktt59w4h",
+      "ts": "2026-06-19T16:36:48.516Z",
+      "type": "owner",
+      "topic": "Plan Risk and Control Function",
+      "msg": "“Plan Risk and Control Function”: owner Marco → Marcos"
+    },
+    {
+      "id": "smv26p1f",
+      "ts": "2026-06-19T16:36:48.706Z",
+      "type": "owner",
+      "topic": "Plan Risk and Control Function",
+      "msg": "“Plan Risk and Control Function”: owner Marcos → Marcos "
+    },
+    {
+      "id": "3oee9fn3",
+      "ts": "2026-06-19T16:36:48.906Z",
+      "type": "owner",
+      "topic": "Plan Risk and Control Function",
+      "msg": "“Plan Risk and Control Function”: owner Marcos  → Marcos T"
+    },
+    {
+      "id": "nwilevck",
+      "ts": "2026-06-19T16:36:49.139Z",
+      "type": "owner",
+      "topic": "Plan Risk and Control Function",
+      "msg": "“Plan Risk and Control Function”: owner Marcos T → Marcos Ta"
+    },
+    {
+      "id": "6v4a57x8",
+      "ts": "2026-06-19T16:36:49.327Z",
+      "type": "owner",
+      "topic": "Plan Risk and Control Function",
+      "msg": "“Plan Risk and Control Function”: owner Marcos Ta → Marcos Tag"
+    },
+    {
+      "id": "jborg8h6",
+      "ts": "2026-06-19T16:36:49.391Z",
+      "type": "owner",
+      "topic": "Plan Risk and Control Function",
+      "msg": "“Plan Risk and Control Function”: owner Marcos Tag → Marcos Tage"
+    },
+    {
+      "id": "tf3wauf3",
+      "ts": "2026-06-19T16:40:44.348Z",
+      "type": "owner",
+      "topic": "Develop an AI-assisted exit calculator tool",
+      "msg": "“Develop an AI-assisted exit calculator tool”: owner unassigned → L"
+    },
+    {
+      "id": "9wqv9lxb",
+      "ts": "2026-06-19T16:40:44.538Z",
+      "type": "owner",
+      "topic": "Develop an AI-assisted exit calculator tool",
+      "msg": "“Develop an AI-assisted exit calculator tool”: owner L → Lo"
+    },
+    {
+      "id": "08g7xyr1",
+      "ts": "2026-06-19T16:40:46.550Z",
+      "type": "owner",
+      "topic": "Develop an AI-assisted exit calculator tool",
+      "msg": "“Develop an AI-assisted exit calculator tool”: owner Lo → Lor"
+    },
+    {
+      "id": "a1k6e0kv",
+      "ts": "2026-06-19T16:40:46.596Z",
+      "type": "owner",
+      "topic": "Develop an AI-assisted exit calculator tool",
+      "msg": "“Develop an AI-assisted exit calculator tool”: owner Lor → Lore"
+    },
+    {
+      "id": "u1z22bd9",
+      "ts": "2026-06-19T16:40:46.906Z",
+      "type": "owner",
+      "topic": "Develop an AI-assisted exit calculator tool",
+      "msg": "“Develop an AI-assisted exit calculator tool”: owner Lore → Loren"
+    },
+    {
+      "id": "ekhyucxz",
+      "ts": "2026-06-19T16:40:47.066Z",
+      "type": "owner",
+      "topic": "Develop an AI-assisted exit calculator tool",
+      "msg": "“Develop an AI-assisted exit calculator tool”: owner Loren → Lorenz"
+    },
+    {
+      "id": "ztmgd4mo",
+      "ts": "2026-06-19T16:40:47.198Z",
+      "type": "owner",
+      "topic": "Develop an AI-assisted exit calculator tool",
+      "msg": "“Develop an AI-assisted exit calculator tool”: owner Lorenz → Lorenzo"
+    },
+    {
+      "id": "ux1ei8je",
+      "ts": "2026-06-19T16:41:09.166Z",
+      "type": "owner",
+      "topic": "Develop an AI-assisted exit calculator tool",
+      "msg": "“Develop an AI-assisted exit calculator tool”: owner Lorenzo → Lorenzo "
+    },
+    {
+      "id": "yq0w0ybp",
+      "ts": "2026-06-19T16:41:09.324Z",
+      "type": "owner",
+      "topic": "Develop an AI-assisted exit calculator tool",
+      "msg": "“Develop an AI-assisted exit calculator tool”: owner Lorenzo  → Lorenzo e"
+    },
+    {
+      "id": "kkpamgk1",
+      "ts": "2026-06-19T16:41:09.500Z",
+      "type": "owner",
+      "topic": "Develop an AI-assisted exit calculator tool",
+      "msg": "“Develop an AI-assisted exit calculator tool”: owner Lorenzo e → Lorenzo e "
+    },
+    {
+      "id": "wmugdc6i",
+      "ts": "2026-06-19T16:41:09.830Z",
+      "type": "owner",
+      "topic": "Develop an AI-assisted exit calculator tool",
+      "msg": "“Develop an AI-assisted exit calculator tool”: owner Lorenzo e  → Lorenzo e M"
+    },
+    {
+      "id": "gc94e5bp",
+      "ts": "2026-06-19T16:41:11.008Z",
+      "type": "owner",
+      "topic": "Develop an AI-assisted exit calculator tool",
+      "msg": "“Develop an AI-assisted exit calculator tool”: owner Lorenzo e M → Lorenzo e Ma"
+    },
+    {
+      "id": "au5kckku",
+      "ts": "2026-06-19T16:41:11.287Z",
+      "type": "owner",
+      "topic": "Develop an AI-assisted exit calculator tool",
+      "msg": "“Develop an AI-assisted exit calculator tool”: owner Lorenzo e Ma → Lorenzo e Mar"
+    },
+    {
+      "id": "r8r0erni",
+      "ts": "2026-06-19T16:41:11.334Z",
+      "type": "owner",
+      "topic": "Develop an AI-assisted exit calculator tool",
+      "msg": "“Develop an AI-assisted exit calculator tool”: owner Lorenzo e Mar → Lorenzo e Marc"
+    },
+    {
+      "id": "ihlhpk90",
+      "ts": "2026-06-19T16:41:11.450Z",
+      "type": "owner",
+      "topic": "Develop an AI-assisted exit calculator tool",
+      "msg": "“Develop an AI-assisted exit calculator tool”: owner Lorenzo e Marc → Lorenzo e Marco"
+    },
+    {
+      "id": "s4akoqw0",
+      "ts": "2026-06-19T16:41:11.517Z",
+      "type": "owner",
+      "topic": "Develop an AI-assisted exit calculator tool",
+      "msg": "“Develop an AI-assisted exit calculator tool”: owner Lorenzo e Marco → Lorenzo e Marcos"
+    },
+    {
+      "id": "7u6z9xx5",
+      "ts": "2026-06-19T16:41:29.902Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner unassigned → J"
+    },
+    {
+      "id": "vu4wcr19",
+      "ts": "2026-06-19T16:41:30.313Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner J → Jo"
+    },
+    {
+      "id": "2l5kmvq3",
+      "ts": "2026-06-19T16:41:30.598Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner Jo → Joh"
+    },
+    {
+      "id": "qov1kvtw",
+      "ts": "2026-06-19T16:41:30.897Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner Joh → John"
+    },
+    {
+      "id": "d1wujr8y",
+      "ts": "2026-06-19T16:41:36.378Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner John → John "
+    },
+    {
+      "id": "b62znias",
+      "ts": "2026-06-19T16:41:36.644Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner John  → John L"
+    },
+    {
+      "id": "pl3rcp0j",
+      "ts": "2026-06-19T16:41:36.797Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner John L → John Lo"
+    },
+    {
+      "id": "2inn219w",
+      "ts": "2026-06-19T16:41:36.851Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner John Lo → John Lor"
+    },
+    {
+      "id": "05tekzgk",
+      "ts": "2026-06-19T16:41:36.879Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner John Lor → John Lore"
+    },
+    {
+      "id": "0l0fi6mr",
+      "ts": "2026-06-19T16:41:37.039Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner John Lore → John Loren"
+    },
+    {
+      "id": "4rbklnwi",
+      "ts": "2026-06-19T16:41:37.158Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner John Loren → John Lorenz"
+    },
+    {
+      "id": "d8jujei9",
+      "ts": "2026-06-19T16:41:37.280Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner John Lorenz → John Lorenzo"
+    },
+    {
+      "id": "ejcl86b0",
+      "ts": "2026-06-19T16:41:37.463Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner John Lorenzo → John Lorenzo "
+    },
+    {
+      "id": "ibrw49ko",
+      "ts": "2026-06-19T16:41:38.314Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner John Lorenzo  → John Lorenzo &"
+    },
+    {
+      "id": "utk24ddc",
+      "ts": "2026-06-19T16:41:38.567Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner John Lorenzo & → John Lorenzo & "
+    },
+    {
+      "id": "kdyken66",
+      "ts": "2026-06-19T16:41:39.776Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner John Lorenzo &  → A"
+    },
+    {
+      "id": "77g4c80q",
+      "ts": "2026-06-19T16:41:40.245Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner A → Al"
+    },
+    {
+      "id": "n9s5et8m",
+      "ts": "2026-06-19T16:41:40.264Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner Al → Alr"
+    },
+    {
+      "id": "buv8xwc6",
+      "ts": "2026-06-19T16:41:40.278Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner Alr → Alre"
+    },
+    {
+      "id": "kfq85q6u",
+      "ts": "2026-06-19T16:41:40.795Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner Alre → Alr"
+    },
+    {
+      "id": "8yitmx5x",
+      "ts": "2026-06-19T16:41:40.956Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner Alr → Al"
+    },
+    {
+      "id": "iw6bk9wv",
+      "ts": "2026-06-19T16:41:41.105Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner Al → Ale"
+    },
+    {
+      "id": "0eg4cyhl",
+      "ts": "2026-06-19T16:41:42.634Z",
+      "type": "owner",
+      "topic": "Consolidate all controls & systems into a unified AI database (US & Brazil)",
+      "msg": "“Consolidate all controls & systems into a unified AI database (US & Brazil)”: owner Ale → Alexandre e Lorenzo"
+    },
+    {
+      "id": "zkxeuznb",
+      "ts": "2026-06-19T16:41:57.418Z",
+      "type": "owner",
+      "topic": "Integrate daily legal claims & portfolio movements into the AI ERP",
+      "msg": "“Integrate daily legal claims & portfolio movements into the AI ERP”: owner unassigned → Alexandre e Lorenzo"
+    },
+    {
+      "id": "9otif465",
+      "ts": "2026-06-19T16:42:32.488Z",
+      "type": "owner",
+      "topic": "Integrate daily legal claims & portfolio movements into the AI ERP",
+      "msg": "“Integrate daily legal claims & portfolio movements into the AI ERP”: owner Alexandre e Lorenzo → Lorenzo"
+    },
+    {
+      "id": "0uuzuxfm",
+      "ts": "2026-06-19T16:42:33.957Z",
+      "type": "owner",
+      "topic": "Integrate daily legal claims & portfolio movements into the AI ERP",
+      "msg": "“Integrate daily legal claims & portfolio movements into the AI ERP”: owner Lorenzo → Lorenzo "
+    },
+    {
+      "id": "g8axypmc",
+      "ts": "2026-06-19T16:42:34.233Z",
+      "type": "owner",
+      "topic": "Integrate daily legal claims & portfolio movements into the AI ERP",
+      "msg": "“Integrate daily legal claims & portfolio movements into the AI ERP”: owner Lorenzo  → Lorenzo e"
+    },
+    {
+      "id": "dy6eu8rx",
+      "ts": "2026-06-19T16:42:34.253Z",
+      "type": "owner",
+      "topic": "Integrate daily legal claims & portfolio movements into the AI ERP",
+      "msg": "“Integrate daily legal claims & portfolio movements into the AI ERP”: owner Lorenzo e → Lorenzo e "
+    },
+    {
+      "id": "wgaqpaym",
+      "ts": "2026-06-19T16:42:34.426Z",
+      "type": "owner",
+      "topic": "Integrate daily legal claims & portfolio movements into the AI ERP",
+      "msg": "“Integrate daily legal claims & portfolio movements into the AI ERP”: owner Lorenzo e  → Lorenzo e G"
+    },
+    {
+      "id": "i4c5ce7q",
+      "ts": "2026-06-19T16:42:34.541Z",
+      "type": "owner",
+      "topic": "Integrate daily legal claims & portfolio movements into the AI ERP",
+      "msg": "“Integrate daily legal claims & portfolio movements into the AI ERP”: owner Lorenzo e G → Lorenzo e Gu"
+    },
+    {
+      "id": "sprmujp5",
+      "ts": "2026-06-19T16:42:34.581Z",
+      "type": "owner",
+      "topic": "Integrate daily legal claims & portfolio movements into the AI ERP",
+      "msg": "“Integrate daily legal claims & portfolio movements into the AI ERP”: owner Lorenzo e Gu → Lorenzo e Gui"
+    },
+    {
+      "id": "ab1a5kvg",
+      "ts": "2026-06-19T16:42:34.737Z",
+      "type": "owner",
+      "topic": "Integrate daily legal claims & portfolio movements into the AI ERP",
+      "msg": "“Integrate daily legal claims & portfolio movements into the AI ERP”: owner Lorenzo e Gui → Lorenzo e Guil"
+    },
+    {
+      "id": "77qpiyzj",
+      "ts": "2026-06-19T16:42:34.894Z",
+      "type": "owner",
+      "topic": "Integrate daily legal claims & portfolio movements into the AI ERP",
+      "msg": "“Integrate daily legal claims & portfolio movements into the AI ERP”: owner Lorenzo e Guil → Lorenzo e Guilh"
+    },
+    {
+      "id": "tlagsoyk",
+      "ts": "2026-06-19T16:42:34.965Z",
+      "type": "owner",
+      "topic": "Integrate daily legal claims & portfolio movements into the AI ERP",
+      "msg": "“Integrate daily legal claims & portfolio movements into the AI ERP”: owner Lorenzo e Guilh → Lorenzo e Guilhe"
+    },
+    {
+      "id": "1zazptjt",
+      "ts": "2026-06-19T16:42:35.067Z",
+      "type": "owner",
+      "topic": "Integrate daily legal claims & portfolio movements into the AI ERP",
+      "msg": "“Integrate daily legal claims & portfolio movements into the AI ERP”: owner Lorenzo e Guilhe → Lorenzo e Guilher"
+    },
+    {
+      "id": "8yj5fk9k",
+      "ts": "2026-06-19T16:42:35.161Z",
+      "type": "owner",
+      "topic": "Integrate daily legal claims & portfolio movements into the AI ERP",
+      "msg": "“Integrate daily legal claims & portfolio movements into the AI ERP”: owner Lorenzo e Guilher → Lorenzo e Guilherm"
+    },
+    {
+      "id": "x5lgguk6",
+      "ts": "2026-06-19T16:42:35.246Z",
+      "type": "owner",
+      "topic": "Integrate daily legal claims & portfolio movements into the AI ERP",
+      "msg": "“Integrate daily legal claims & portfolio movements into the AI ERP”: owner Lorenzo e Guilherm → Lorenzo e Guilherme"
+    },
+    {
+      "id": "d1bgnhvf",
+      "ts": "2026-06-19T16:46:53.318Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner unassigned → L"
+    },
+    {
+      "id": "61ot1ps9",
+      "ts": "2026-06-19T16:46:53.859Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner L → Lu"
+    },
+    {
+      "id": "16xxneek",
+      "ts": "2026-06-19T16:46:53.928Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Lu → Lui"
+    },
+    {
+      "id": "zfqpkafo",
+      "ts": "2026-06-19T16:46:54.039Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Lui → Luis"
+    },
+    {
+      "id": "ur57fcvq",
+      "ts": "2026-06-19T16:46:54.166Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luis → Luisa"
+    },
+    {
+      "id": "evxca7op",
+      "ts": "2026-06-19T16:46:54.704Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luisa → Luis"
+    },
+    {
+      "id": "muagjrsp",
+      "ts": "2026-06-19T16:46:54.890Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luis → Lui"
+    },
+    {
+      "id": "h6ke4kvo",
+      "ts": "2026-06-19T16:46:55.076Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Lui → Luiz"
+    },
+    {
+      "id": "p73nd343",
+      "ts": "2026-06-19T16:46:55.142Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiz → Luiza"
+    },
+    {
+      "id": "or3mcyyb",
+      "ts": "2026-06-19T16:46:55.533Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiza → Luiza "
+    },
+    {
+      "id": "m3s58jtp",
+      "ts": "2026-06-19T16:46:55.671Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiza  → Luiza d"
+    },
+    {
+      "id": "05nv8u2m",
+      "ts": "2026-06-19T16:46:55.744Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiza d → Luiza de"
+    },
+    {
+      "id": "ybskvrst",
+      "ts": "2026-06-19T16:46:55.909Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiza de → Luiza de "
+    },
+    {
+      "id": "e9ppfdod",
+      "ts": "2026-06-19T16:46:56.176Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiza de  → Luiza de M"
+    },
+    {
+      "id": "wy7cefua",
+      "ts": "2026-06-19T16:46:56.768Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiza de M → Luiza de Mu"
+    },
+    {
+      "id": "erabdhuc",
+      "ts": "2026-06-19T16:46:58.128Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiza de Mu → Luiza de Mun"
+    },
+    {
+      "id": "frs8xle9",
+      "ts": "2026-06-19T16:46:58.297Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiza de Mun → Luiza de Munn"
+    },
+    {
+      "id": "l32uoi9i",
+      "ts": "2026-06-19T16:46:58.791Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiza de Munn → Luiza de Munno"
+    },
+    {
+      "id": "us1kew9y",
+      "ts": "2026-06-19T16:47:25.153Z",
+      "type": "note",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: added a note"
+    },
+    {
+      "id": "hp5bwcon",
+      "ts": "2026-06-19T16:48:27.841Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiza de Munno → Luiza de Munno "
+    },
+    {
+      "id": "157ik5q4",
+      "ts": "2026-06-19T16:48:28.001Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiza de Munno  → Luiza de Munno e"
+    },
+    {
+      "id": "th2ijvuy",
+      "ts": "2026-06-19T16:48:28.175Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiza de Munno e → Luiza de Munno e "
+    },
+    {
+      "id": "tq5jvzy4",
+      "ts": "2026-06-19T16:48:28.418Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiza de Munno e  → Luiza de Munno e M"
+    },
+    {
+      "id": "0k3ul7xj",
+      "ts": "2026-06-19T16:48:28.580Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiza de Munno e M → Luiza de Munno e Ma"
+    },
+    {
+      "id": "tmqaqrq4",
+      "ts": "2026-06-19T16:48:28.732Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiza de Munno e Ma → Luiza de Munno e Mar"
+    },
+    {
+      "id": "uo7qh6f6",
+      "ts": "2026-06-19T16:48:28.818Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiza de Munno e Mar → Luiza de Munno e Mari"
+    },
+    {
+      "id": "st4854ao",
+      "ts": "2026-06-19T16:48:28.842Z",
+      "type": "owner",
+      "topic": "Improve communication & visibility on settlements & exits",
+      "msg": "“Improve communication & visibility on settlements & exits”: owner Luiza de Munno e Mari → Luiza de Munno e Mario"
+    },
+    {
+      "id": "6mcs2ip5",
+      "ts": "2026-06-19T16:59:19.358Z",
+      "type": "owner",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "“Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)”: owner unassigned → D"
+    },
+    {
+      "id": "s9wlefeb",
+      "ts": "2026-06-19T16:59:19.520Z",
+      "type": "owner",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "“Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)”: owner D → Da"
+    },
+    {
+      "id": "kj7dre2a",
+      "ts": "2026-06-19T16:59:19.548Z",
+      "type": "owner",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "“Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)”: owner Da → Dan"
+    },
+    {
+      "id": "kbdpckcv",
+      "ts": "2026-06-19T16:59:19.571Z",
+      "type": "owner",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "“Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)”: owner Dan → Dani"
+    },
+    {
+      "id": "bpncvd6w",
+      "ts": "2026-06-19T16:59:19.704Z",
+      "type": "owner",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "“Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)”: owner Dani → Danie"
+    },
+    {
+      "id": "3zd0eau5",
+      "ts": "2026-06-19T16:59:19.793Z",
+      "type": "owner",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "“Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)”: owner Danie → Daniel"
+    },
+    {
+      "id": "knyybq7r",
+      "ts": "2026-06-19T16:59:19.939Z",
+      "type": "owner",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "“Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)”: owner Daniel → Daniel "
+    },
+    {
+      "id": "r836jd2u",
+      "ts": "2026-06-19T16:59:19.998Z",
+      "type": "owner",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "“Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)”: owner Daniel  → Daniel e"
+    },
+    {
+      "id": "0ngyuamd",
+      "ts": "2026-06-19T16:59:20.174Z",
+      "type": "owner",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "“Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)”: owner Daniel e → Daniel e "
+    },
+    {
+      "id": "cwf2mg14",
+      "ts": "2026-06-19T16:59:20.395Z",
+      "type": "owner",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "“Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)”: owner Daniel e  → Daniel e A"
+    },
+    {
+      "id": "l7hld6g4",
+      "ts": "2026-06-19T16:59:20.507Z",
+      "type": "owner",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "“Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)”: owner Daniel e A → Daniel e Ar"
+    },
+    {
+      "id": "jw9bey6o",
+      "ts": "2026-06-19T16:59:20.599Z",
+      "type": "owner",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "“Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)”: owner Daniel e Ar → Daniel e Ara"
+    },
+    {
+      "id": "wvyi0jqa",
+      "ts": "2026-06-19T16:59:20.674Z",
+      "type": "owner",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "“Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)”: owner Daniel e Ara → Daniel e Aran"
+    },
+    {
+      "id": "fp3smy6i",
+      "ts": "2026-06-19T16:59:20.811Z",
+      "type": "owner",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "“Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)”: owner Daniel e Aran → Daniel e Aranh"
+    },
+    {
+      "id": "vold45zn",
+      "ts": "2026-06-19T16:59:20.857Z",
+      "type": "owner",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "“Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)”: owner Daniel e Aranh → Daniel e Aranha"
+    },
+    {
+      "id": "395skfu8",
+      "ts": "2026-06-19T17:08:38.074Z",
+      "type": "note",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "“Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)”: added a note"
+    },
+    {
+      "id": "4n7mbrzv",
+      "ts": "2026-06-19T17:13:44.441Z",
+      "type": "owner",
+      "topic": "Standardize the Consignado proposal for partners",
+      "msg": "“Standardize the Consignado proposal for partners”: owner unassigned → D"
+    },
+    {
+      "id": "apykm7t4",
+      "ts": "2026-06-19T17:13:44.571Z",
+      "type": "owner",
+      "topic": "Standardize the Consignado proposal for partners",
+      "msg": "“Standardize the Consignado proposal for partners”: owner D → Da"
+    },
+    {
+      "id": "ccv4j2h8",
+      "ts": "2026-06-19T17:13:44.606Z",
+      "type": "owner",
+      "topic": "Standardize the Consignado proposal for partners",
+      "msg": "“Standardize the Consignado proposal for partners”: owner Da → Dan"
+    },
+    {
+      "id": "aw30d9mf",
+      "ts": "2026-06-19T17:13:44.644Z",
+      "type": "owner",
+      "topic": "Standardize the Consignado proposal for partners",
+      "msg": "“Standardize the Consignado proposal for partners”: owner Dan → Dani"
+    },
+    {
+      "id": "cg9697kj",
+      "ts": "2026-06-19T17:13:44.744Z",
+      "type": "owner",
+      "topic": "Standardize the Consignado proposal for partners",
+      "msg": "“Standardize the Consignado proposal for partners”: owner Dani → Danie"
+    },
+    {
+      "id": "1murmo9l",
+      "ts": "2026-06-19T17:13:44.835Z",
+      "type": "owner",
+      "topic": "Standardize the Consignado proposal for partners",
+      "msg": "“Standardize the Consignado proposal for partners”: owner Danie → Daniel"
+    },
+    {
+      "id": "fnv428e9",
+      "ts": "2026-06-19T17:13:44.994Z",
+      "type": "owner",
+      "topic": "Standardize the Consignado proposal for partners",
+      "msg": "“Standardize the Consignado proposal for partners”: owner Daniel → Daniel "
+    },
+    {
+      "id": "h2iz88zl",
+      "ts": "2026-06-19T17:13:45.109Z",
+      "type": "owner",
+      "topic": "Standardize the Consignado proposal for partners",
+      "msg": "“Standardize the Consignado proposal for partners”: owner Daniel  → Daniel V"
+    },
+    {
+      "id": "zmg7s0mm",
+      "ts": "2026-06-19T17:13:45.226Z",
+      "type": "owner",
+      "topic": "Standardize the Consignado proposal for partners",
+      "msg": "“Standardize the Consignado proposal for partners”: owner Daniel V → Daniel Vi"
+    },
+    {
+      "id": "z3mxsbjz",
+      "ts": "2026-06-19T17:13:45.315Z",
+      "type": "owner",
+      "topic": "Standardize the Consignado proposal for partners",
+      "msg": "“Standardize the Consignado proposal for partners”: owner Daniel Vi → Daniel Vie"
+    },
+    {
+      "id": "10qkiafu",
+      "ts": "2026-06-19T17:13:45.401Z",
+      "type": "owner",
+      "topic": "Standardize the Consignado proposal for partners",
+      "msg": "“Standardize the Consignado proposal for partners”: owner Daniel Vie → Daniel Viei"
+    },
+    {
+      "id": "7qh6n2gn",
+      "ts": "2026-06-19T17:13:45.477Z",
+      "type": "owner",
+      "topic": "Standardize the Consignado proposal for partners",
+      "msg": "“Standardize the Consignado proposal for partners”: owner Daniel Viei → Daniel Vieir"
+    },
+    {
+      "id": "f508p5ks",
+      "ts": "2026-06-19T17:13:45.546Z",
+      "type": "owner",
+      "topic": "Standardize the Consignado proposal for partners",
+      "msg": "“Standardize the Consignado proposal for partners”: owner Daniel Vieir → Daniel Vieira"
+    },
+    {
+      "id": "uwbjbng3",
+      "ts": "2026-06-19T17:14:11.693Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner unassigned → M"
+    },
+    {
+      "id": "337h63ky",
+      "ts": "2026-06-19T17:14:11.875Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner M → Ma"
+    },
+    {
+      "id": "4xnqvgoh",
+      "ts": "2026-06-19T17:14:12.004Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Ma → Mar"
+    },
+    {
+      "id": "998lyzl6",
+      "ts": "2026-06-19T17:14:12.212Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Mar → Marc"
+    },
+    {
+      "id": "hateie7q",
+      "ts": "2026-06-19T17:14:12.333Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marc → Marco"
+    },
+    {
+      "id": "ocbfn3g3",
+      "ts": "2026-06-19T17:14:12.400Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marco → Marcos"
+    },
+    {
+      "id": "hbwf0mff",
+      "ts": "2026-06-19T17:14:16.199Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos → Marcos "
+    },
+    {
+      "id": "ttu0noxw",
+      "ts": "2026-06-19T17:14:16.602Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos  → Marcos T"
+    },
+    {
+      "id": "vv4do8c9",
+      "ts": "2026-06-19T17:14:16.961Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos T → Marcos Ta"
+    },
+    {
+      "id": "3837onvu",
+      "ts": "2026-06-19T17:14:18.526Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos Ta → Marcos Tage"
+    },
+    {
+      "id": "7zq0zaf8",
+      "ts": "2026-06-19T17:14:43.289Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos Tage → Marcos Tage "
+    },
+    {
+      "id": "3et4bhho",
+      "ts": "2026-06-19T17:14:43.768Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos Tage  → Marcos Tage e"
+    },
+    {
+      "id": "cva0heru",
+      "ts": "2026-06-19T17:14:43.942Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos Tage e → Marcos Tage e "
+    },
+    {
+      "id": "mxyn7h5z",
+      "ts": "2026-06-19T17:14:44.161Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos Tage e  → Marcos Tage e L"
+    },
+    {
+      "id": "muejep4h",
+      "ts": "2026-06-19T17:14:44.387Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos Tage e L → Marcos Tage e Lu"
+    },
+    {
+      "id": "koqt5c40",
+      "ts": "2026-06-19T17:14:44.420Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos Tage e Lu → Marcos Tage e Lui"
+    },
+    {
+      "id": "zsoiwi26",
+      "ts": "2026-06-19T17:14:44.455Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos Tage e Lui → Marcos Tage e Luiz"
+    },
+    {
+      "id": "f7vb3uvk",
+      "ts": "2026-06-19T17:14:44.533Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos Tage e Luiz → Marcos Tage e Luiza"
+    },
+    {
+      "id": "vmesl6rz",
+      "ts": "2026-06-19T17:14:44.801Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos Tage e Luiza → Marcos Tage e Luiza "
+    },
+    {
+      "id": "ue1ph6g1",
+      "ts": "2026-06-19T17:14:45.508Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos Tage e Luiza  → Marcos Tage e Luiza M"
+    },
+    {
+      "id": "anada7rh",
+      "ts": "2026-06-19T17:14:46.128Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos Tage e Luiza M → Marcos Tage e Luiza Mu"
+    },
+    {
+      "id": "7s49eral",
+      "ts": "2026-06-19T17:14:46.291Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos Tage e Luiza Mu → Marcos Tage e Luiza Mun"
+    },
+    {
+      "id": "brg93ol3",
+      "ts": "2026-06-19T17:14:46.461Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos Tage e Luiza Mun → Marcos Tage e Luiza Munn"
+    },
+    {
+      "id": "3pkrgd73",
+      "ts": "2026-06-19T17:14:46.656Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos Tage e Luiza Munn → Marcos Tage e Luiza Munno"
+    },
+    {
+      "id": "vblyh7ro",
+      "ts": "2026-06-19T17:15:22.118Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Marcos Tage e Luiza Munno → L"
+    },
+    {
+      "id": "cca8ghug",
+      "ts": "2026-06-19T17:15:22.311Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner L → Lu"
+    },
+    {
+      "id": "5f6hj2fh",
+      "ts": "2026-06-19T17:15:22.355Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Lu → Lui"
+    },
+    {
+      "id": "rka5uopf",
+      "ts": "2026-06-19T17:15:22.386Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Lui → Luiz"
+    },
+    {
+      "id": "82vpkmte",
+      "ts": "2026-06-19T17:15:22.474Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Luiz → Luiza"
+    },
+    {
+      "id": "1fbqwy0i",
+      "ts": "2026-06-19T17:15:22.581Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Luiza → Luiza "
+    },
+    {
+      "id": "53yw883t",
+      "ts": "2026-06-19T17:15:22.789Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Luiza  → Luiza M"
+    },
+    {
+      "id": "9bn54yq6",
+      "ts": "2026-06-19T17:15:22.983Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Luiza M → Luiza Mu"
+    },
+    {
+      "id": "q8t3by2i",
+      "ts": "2026-06-19T17:15:23.454Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Luiza Mu → Luiza M"
+    },
+    {
+      "id": "gs7r0lig",
+      "ts": "2026-06-19T17:15:23.608Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Luiza M → Luiza "
+    },
+    {
+      "id": "jy7wazca",
+      "ts": "2026-06-19T17:15:23.700Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Luiza  → Luiza d"
+    },
+    {
+      "id": "up57vhl5",
+      "ts": "2026-06-19T17:15:23.738Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Luiza d → Luiza de"
+    },
+    {
+      "id": "9ebjq09q",
+      "ts": "2026-06-19T17:15:24.094Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Luiza de → Luiza de "
+    },
+    {
+      "id": "110brrkj",
+      "ts": "2026-06-19T17:15:24.441Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Luiza de  → Luiza de M"
+    },
+    {
+      "id": "ox4cxobz",
+      "ts": "2026-06-19T17:15:25.882Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Luiza de M → Luiza de Mu"
+    },
+    {
+      "id": "cagobks1",
+      "ts": "2026-06-19T17:15:26.303Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Luiza de Mu → Luiza de Mun"
+    },
+    {
+      "id": "fdv9vx6b",
+      "ts": "2026-06-19T17:15:26.317Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Luiza de Mun → Luiza de Munn"
+    },
+    {
+      "id": "1nngzjpe",
+      "ts": "2026-06-19T17:15:26.331Z",
+      "type": "owner",
+      "topic": "Formalize the BLC proposal for partners",
+      "msg": "“Formalize the BLC proposal for partners”: owner Luiza de Munn → Luiza de Munno"
+    },
+    {
+      "id": "6xloo0zd",
+      "ts": "2026-06-19T17:15:40.483Z",
+      "type": "owner",
+      "topic": "Standardize the onboarding process for new partners",
+      "msg": "“Standardize the onboarding process for new partners”: owner unassigned → D"
+    },
+    {
+      "id": "tmse3rq9",
+      "ts": "2026-06-19T17:15:40.641Z",
+      "type": "owner",
+      "topic": "Standardize the onboarding process for new partners",
+      "msg": "“Standardize the onboarding process for new partners”: owner D → Da"
+    },
+    {
+      "id": "bpz89cvw",
+      "ts": "2026-06-19T17:15:40.709Z",
+      "type": "owner",
+      "topic": "Standardize the onboarding process for new partners",
+      "msg": "“Standardize the onboarding process for new partners”: owner Da → Dan"
+    },
+    {
+      "id": "6mxypfub",
+      "ts": "2026-06-19T17:15:40.742Z",
+      "type": "owner",
+      "topic": "Standardize the onboarding process for new partners",
+      "msg": "“Standardize the onboarding process for new partners”: owner Dan → Dani"
+    },
+    {
+      "id": "hsut4mfz",
+      "ts": "2026-06-19T17:15:40.848Z",
+      "type": "owner",
+      "topic": "Standardize the onboarding process for new partners",
+      "msg": "“Standardize the onboarding process for new partners”: owner Dani → Danie"
+    },
+    {
+      "id": "jix58cro",
+      "ts": "2026-06-19T17:15:40.947Z",
+      "type": "owner",
+      "topic": "Standardize the onboarding process for new partners",
+      "msg": "“Standardize the onboarding process for new partners”: owner Danie → Daniel"
+    },
+    {
+      "id": "o2swpe5h",
+      "ts": "2026-06-19T17:15:41.099Z",
+      "type": "owner",
+      "topic": "Standardize the onboarding process for new partners",
+      "msg": "“Standardize the onboarding process for new partners”: owner Daniel → Daniel "
+    },
+    {
+      "id": "iy89ijjt",
+      "ts": "2026-06-19T17:15:41.215Z",
+      "type": "owner",
+      "topic": "Standardize the onboarding process for new partners",
+      "msg": "“Standardize the onboarding process for new partners”: owner Daniel  → Daniel V"
+    },
+    {
+      "id": "41qpkzl7",
+      "ts": "2026-06-19T17:15:41.336Z",
+      "type": "owner",
+      "topic": "Standardize the onboarding process for new partners",
+      "msg": "“Standardize the onboarding process for new partners”: owner Daniel V → Daniel Vi"
+    },
+    {
+      "id": "osc7xvfi",
+      "ts": "2026-06-19T17:15:41.419Z",
+      "type": "owner",
+      "topic": "Standardize the onboarding process for new partners",
+      "msg": "“Standardize the onboarding process for new partners”: owner Daniel Vi → Daniel Vie"
+    },
+    {
+      "id": "phdgrwdm",
+      "ts": "2026-06-19T17:15:41.519Z",
+      "type": "owner",
+      "topic": "Standardize the onboarding process for new partners",
+      "msg": "“Standardize the onboarding process for new partners”: owner Daniel Vie → Daniel Viei"
+    },
+    {
+      "id": "el1jk5hp",
+      "ts": "2026-06-19T17:15:41.577Z",
+      "type": "owner",
+      "topic": "Standardize the onboarding process for new partners",
+      "msg": "“Standardize the onboarding process for new partners”: owner Daniel Viei → Daniel Vieir"
+    },
+    {
+      "id": "wtfxw52z",
+      "ts": "2026-06-19T17:15:41.644Z",
+      "type": "owner",
+      "topic": "Standardize the onboarding process for new partners",
+      "msg": "“Standardize the onboarding process for new partners”: owner Daniel Vieir → Daniel Vieira"
+    },
+    {
+      "id": "fq0757pv",
+      "ts": "2026-06-19T17:17:05.533Z",
+      "type": "owner",
+      "topic": "Designate a single point of contact for each partner",
+      "msg": "“Designate a single point of contact for each partner”: owner unassigned → M"
+    },
+    {
+      "id": "7g88be31",
+      "ts": "2026-06-19T17:17:05.689Z",
+      "type": "owner",
+      "topic": "Designate a single point of contact for each partner",
+      "msg": "“Designate a single point of contact for each partner”: owner M → Ma"
+    },
+    {
+      "id": "7n3n77wr",
+      "ts": "2026-06-19T17:17:05.746Z",
+      "type": "owner",
+      "topic": "Designate a single point of contact for each partner",
+      "msg": "“Designate a single point of contact for each partner”: owner Ma → Mar"
+    },
+    {
+      "id": "d6zdk7x5",
+      "ts": "2026-06-19T17:17:05.902Z",
+      "type": "owner",
+      "topic": "Designate a single point of contact for each partner",
+      "msg": "“Designate a single point of contact for each partner”: owner Mar → Marc"
+    },
+    {
+      "id": "9rs2dw7e",
+      "ts": "2026-06-19T17:17:05.950Z",
+      "type": "owner",
+      "topic": "Designate a single point of contact for each partner",
+      "msg": "“Designate a single point of contact for each partner”: owner Marc → Marco"
+    },
+    {
+      "id": "7s82ndrp",
+      "ts": "2026-06-19T17:17:06.073Z",
+      "type": "owner",
+      "topic": "Designate a single point of contact for each partner",
+      "msg": "“Designate a single point of contact for each partner”: owner Marco → Marcos"
+    },
+    {
+      "id": "8hh9srq1",
+      "ts": "2026-06-19T17:17:06.175Z",
+      "type": "owner",
+      "topic": "Designate a single point of contact for each partner",
+      "msg": "“Designate a single point of contact for each partner”: owner Marcos → Marcos "
+    },
+    {
+      "id": "k2ncf4of",
+      "ts": "2026-06-19T17:17:06.350Z",
+      "type": "owner",
+      "topic": "Designate a single point of contact for each partner",
+      "msg": "“Designate a single point of contact for each partner”: owner Marcos  → Marcos T"
+    },
+    {
+      "id": "lrls3355",
+      "ts": "2026-06-19T17:17:06.367Z",
+      "type": "owner",
+      "topic": "Designate a single point of contact for each partner",
+      "msg": "“Designate a single point of contact for each partner”: owner Marcos T → Marcos TR"
+    },
+    {
+      "id": "fy241bln",
+      "ts": "2026-06-19T17:17:07.815Z",
+      "type": "owner",
+      "topic": "Designate a single point of contact for each partner",
+      "msg": "“Designate a single point of contact for each partner”: owner Marcos TR → Marcos T"
+    },
+    {
+      "id": "nsyxwbm1",
+      "ts": "2026-06-19T17:17:08.107Z",
+      "type": "owner",
+      "topic": "Designate a single point of contact for each partner",
+      "msg": "“Designate a single point of contact for each partner”: owner Marcos T → Marcos Ta"
+    },
+    {
+      "id": "0gpfs1wt",
+      "ts": "2026-06-19T17:17:08.246Z",
+      "type": "owner",
+      "topic": "Designate a single point of contact for each partner",
+      "msg": "“Designate a single point of contact for each partner”: owner Marcos Ta → Marcos Tag"
+    },
+    {
+      "id": "wii1fyg0",
+      "ts": "2026-06-19T17:17:08.260Z",
+      "type": "owner",
+      "topic": "Designate a single point of contact for each partner",
+      "msg": "“Designate a single point of contact for each partner”: owner Marcos Tag → Marcos Tage"
+    },
+    {
+      "id": "1tm0rtoe",
+      "ts": "2026-06-19T17:20:19.088Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner unassigned → D"
+    },
+    {
+      "id": "g6h4scz6",
+      "ts": "2026-06-19T17:20:20.408Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner D → Da"
+    },
+    {
+      "id": "rmpdbbh7",
+      "ts": "2026-06-19T17:20:20.687Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Da → Dan"
+    },
+    {
+      "id": "nk5b6jhr",
+      "ts": "2026-06-19T17:20:20.964Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Dan → Dani"
+    },
+    {
+      "id": "ixlk59pu",
+      "ts": "2026-06-19T17:20:20.981Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Dani → Danie"
+    },
+    {
+      "id": "grboyrl2",
+      "ts": "2026-06-19T17:20:21.002Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Danie → Daniel"
+    },
+    {
+      "id": "io4a50s8",
+      "ts": "2026-06-19T17:20:21.047Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel → Daniel "
+    },
+    {
+      "id": "i717l02l",
+      "ts": "2026-06-19T17:20:21.281Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel  → Daniel V"
+    },
+    {
+      "id": "k8bv3r1l",
+      "ts": "2026-06-19T17:20:21.472Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel V → Daniel Vi"
+    },
+    {
+      "id": "lo5wvn57",
+      "ts": "2026-06-19T17:20:21.558Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vi → Daniel Vie"
+    },
+    {
+      "id": "9p12byif",
+      "ts": "2026-06-19T17:20:21.690Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vie → Daniel Viei"
+    },
+    {
+      "id": "pu2bared",
+      "ts": "2026-06-19T17:20:21.745Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Viei → Daniel Vieir"
+    },
+    {
+      "id": "n3gnl73m",
+      "ts": "2026-06-19T17:20:21.805Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieir → Daniel Vieira"
+    },
+    {
+      "id": "jyfq2i72",
+      "ts": "2026-06-19T17:20:52.364Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira → Daniel Vieira "
+    },
+    {
+      "id": "397pz7zf",
+      "ts": "2026-06-19T17:20:52.516Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira  → Daniel Vieira e"
+    },
+    {
+      "id": "5gctjp0c",
+      "ts": "2026-06-19T17:20:52.649Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e → Daniel Vieira e "
+    },
+    {
+      "id": "ypcf6nd2",
+      "ts": "2026-06-19T17:20:52.902Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e  → Daniel Vieira e N"
+    },
+    {
+      "id": "l2ljb5u0",
+      "ts": "2026-06-19T17:20:53.170Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e N → Daniel Vieira e Na"
+    },
+    {
+      "id": "fif0479q",
+      "ts": "2026-06-19T17:20:53.481Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Na → Daniel Vieira e Nar"
+    },
+    {
+      "id": "99op9klp",
+      "ts": "2026-06-19T17:20:53.708Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Nar → Daniel Vieira e Narc"
+    },
+    {
+      "id": "6zipvsxt",
+      "ts": "2026-06-19T17:20:53.896Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Narc → Daniel Vieira e Narci"
+    },
+    {
+      "id": "wfwcvs79",
+      "ts": "2026-06-19T17:20:54.155Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Narci → Daniel Vieira e Narc"
+    },
+    {
+      "id": "x8leqqh0",
+      "ts": "2026-06-19T17:20:54.330Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Narc → Daniel Vieira e Nar"
+    },
+    {
+      "id": "pcq4p232",
+      "ts": "2026-06-19T17:20:54.481Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Nar → Daniel Vieira e Na"
+    },
+    {
+      "id": "rjn8igzv",
+      "ts": "2026-06-19T17:20:54.624Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Na → Daniel Vieira e N"
+    },
+    {
+      "id": "kzz4j6o6",
+      "ts": "2026-06-19T17:20:54.763Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e N → Daniel Vieira e "
+    },
+    {
+      "id": "v8ibd3ti",
+      "ts": "2026-06-19T17:20:55.013Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e  → Daniel Vieira e M"
+    },
+    {
+      "id": "jguqeq3e",
+      "ts": "2026-06-19T17:20:55.334Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e M → Daniel Vieira e Ma"
+    },
+    {
+      "id": "3mdkhi17",
+      "ts": "2026-06-19T17:20:55.471Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Ma → Daniel Vieira e Mar"
+    },
+    {
+      "id": "rgia9ito",
+      "ts": "2026-06-19T17:20:55.663Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Mar → Daniel Vieira e Marc"
+    },
+    {
+      "id": "n6nhqkpp",
+      "ts": "2026-06-19T17:20:55.778Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marc → Daniel Vieira e Marco"
+    },
+    {
+      "id": "uc20ua8j",
+      "ts": "2026-06-19T17:20:55.885Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marco → Daniel Vieira e Marcos"
+    },
+    {
+      "id": "6wo09tdu",
+      "ts": "2026-06-19T17:20:56.071Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos → Daniel Vieira e Marcos "
+    },
+    {
+      "id": "9nez6xin",
+      "ts": "2026-06-19T17:20:56.617Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos  → Daniel Vieira e Marcos R"
+    },
+    {
+      "id": "idq6z98p",
+      "ts": "2026-06-19T17:20:56.885Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos R → Daniel Vieira e Marcos Ra"
+    },
+    {
+      "id": "dpo3znfj",
+      "ts": "2026-06-19T17:20:57.085Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos Ra → Daniel Vieira e Marcos Rag"
+    },
+    {
+      "id": "a0izymtg",
+      "ts": "2026-06-19T17:20:57.164Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos Rag → Daniel Vieira e Marcos Rage"
+    },
+    {
+      "id": "len6tzls",
+      "ts": "2026-06-19T17:20:59.073Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos Rage → Daniel Vieira e Marcos Rag"
+    },
+    {
+      "id": "e4fx5wz7",
+      "ts": "2026-06-19T17:20:59.246Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos Rag → Daniel Vieira e Marcos Ra"
+    },
+    {
+      "id": "5zj0m3gp",
+      "ts": "2026-06-19T17:20:59.430Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos Ra → Daniel Vieira e Marcos R"
+    },
+    {
+      "id": "22qdw8pw",
+      "ts": "2026-06-19T17:20:59.849Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos R → Daniel Vieira e Marcos "
+    },
+    {
+      "id": "25dxgs9z",
+      "ts": "2026-06-19T17:21:00.490Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos  → Daniel Vieira e Marcos t"
+    },
+    {
+      "id": "uxa470qt",
+      "ts": "2026-06-19T17:21:00.542Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos t → Daniel Vieira e Marcos ta"
+    },
+    {
+      "id": "tolisuzt",
+      "ts": "2026-06-19T17:21:00.710Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos ta → Daniel Vieira e Marcos tag"
+    },
+    {
+      "id": "e4loiubc",
+      "ts": "2026-06-19T17:21:00.758Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos tag → Daniel Vieira e Marcos tage"
+    },
+    {
+      "id": "9rmchmo5",
+      "ts": "2026-06-19T17:21:02.636Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos tage → Daniel Vieira e Marcos tag"
+    },
+    {
+      "id": "wmsj1ewm",
+      "ts": "2026-06-19T17:21:02.821Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos tag → Daniel Vieira e Marcos ta"
+    },
+    {
+      "id": "kvol6h73",
+      "ts": "2026-06-19T17:21:03.163Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos ta → Daniel Vieira e Marcos t"
+    },
+    {
+      "id": "0r6owssb",
+      "ts": "2026-06-19T17:21:03.475Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos t → Daniel Vieira e Marcos "
+    },
+    {
+      "id": "wkintpv1",
+      "ts": "2026-06-19T17:21:04.520Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos  → Daniel Vieira e Marcos T"
+    },
+    {
+      "id": "8kaxfnej",
+      "ts": "2026-06-19T17:21:04.998Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos T → Daniel Vieira e Marcos Ta"
+    },
+    {
+      "id": "u46yweve",
+      "ts": "2026-06-19T17:21:05.417Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos Ta → Daniel Vieira e Marcos Tag"
+    },
+    {
+      "id": "xyf7jkk8",
+      "ts": "2026-06-19T17:21:05.436Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos Tag → Daniel Vieira e Marcos Tage"
+    },
+    {
+      "id": "3b1blhnu",
+      "ts": "2026-06-19T17:30:03.255Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Marcos Tage → Daniel Vieira e L"
+    },
+    {
+      "id": "pvw5oorh",
+      "ts": "2026-06-19T17:30:03.461Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e L → Daniel Vieira e Lu"
+    },
+    {
+      "id": "uog4ufzp",
+      "ts": "2026-06-19T17:30:03.501Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Lu → Daniel Vieira e Lui"
+    },
+    {
+      "id": "qgvw6hud",
+      "ts": "2026-06-19T17:30:03.538Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Lui → Daniel Vieira e Luis"
+    },
+    {
+      "id": "9d2wy09a",
+      "ts": "2026-06-19T17:30:03.588Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Luis → Daniel Vieira e Luisa"
+    },
+    {
+      "id": "77sgwj6q",
+      "ts": "2026-06-19T17:30:03.714Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Luisa → Daniel Vieira e Luisa "
+    },
+    {
+      "id": "9822pq5v",
+      "ts": "2026-06-19T17:30:03.956Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Luisa  → Daniel Vieira e Luisa R"
+    },
+    {
+      "id": "1yo1p3fu",
+      "ts": "2026-06-19T17:30:04.141Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Luisa R → Daniel Vieira e Luisa Re"
+    },
+    {
+      "id": "hxrtwkjz",
+      "ts": "2026-06-19T17:30:04.308Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Luisa Re → Daniel Vieira e Luisa Rei"
+    },
+    {
+      "id": "xwbmhack",
+      "ts": "2026-06-19T17:30:04.386Z",
+      "type": "owner",
+      "topic": "Implement a partner risk report (admin, regulatory, development)",
+      "msg": "“Implement a partner risk report (admin, regulatory, development)”: owner Daniel Vieira e Luisa Rei → Daniel Vieira e Luisa Reis"
+    },
+    {
+      "id": "yv8ppqad",
+      "ts": "2026-06-19T17:30:11.620Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner unassigned → D"
+    },
+    {
+      "id": "9nf8afrk",
+      "ts": "2026-06-19T17:30:11.784Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner D → Da"
+    },
+    {
+      "id": "a218bggf",
+      "ts": "2026-06-19T17:30:11.856Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Da → Dan"
+    },
+    {
+      "id": "qj865h6q",
+      "ts": "2026-06-19T17:30:11.895Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Dan → Dani"
+    },
+    {
+      "id": "ljggmwbj",
+      "ts": "2026-06-19T17:30:11.981Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Dani → Danie"
+    },
+    {
+      "id": "v2t672ho",
+      "ts": "2026-06-19T17:30:12.075Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Danie → Daniel"
+    },
+    {
+      "id": "q8rpcyho",
+      "ts": "2026-06-19T17:30:12.256Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel → Daniel "
+    },
+    {
+      "id": "41mviz91",
+      "ts": "2026-06-19T17:30:12.420Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel  → Daniel e"
+    },
+    {
+      "id": "ta8xbyn4",
+      "ts": "2026-06-19T17:30:12.542Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e → Daniel e "
+    },
+    {
+      "id": "k0q3he2h",
+      "ts": "2026-06-19T17:30:12.755Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e  → Daniel e P"
+    },
+    {
+      "id": "mxhx4iv8",
+      "ts": "2026-06-19T17:30:13.026Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e P → Daniel e "
+    },
+    {
+      "id": "78c3kccy",
+      "ts": "2026-06-19T17:30:13.198Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e  → Daniel e"
+    },
+    {
+      "id": "6225h6vw",
+      "ts": "2026-06-19T17:30:13.360Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e → Daniel "
+    },
+    {
+      "id": "5w54nqyl",
+      "ts": "2026-06-19T17:30:13.751Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel  → Daniel e"
+    },
+    {
+      "id": "sc1u9tmo",
+      "ts": "2026-06-19T17:30:13.918Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e → Daniel e "
+    },
+    {
+      "id": "5bos3fi8",
+      "ts": "2026-06-19T17:30:14.120Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e  → Daniel e P"
+    },
+    {
+      "id": "z2l4dsfa",
+      "ts": "2026-06-19T17:30:14.188Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e P → Daniel e Pr"
+    },
+    {
+      "id": "5pqk3bvz",
+      "ts": "2026-06-19T17:30:14.437Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e Pr → Daniel e Prd"
+    },
+    {
+      "id": "jvscry10",
+      "ts": "2026-06-19T17:30:14.611Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e Prd → Daniel e Prdr"
+    },
+    {
+      "id": "klpojgtd",
+      "ts": "2026-06-19T17:30:14.686Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e Prdr → Daniel e Prdro"
+    },
+    {
+      "id": "4o150pjy",
+      "ts": "2026-06-19T17:30:14.953Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e Prdro → Daniel e Prdr"
+    },
+    {
+      "id": "xct9fw74",
+      "ts": "2026-06-19T17:30:15.107Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e Prdr → Daniel e Prd"
+    },
+    {
+      "id": "sl3d1yjq",
+      "ts": "2026-06-19T17:30:15.262Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e Prd → Daniel e Pr"
+    },
+    {
+      "id": "yup7to0u",
+      "ts": "2026-06-19T17:30:15.413Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e Pr → Daniel e P"
+    },
+    {
+      "id": "fa6gk9d6",
+      "ts": "2026-06-19T17:30:16.101Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e P → Daniel e Pe"
+    },
+    {
+      "id": "v60z65jn",
+      "ts": "2026-06-19T17:30:16.274Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e Pe → Daniel e Ped"
+    },
+    {
+      "id": "u6udxzca",
+      "ts": "2026-06-19T17:30:17.145Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e Ped → Daniel e Pedr"
+    },
+    {
+      "id": "0ss2on09",
+      "ts": "2026-06-19T17:30:17.164Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "“Explore creation of a Consignado company modeled on Lass”: owner Daniel e Pedr → Daniel e Pedro"
+    },
+    {
+      "id": "ms6rep1d",
+      "ts": "2026-06-19T17:30:43.202Z",
+      "type": "owner",
+      "topic": "Develop a go/no-go checklist for new deals (pre-IC)",
+      "msg": "“Develop a go/no-go checklist for new deals (pre-IC)”: owner unassigned → L"
+    },
+    {
+      "id": "rfdwt6f8",
+      "ts": "2026-06-19T17:30:43.377Z",
+      "type": "owner",
+      "topic": "Develop a go/no-go checklist for new deals (pre-IC)",
+      "msg": "“Develop a go/no-go checklist for new deals (pre-IC)”: owner L → Lo"
+    },
+    {
+      "id": "4dqqde3q",
+      "ts": "2026-06-19T17:30:43.524Z",
+      "type": "owner",
+      "topic": "Develop a go/no-go checklist for new deals (pre-IC)",
+      "msg": "“Develop a go/no-go checklist for new deals (pre-IC)”: owner Lo → Lor"
+    },
+    {
+      "id": "upf3ivjb",
+      "ts": "2026-06-19T17:30:43.561Z",
+      "type": "owner",
+      "topic": "Develop a go/no-go checklist for new deals (pre-IC)",
+      "msg": "“Develop a go/no-go checklist for new deals (pre-IC)”: owner Lor → Lore"
+    },
+    {
+      "id": "813oor1b",
+      "ts": "2026-06-19T17:30:43.705Z",
+      "type": "owner",
+      "topic": "Develop a go/no-go checklist for new deals (pre-IC)",
+      "msg": "“Develop a go/no-go checklist for new deals (pre-IC)”: owner Lore → Loren"
+    },
+    {
+      "id": "d49mj02z",
+      "ts": "2026-06-19T17:30:43.822Z",
+      "type": "owner",
+      "topic": "Develop a go/no-go checklist for new deals (pre-IC)",
+      "msg": "“Develop a go/no-go checklist for new deals (pre-IC)”: owner Loren → Lorenz"
+    },
+    {
+      "id": "e1m84i5z",
+      "ts": "2026-06-19T17:30:43.952Z",
+      "type": "owner",
+      "topic": "Develop a go/no-go checklist for new deals (pre-IC)",
+      "msg": "“Develop a go/no-go checklist for new deals (pre-IC)”: owner Lorenz → Lorenzo"
+    },
+    {
+      "id": "tw0m17o9",
+      "ts": "2026-06-19T17:30:55.370Z",
+      "type": "owner",
+      "topic": "Establish a pipeline meeting without CC",
+      "msg": "“Establish a pipeline meeting without CC”: owner unassigned → M"
+    },
+    {
+      "id": "a3h9hdjs",
+      "ts": "2026-06-19T17:30:55.588Z",
+      "type": "owner",
+      "topic": "Establish a pipeline meeting without CC",
+      "msg": "“Establish a pipeline meeting without CC”: owner M → Ma"
+    },
+    {
+      "id": "f1c0p9sc",
+      "ts": "2026-06-19T17:30:55.740Z",
+      "type": "owner",
+      "topic": "Establish a pipeline meeting without CC",
+      "msg": "“Establish a pipeline meeting without CC”: owner Ma → Mar"
+    },
+    {
+      "id": "b45r5iew",
+      "ts": "2026-06-19T17:30:55.946Z",
+      "type": "owner",
+      "topic": "Establish a pipeline meeting without CC",
+      "msg": "“Establish a pipeline meeting without CC”: owner Mar → Marc"
+    },
+    {
+      "id": "nbf25ip8",
+      "ts": "2026-06-19T17:30:56.058Z",
+      "type": "owner",
+      "topic": "Establish a pipeline meeting without CC",
+      "msg": "“Establish a pipeline meeting without CC”: owner Marc → Marco"
+    },
+    {
+      "id": "vjsvq77t",
+      "ts": "2026-06-19T17:30:56.124Z",
+      "type": "owner",
+      "topic": "Establish a pipeline meeting without CC",
+      "msg": "“Establish a pipeline meeting without CC”: owner Marco → Marcos"
+    },
+    {
+      "id": "jtw7yf6b",
+      "ts": "2026-06-19T17:30:56.352Z",
+      "type": "owner",
+      "topic": "Establish a pipeline meeting without CC",
+      "msg": "“Establish a pipeline meeting without CC”: owner Marcos → Marcos "
+    },
+    {
+      "id": "lnenvjge",
+      "ts": "2026-06-19T17:30:57.230Z",
+      "type": "owner",
+      "topic": "Establish a pipeline meeting without CC",
+      "msg": "“Establish a pipeline meeting without CC”: owner Marcos  → Marcos T"
+    },
+    {
+      "id": "q1zal62x",
+      "ts": "2026-06-19T17:30:58.116Z",
+      "type": "owner",
+      "topic": "Establish a pipeline meeting without CC",
+      "msg": "“Establish a pipeline meeting without CC”: owner Marcos T → Marcos Ta"
+    },
+    {
+      "id": "ojligtop",
+      "ts": "2026-06-19T17:30:58.132Z",
+      "type": "owner",
+      "topic": "Establish a pipeline meeting without CC",
+      "msg": "“Establish a pipeline meeting without CC”: owner Marcos Ta → Marcos Tag"
+    },
+    {
+      "id": "xrtgec39",
+      "ts": "2026-06-19T17:30:58.152Z",
+      "type": "owner",
+      "topic": "Establish a pipeline meeting without CC",
+      "msg": "“Establish a pipeline meeting without CC”: owner Marcos Tag → Marcos Tage"
+    },
+    {
+      "id": "jw6o4l2q",
+      "ts": "2026-06-19T17:31:15.869Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner unassigned → C"
+    },
+    {
+      "id": "035hj2au",
+      "ts": "2026-06-19T17:31:16.396Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner C → Ce"
+    },
+    {
+      "id": "0yx8j6mb",
+      "ts": "2026-06-19T17:31:16.641Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner Ce → Ces"
+    },
+    {
+      "id": "1slk7wd9",
+      "ts": "2026-06-19T17:31:16.777Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner Ces → Cesa"
+    },
+    {
+      "id": "u36mk3k0",
+      "ts": "2026-06-19T17:31:16.896Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner Cesa → Cesar"
+    },
+    {
+      "id": "wd4zxj7s",
+      "ts": "2026-06-19T17:31:17.116Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner Cesar → Cesar "
+    },
+    {
+      "id": "r0cfgtbo",
+      "ts": "2026-06-19T17:31:17.584Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner Cesar  → Cesar C"
+    },
+    {
+      "id": "c0pbebrv",
+      "ts": "2026-06-19T17:31:17.826Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner Cesar C → Cesar Co"
+    },
+    {
+      "id": "3afq0uzq",
+      "ts": "2026-06-19T17:31:18.054Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner Cesar Co → Cesar Col"
+    },
+    {
+      "id": "oenacw98",
+      "ts": "2026-06-19T17:31:18.201Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner Cesar Col → Cesar Coll"
+    },
+    {
+      "id": "ej9dmm46",
+      "ts": "2026-06-19T17:31:18.394Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner Cesar Coll → Cesar Colli"
+    },
+    {
+      "id": "t9he4k92",
+      "ts": "2026-06-19T17:31:18.405Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner Cesar Colli → Cesar Colliu"
+    },
+    {
+      "id": "pnix5q08",
+      "ts": "2026-06-19T17:31:18.447Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner Cesar Colliu → Cesar Colliue"
+    },
+    {
+      "id": "kkzqeotp",
+      "ts": "2026-06-19T17:31:18.516Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner Cesar Colliue → Cesar Colliuer"
+    },
+    {
+      "id": "aubx1l0o",
+      "ts": "2026-06-19T17:31:18.954Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner Cesar Colliuer → Cesar Colliue"
+    },
+    {
+      "id": "c215wpe9",
+      "ts": "2026-06-19T17:31:19.143Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner Cesar Colliue → Cesar Colliu"
+    },
+    {
+      "id": "yb9ycwpt",
+      "ts": "2026-06-19T17:31:19.292Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner Cesar Colliu → Cesar Colli"
+    },
+    {
+      "id": "jzf9sgeg",
+      "ts": "2026-06-19T17:31:19.392Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner Cesar Colli → Cesar Collie"
+    },
+    {
+      "id": "b076f8c1",
+      "ts": "2026-06-19T17:31:19.472Z",
+      "type": "owner",
+      "topic": "Merge the global BLC IC with the Consignado IC",
+      "msg": "“Merge the global BLC IC with the Consignado IC”: owner Cesar Collie → Cesar Collier"
+    },
+    {
+      "id": "jgkjziyt",
+      "ts": "2026-06-19T17:31:40.951Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner unassigned → N"
+    },
+    {
+      "id": "t0l1kdpo",
+      "ts": "2026-06-19T17:31:41.081Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner N → Na"
+    },
+    {
+      "id": "fecwcahj",
+      "ts": "2026-06-19T17:31:41.479Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner Na → N"
+    },
+    {
+      "id": "sh6ap4rk",
+      "ts": "2026-06-19T17:31:41.645Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner N → unassigned"
+    },
+    {
+      "id": "wzr3k8fj",
+      "ts": "2026-06-19T17:31:41.888Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner unassigned → M"
+    },
+    {
+      "id": "8grliizg",
+      "ts": "2026-06-19T17:31:42.437Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner M → Ma"
+    },
+    {
+      "id": "0mxfh5xa",
+      "ts": "2026-06-19T17:31:42.689Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner Ma → Man"
+    },
+    {
+      "id": "kju3w7ao",
+      "ts": "2026-06-19T17:31:42.832Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner Man → Mano"
+    },
+    {
+      "id": "7fk5sljt",
+      "ts": "2026-06-19T17:31:42.989Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner Mano → Manoe"
+    },
+    {
+      "id": "kmn0xam8",
+      "ts": "2026-06-19T17:31:43.126Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner Manoe → Manoel"
+    },
+    {
+      "id": "rtygia79",
+      "ts": "2026-06-19T17:31:43.843Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner Manoel → Manoel "
+    },
+    {
+      "id": "i6ohslnv",
+      "ts": "2026-06-19T17:31:47.668Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner Manoel  → Manoel T"
+    },
+    {
+      "id": "39v6b083",
+      "ts": "2026-06-19T17:31:47.832Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner Manoel T → Manoel Ta"
+    },
+    {
+      "id": "vb7unhi0",
+      "ts": "2026-06-19T17:31:48.031Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner Manoel Ta → Manoel Tav"
+    },
+    {
+      "id": "945eyyf9",
+      "ts": "2026-06-19T17:31:48.091Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner Manoel Tav → Manoel Tava"
+    },
+    {
+      "id": "be483ap6",
+      "ts": "2026-06-19T17:31:48.336Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner Manoel Tava → Manoel Tavar"
+    },
+    {
+      "id": "hbdzmcsc",
+      "ts": "2026-06-19T17:31:48.401Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner Manoel Tavar → Manoel Tavare"
+    },
+    {
+      "id": "klb1x51k",
+      "ts": "2026-06-19T17:31:48.576Z",
+      "type": "owner",
+      "topic": "Receive regular reports on legal status of cases & theses",
+      "msg": "“Receive regular reports on legal status of cases & theses”: owner Manoel Tavare → Manoel Tavares"
+    },
+    {
+      "id": "7eegdoxj",
+      "ts": "2026-06-19T17:31:57.849Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner unassigned → M"
+    },
+    {
+      "id": "8vnbk48i",
+      "ts": "2026-06-19T17:31:58.348Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner M → Ma"
+    },
+    {
+      "id": "r4hfb8kc",
+      "ts": "2026-06-19T17:31:59.385Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Ma → Man"
+    },
+    {
+      "id": "s3c6jlc5",
+      "ts": "2026-06-19T17:32:00.398Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Man → Mano"
+    },
+    {
+      "id": "j0nuagbh",
+      "ts": "2026-06-19T17:32:00.517Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Mano → Manoe"
+    },
+    {
+      "id": "f9vku58s",
+      "ts": "2026-06-19T17:32:00.618Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Manoe → Manoel"
+    },
+    {
+      "id": "4r68qpr2",
+      "ts": "2026-06-19T17:32:00.916Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Manoel → Manoel "
+    },
+    {
+      "id": "qqnyy5x8",
+      "ts": "2026-06-19T17:32:01.481Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Manoel  → Manoel T"
+    },
+    {
+      "id": "pvpze8wz",
+      "ts": "2026-06-19T17:32:01.623Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Manoel T → Manoel Ta"
+    },
+    {
+      "id": "dznrcdw9",
+      "ts": "2026-06-19T17:32:01.646Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Manoel Ta → Manoel Tav"
+    },
+    {
+      "id": "q983p6qy",
+      "ts": "2026-06-19T17:32:01.663Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Manoel Tav → Manoel Tava"
+    },
+    {
+      "id": "oepgyq8v",
+      "ts": "2026-06-19T17:32:01.939Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Manoel Tava → Manoel Tavar"
+    },
+    {
+      "id": "yl5cgtcz",
+      "ts": "2026-06-19T17:32:02.000Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Manoel Tavar → Manoel Tavare"
+    },
+    {
+      "id": "reuh7f19",
+      "ts": "2026-06-19T17:32:02.171Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Manoel Tavare → Manoel Tavares"
+    },
+    {
+      "id": "3q8i5mr2",
+      "ts": "2026-06-19T17:32:04.083Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Manoel Tavares → unassigned"
+    },
+    {
+      "id": "of47wvpl",
+      "ts": "2026-06-19T17:32:16.729Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner unassigned → C"
+    },
+    {
+      "id": "0yepmo7j",
+      "ts": "2026-06-19T17:32:16.858Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner C → Ce"
+    },
+    {
+      "id": "ejvccc3q",
+      "ts": "2026-06-19T17:32:17.072Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Ce → Ces"
+    },
+    {
+      "id": "h7qdbls7",
+      "ts": "2026-06-19T17:32:17.126Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Ces → Cesa"
+    },
+    {
+      "id": "ej1lwy2a",
+      "ts": "2026-06-19T17:32:17.280Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Cesa → Cesar"
+    },
+    {
+      "id": "0fcm2jpu",
+      "ts": "2026-06-19T17:32:28.209Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Cesar → Cesar "
+    },
+    {
+      "id": "m14c4das",
+      "ts": "2026-06-19T17:32:29.482Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Cesar  → Cesar C"
+    },
+    {
+      "id": "08x74e1p",
+      "ts": "2026-06-19T17:32:33.579Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Cesar C → Cesar Co"
+    },
+    {
+      "id": "428l0z3i",
+      "ts": "2026-06-19T17:32:33.600Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Cesar Co → Cesar Col"
+    },
+    {
+      "id": "63md1eaw",
+      "ts": "2026-06-19T17:32:33.619Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Cesar Col → Cesar Coll"
+    },
+    {
+      "id": "e4qemenb",
+      "ts": "2026-06-19T17:32:33.636Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Cesar Coll → Cesar Colli"
+    },
+    {
+      "id": "623b7a1s",
+      "ts": "2026-06-19T17:32:33.654Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Cesar Colli → Cesar Colliu"
+    },
+    {
+      "id": "b48u564i",
+      "ts": "2026-06-19T17:32:33.671Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Cesar Colliu → Cesar Colliue"
+    },
+    {
+      "id": "kivjbpe5",
+      "ts": "2026-06-19T17:32:33.689Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Cesar Colliue → Cesar Colliuer"
+    },
+    {
+      "id": "dka4rb2d",
+      "ts": "2026-06-19T17:32:38.469Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Cesar Colliuer → Cesar Colliue"
+    },
+    {
+      "id": "ktnffi41",
+      "ts": "2026-06-19T17:32:38.484Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Cesar Colliue → Cesar Colliu"
+    },
+    {
+      "id": "zbaw3sys",
+      "ts": "2026-06-19T17:32:38.502Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Cesar Colliu → Cesar Colli"
+    },
+    {
+      "id": "6qxny6xb",
+      "ts": "2026-06-19T17:32:38.520Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Cesar Colli → Cesar Coll"
+    },
+    {
+      "id": "mznb8fxr",
+      "ts": "2026-06-19T17:32:42.086Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Cesar Coll → Cesar Colli"
+    },
+    {
+      "id": "3b0p8mpj",
+      "ts": "2026-06-19T17:32:42.110Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Cesar Colli → Cesar Collie"
+    },
+    {
+      "id": "253j1bne",
+      "ts": "2026-06-19T17:32:42.129Z",
+      "type": "owner",
+      "topic": "Sharpen focus & communication in local IC meetings",
+      "msg": "“Sharpen focus & communication in local IC meetings”: owner Cesar Collie → Cesar Collier"
+    },
+    {
+      "id": "bfc9g82o",
+      "ts": "2026-06-19T17:33:19.228Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner unassigned → D"
+    },
+    {
+      "id": "lcd20q49",
+      "ts": "2026-06-19T17:33:19.399Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner D → Da"
+    },
+    {
+      "id": "cnhtuf9u",
+      "ts": "2026-06-19T17:33:19.447Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Da → Dan"
+    },
+    {
+      "id": "7bj5q5ue",
+      "ts": "2026-06-19T17:33:19.499Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Dan → Dani"
+    },
+    {
+      "id": "j7ua67qf",
+      "ts": "2026-06-19T17:33:19.594Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Dani → Danie"
+    },
+    {
+      "id": "j0waowvu",
+      "ts": "2026-06-19T17:33:19.713Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Danie → Daniel"
+    },
+    {
+      "id": "7w7y0r9n",
+      "ts": "2026-06-19T17:33:19.860Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Daniel → Daniel "
+    },
+    {
+      "id": "ucnaxoel",
+      "ts": "2026-06-19T17:33:20.034Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Daniel  → Daniel e"
+    },
+    {
+      "id": "y7v5b8eb",
+      "ts": "2026-06-19T17:33:20.261Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Daniel e → Daniel e "
+    },
+    {
+      "id": "j907v9yf",
+      "ts": "2026-06-19T17:33:20.743Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Daniel e  → Daniel e L"
+    },
+    {
+      "id": "3963ypuh",
+      "ts": "2026-06-19T17:33:20.922Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Daniel e L → Daniel e Lu"
+    },
+    {
+      "id": "knloqosx",
+      "ts": "2026-06-19T17:33:20.971Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Daniel e Lu → Daniel e Lui"
+    },
+    {
+      "id": "vdlt9mah",
+      "ts": "2026-06-19T17:33:20.999Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Daniel e Lui → Daniel e Luiz"
+    },
+    {
+      "id": "t3ujd44d",
+      "ts": "2026-06-19T17:33:21.053Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Daniel e Luiz → Daniel e Luiza"
+    },
+    {
+      "id": "3g3otlqu",
+      "ts": "2026-06-19T17:33:25.488Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Daniel e Luiza → Daniel e Luiz"
+    },
+    {
+      "id": "ruttkbuw",
+      "ts": "2026-06-19T17:33:25.505Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Daniel e Luiz → Daniel e Lui"
+    },
+    {
+      "id": "s19b21zt",
+      "ts": "2026-06-19T17:33:25.522Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Daniel e Lui → Daniel e Lu"
+    },
+    {
+      "id": "q9tm3qmv",
+      "ts": "2026-06-19T17:33:25.539Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Daniel e Lu → Daniel e L"
+    },
+    {
+      "id": "a6p2h62p",
+      "ts": "2026-06-19T17:33:26.796Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Daniel e L → Daniel e Lu"
+    },
+    {
+      "id": "nzqixc2r",
+      "ts": "2026-06-19T17:33:26.836Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Daniel e Lu → Daniel e Lui"
+    },
+    {
+      "id": "ouigom25",
+      "ts": "2026-06-19T17:33:26.864Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Daniel e Lui → Daniel e Luis"
+    },
+    {
+      "id": "lajo70wf",
+      "ts": "2026-06-19T17:33:26.927Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "“Implement red/yellow/green flag reporting across risk layers (AI-monitored)”: owner Daniel e Luis → Daniel e Luisa"
+    },
+    {
+      "id": "c87zb4di",
+      "ts": "2026-06-19T17:34:13.711Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner unassigned → C"
+    },
+    {
+      "id": "4jnbchzi",
+      "ts": "2026-06-19T17:34:13.855Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner C → Ca"
+    },
+    {
+      "id": "hrroq6kz",
+      "ts": "2026-06-19T17:34:13.979Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner Ca → Car"
+    },
+    {
+      "id": "bpdgjoac",
+      "ts": "2026-06-19T17:34:14.104Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner Car → Carl"
+    },
+    {
+      "id": "uekyzkxi",
+      "ts": "2026-06-19T17:34:14.173Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner Carl → Carla"
+    },
+    {
+      "id": "bl33211n",
+      "ts": "2026-06-19T17:34:14.576Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner Carla → Carla "
+    },
+    {
+      "id": "hefy3bp9",
+      "ts": "2026-06-19T17:34:14.856Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner Carla  → Carla B"
+    },
+    {
+      "id": "nymlmmag",
+      "ts": "2026-06-19T17:34:15.052Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner Carla B → Carla Bi"
+    },
+    {
+      "id": "bzy37v2p",
+      "ts": "2026-06-19T17:34:15.573Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner Carla Bi → Carla Bia"
+    },
+    {
+      "id": "r1rt950n",
+      "ts": "2026-06-19T17:34:20.861Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner Carla Bia → Carla Bias"
+    },
+    {
+      "id": "0efh68il",
+      "ts": "2026-06-19T17:34:21.533Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner Carla Bias → Carla Biasi"
+    },
+    {
+      "id": "39iy0olr",
+      "ts": "2026-06-19T17:34:34.367Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner Carla Biasi → CCarla Biasi"
+    },
+    {
+      "id": "715vtixo",
+      "ts": "2026-06-19T17:34:34.494Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner CCarla Biasi → CeCarla Biasi"
+    },
+    {
+      "id": "a7nu9aw7",
+      "ts": "2026-06-19T17:34:34.729Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner CeCarla Biasi → CesCarla Biasi"
+    },
+    {
+      "id": "aedl4uco",
+      "ts": "2026-06-19T17:34:34.979Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner CesCarla Biasi → CesaCarla Biasi"
+    },
+    {
+      "id": "wvoyvr10",
+      "ts": "2026-06-19T17:34:35.165Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner CesaCarla Biasi → CesarCarla Biasi"
+    },
+    {
+      "id": "uh9nv3p6",
+      "ts": "2026-06-19T17:34:35.720Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner CesarCarla Biasi → Cesar Carla Biasi"
+    },
+    {
+      "id": "b8ghaj5q",
+      "ts": "2026-06-19T17:34:35.859Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner Cesar Carla Biasi → Cesar eCarla Biasi"
+    },
+    {
+      "id": "wnkh1rag",
+      "ts": "2026-06-19T17:34:35.973Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "“Establish an in-office CCO function with AI support”: owner Cesar eCarla Biasi → Cesar e Carla Biasi"
+    },
+    {
+      "id": "gfqoq9ek",
+      "ts": "2026-06-19T17:34:54.216Z",
+      "type": "remove",
+      "topic": "Create mandatory DD checklists for all asset classes",
+      "msg": "Removed “Create mandatory DD checklists for all asset classes”"
+    },
+    {
+      "id": "nl8yahib",
+      "ts": "2026-06-19T17:35:07.261Z",
+      "type": "owner",
+      "topic": "Provide IR with regular portfolio updates",
+      "msg": "“Provide IR with regular portfolio updates”: owner unassigned → L"
+    },
+    {
+      "id": "4f5lf3vo",
+      "ts": "2026-06-19T17:35:07.458Z",
+      "type": "owner",
+      "topic": "Provide IR with regular portfolio updates",
+      "msg": "“Provide IR with regular portfolio updates”: owner L → Lu"
+    },
+    {
+      "id": "z329ycho",
+      "ts": "2026-06-19T17:35:07.504Z",
+      "type": "owner",
+      "topic": "Provide IR with regular portfolio updates",
+      "msg": "“Provide IR with regular portfolio updates”: owner Lu → Lui"
+    },
+    {
+      "id": "61cc24u0",
+      "ts": "2026-06-19T17:35:07.550Z",
+      "type": "owner",
+      "topic": "Provide IR with regular portfolio updates",
+      "msg": "“Provide IR with regular portfolio updates”: owner Lui → Luis"
+    },
+    {
+      "id": "cj0yeozb",
+      "ts": "2026-06-19T17:35:07.607Z",
+      "type": "owner",
+      "topic": "Provide IR with regular portfolio updates",
+      "msg": "“Provide IR with regular portfolio updates”: owner Luis → Luisa"
+    },
+    {
+      "id": "w8ztlnv3",
+      "ts": "2026-06-19T17:35:07.757Z",
+      "type": "owner",
+      "topic": "Provide IR with regular portfolio updates",
+      "msg": "“Provide IR with regular portfolio updates”: owner Luisa → Luisa "
+    },
+    {
+      "id": "i6o17n7o",
+      "ts": "2026-06-19T17:35:07.980Z",
+      "type": "owner",
+      "topic": "Provide IR with regular portfolio updates",
+      "msg": "“Provide IR with regular portfolio updates”: owner Luisa  → Luisa E"
+    },
+    {
+      "id": "ou1dtqba",
+      "ts": "2026-06-19T17:35:08.009Z",
+      "type": "owner",
+      "topic": "Provide IR with regular portfolio updates",
+      "msg": "“Provide IR with regular portfolio updates”: owner Luisa E → Luisa ER"
+    },
+    {
+      "id": "t49230t7",
+      "ts": "2026-06-19T17:35:08.589Z",
+      "type": "owner",
+      "topic": "Provide IR with regular portfolio updates",
+      "msg": "“Provide IR with regular portfolio updates”: owner Luisa ER → Luisa E"
+    },
+    {
+      "id": "jnbjjv88",
+      "ts": "2026-06-19T17:35:08.740Z",
+      "type": "owner",
+      "topic": "Provide IR with regular portfolio updates",
+      "msg": "“Provide IR with regular portfolio updates”: owner Luisa E → Luisa "
+    },
+    {
+      "id": "n232zp5v",
+      "ts": "2026-06-19T17:35:08.838Z",
+      "type": "owner",
+      "topic": "Provide IR with regular portfolio updates",
+      "msg": "“Provide IR with regular portfolio updates”: owner Luisa  → Luisa R"
+    },
+    {
+      "id": "hl17stpt",
+      "ts": "2026-06-19T17:35:08.997Z",
+      "type": "owner",
+      "topic": "Provide IR with regular portfolio updates",
+      "msg": "“Provide IR with regular portfolio updates”: owner Luisa R → Luisa Re"
+    },
+    {
+      "id": "kp5jgdia",
+      "ts": "2026-06-19T17:35:09.162Z",
+      "type": "owner",
+      "topic": "Provide IR with regular portfolio updates",
+      "msg": "“Provide IR with regular portfolio updates”: owner Luisa Re → Luisa Rei"
+    },
+    {
+      "id": "9epwqd7f",
+      "ts": "2026-06-19T17:35:09.277Z",
+      "type": "owner",
+      "topic": "Provide IR with regular portfolio updates",
+      "msg": "“Provide IR with regular portfolio updates”: owner Luisa Rei → Luisa Reis"
+    },
+    {
+      "id": "ye8qmebw",
+      "ts": "2026-06-19T17:35:19.254Z",
+      "type": "owner",
+      "topic": "Enhance investor communication with AI-assisted tools",
+      "msg": "“Enhance investor communication with AI-assisted tools”: owner unassigned → L"
+    },
+    {
+      "id": "ilph3bba",
+      "ts": "2026-06-19T17:35:19.443Z",
+      "type": "owner",
+      "topic": "Enhance investor communication with AI-assisted tools",
+      "msg": "“Enhance investor communication with AI-assisted tools”: owner L → Lu"
+    },
+    {
+      "id": "dze0uykm",
+      "ts": "2026-06-19T17:35:19.491Z",
+      "type": "owner",
+      "topic": "Enhance investor communication with AI-assisted tools",
+      "msg": "“Enhance investor communication with AI-assisted tools”: owner Lu → Lui"
+    },
+    {
+      "id": "b0ew7pj4",
+      "ts": "2026-06-19T17:35:19.609Z",
+      "type": "owner",
+      "topic": "Enhance investor communication with AI-assisted tools",
+      "msg": "“Enhance investor communication with AI-assisted tools”: owner Lui → Luis"
+    },
+    {
+      "id": "gdtmuukr",
+      "ts": "2026-06-19T17:35:19.670Z",
+      "type": "owner",
+      "topic": "Enhance investor communication with AI-assisted tools",
+      "msg": "“Enhance investor communication with AI-assisted tools”: owner Luis → Luisa"
+    },
+    {
+      "id": "rhy7yrw2",
+      "ts": "2026-06-19T17:35:19.831Z",
+      "type": "owner",
+      "topic": "Enhance investor communication with AI-assisted tools",
+      "msg": "“Enhance investor communication with AI-assisted tools”: owner Luisa → Luisa "
+    },
+    {
+      "id": "15mp4ds4",
+      "ts": "2026-06-19T17:35:20.011Z",
+      "type": "owner",
+      "topic": "Enhance investor communication with AI-assisted tools",
+      "msg": "“Enhance investor communication with AI-assisted tools”: owner Luisa  → Luisa R"
+    },
+    {
+      "id": "afa5kh1j",
+      "ts": "2026-06-19T17:35:20.183Z",
+      "type": "owner",
+      "topic": "Enhance investor communication with AI-assisted tools",
+      "msg": "“Enhance investor communication with AI-assisted tools”: owner Luisa R → Luisa Re"
+    },
+    {
+      "id": "db8jzr6u",
+      "ts": "2026-06-19T17:35:20.333Z",
+      "type": "owner",
+      "topic": "Enhance investor communication with AI-assisted tools",
+      "msg": "“Enhance investor communication with AI-assisted tools”: owner Luisa Re → Luisa Rei"
+    },
+    {
+      "id": "rfu7oau2",
+      "ts": "2026-06-19T17:35:20.400Z",
+      "type": "owner",
+      "topic": "Enhance investor communication with AI-assisted tools",
+      "msg": "“Enhance investor communication with AI-assisted tools”: owner Luisa Rei → Luisa Reis"
+    },
+    {
+      "id": "xy3j60eq",
+      "ts": "2026-06-19T17:37:19.956Z",
+      "type": "owner",
+      "topic": "Increase events with local partners",
+      "msg": "“Increase events with local partners”: owner unassigned → L"
+    },
+    {
+      "id": "4mzwy088",
+      "ts": "2026-06-19T17:37:20.143Z",
+      "type": "owner",
+      "topic": "Increase events with local partners",
+      "msg": "“Increase events with local partners”: owner L → Lu"
+    },
+    {
+      "id": "pwaeg4pd",
+      "ts": "2026-06-19T17:37:20.195Z",
+      "type": "owner",
+      "topic": "Increase events with local partners",
+      "msg": "“Increase events with local partners”: owner Lu → Lui"
+    },
+    {
+      "id": "1bfn8fp5",
+      "ts": "2026-06-19T17:37:20.226Z",
+      "type": "owner",
+      "topic": "Increase events with local partners",
+      "msg": "“Increase events with local partners”: owner Lui → Luis"
+    },
+    {
+      "id": "ygwbxmg9",
+      "ts": "2026-06-19T17:37:20.285Z",
+      "type": "owner",
+      "topic": "Increase events with local partners",
+      "msg": "“Increase events with local partners”: owner Luis → Luisa"
+    },
+    {
+      "id": "rlwfnm5i",
+      "ts": "2026-06-19T17:37:20.482Z",
+      "type": "owner",
+      "topic": "Increase events with local partners",
+      "msg": "“Increase events with local partners”: owner Luisa → Luisa "
+    },
+    {
+      "id": "sknh7g6y",
+      "ts": "2026-06-19T17:37:20.741Z",
+      "type": "owner",
+      "topic": "Increase events with local partners",
+      "msg": "“Increase events with local partners”: owner Luisa  → Luisa R"
+    },
+    {
+      "id": "iok1skxf",
+      "ts": "2026-06-19T17:37:20.908Z",
+      "type": "owner",
+      "topic": "Increase events with local partners",
+      "msg": "“Increase events with local partners”: owner Luisa R → Luisa Re"
+    },
+    {
+      "id": "exbthm7f",
+      "ts": "2026-06-19T17:37:21.040Z",
+      "type": "owner",
+      "topic": "Increase events with local partners",
+      "msg": "“Increase events with local partners”: owner Luisa Re → Luisa Rei"
+    },
+    {
+      "id": "gk4cvnfq",
+      "ts": "2026-06-19T17:37:21.094Z",
+      "type": "owner",
+      "topic": "Increase events with local partners",
+      "msg": "“Increase events with local partners”: owner Luisa Rei → Luisa Reis"
+    },
+    {
+      "id": "ph5nwdj0",
+      "ts": "2026-06-19T17:40:11.284Z",
+      "type": "owner",
+      "topic": "Strengthen local fundraising efforts",
+      "msg": "“Strengthen local fundraising efforts”: owner unassigned → L"
+    },
+    {
+      "id": "ccir4yn1",
+      "ts": "2026-06-19T17:40:11.469Z",
+      "type": "owner",
+      "topic": "Strengthen local fundraising efforts",
+      "msg": "“Strengthen local fundraising efforts”: owner L → Lu"
+    },
+    {
+      "id": "ea23d00p",
+      "ts": "2026-06-19T17:40:11.524Z",
+      "type": "owner",
+      "topic": "Strengthen local fundraising efforts",
+      "msg": "“Strengthen local fundraising efforts”: owner Lu → Lui"
+    },
+    {
+      "id": "yuiwj6kd",
+      "ts": "2026-06-19T17:40:11.553Z",
+      "type": "owner",
+      "topic": "Strengthen local fundraising efforts",
+      "msg": "“Strengthen local fundraising efforts”: owner Lui → Luis"
+    },
+    {
+      "id": "r11vkbn0",
+      "ts": "2026-06-19T17:40:11.601Z",
+      "type": "owner",
+      "topic": "Strengthen local fundraising efforts",
+      "msg": "“Strengthen local fundraising efforts”: owner Luis → Luisa"
+    },
+    {
+      "id": "ha3glgm0",
+      "ts": "2026-06-19T17:40:11.727Z",
+      "type": "owner",
+      "topic": "Strengthen local fundraising efforts",
+      "msg": "“Strengthen local fundraising efforts”: owner Luisa → Luisa "
+    },
+    {
+      "id": "u3fl23vr",
+      "ts": "2026-06-19T17:40:11.898Z",
+      "type": "owner",
+      "topic": "Strengthen local fundraising efforts",
+      "msg": "“Strengthen local fundraising efforts”: owner Luisa  → Luisa R"
+    },
+    {
+      "id": "4ngwccr3",
+      "ts": "2026-06-19T17:40:12.033Z",
+      "type": "owner",
+      "topic": "Strengthen local fundraising efforts",
+      "msg": "“Strengthen local fundraising efforts”: owner Luisa R → Luisa Re"
+    },
+    {
+      "id": "ni4xlmjd",
+      "ts": "2026-06-19T17:40:12.180Z",
+      "type": "owner",
+      "topic": "Strengthen local fundraising efforts",
+      "msg": "“Strengthen local fundraising efforts”: owner Luisa Re → Luisa Rei"
+    },
+    {
+      "id": "kyhlala8",
+      "ts": "2026-06-19T17:40:12.242Z",
+      "type": "owner",
+      "topic": "Strengthen local fundraising efforts",
+      "msg": "“Strengthen local fundraising efforts”: owner Luisa Rei → Luisa Reis"
+    },
+    {
+      "id": "ayhwl9x0",
+      "ts": "2026-06-19T17:40:28.686Z",
+      "type": "owner",
+      "topic": "Develop a local fundraising strategy for US products (e.g., XP)",
+      "msg": "“Develop a local fundraising strategy for US products (e.g., XP)”: owner unassigned → C"
+    },
+    {
+      "id": "stf3i9gv",
+      "ts": "2026-06-19T17:40:32.157Z",
+      "type": "owner",
+      "topic": "Develop a local fundraising strategy for US products (e.g., XP)",
+      "msg": "“Develop a local fundraising strategy for US products (e.g., XP)”: owner C → Cesar Collier"
+    },
+    {
+      "id": "2805uwi1",
+      "ts": "2026-06-19T17:41:05.627Z",
+      "type": "owner",
+      "topic": "Develop a local fundraising strategy for US products (e.g., XP)",
+      "msg": "“Develop a local fundraising strategy for US products (e.g., XP)”: owner Cesar Collier → L"
+    },
+    {
+      "id": "ve3zzrdz",
+      "ts": "2026-06-19T17:41:05.824Z",
+      "type": "owner",
+      "topic": "Develop a local fundraising strategy for US products (e.g., XP)",
+      "msg": "“Develop a local fundraising strategy for US products (e.g., XP)”: owner L → Lu"
+    },
+    {
+      "id": "6fxh71jw",
+      "ts": "2026-06-19T17:41:05.873Z",
+      "type": "owner",
+      "topic": "Develop a local fundraising strategy for US products (e.g., XP)",
+      "msg": "“Develop a local fundraising strategy for US products (e.g., XP)”: owner Lu → Lui"
+    },
+    {
+      "id": "qi94lg5q",
+      "ts": "2026-06-19T17:41:05.909Z",
+      "type": "owner",
+      "topic": "Develop a local fundraising strategy for US products (e.g., XP)",
+      "msg": "“Develop a local fundraising strategy for US products (e.g., XP)”: owner Lui → Luis"
+    },
+    {
+      "id": "2trcflyy",
+      "ts": "2026-06-19T17:41:05.952Z",
+      "type": "owner",
+      "topic": "Develop a local fundraising strategy for US products (e.g., XP)",
+      "msg": "“Develop a local fundraising strategy for US products (e.g., XP)”: owner Luis → Luisa"
+    },
+    {
+      "id": "k134yzhx",
+      "ts": "2026-06-19T17:41:06.076Z",
+      "type": "owner",
+      "topic": "Develop a local fundraising strategy for US products (e.g., XP)",
+      "msg": "“Develop a local fundraising strategy for US products (e.g., XP)”: owner Luisa → Luisa "
+    },
+    {
+      "id": "es2pl42h",
+      "ts": "2026-06-19T17:41:06.253Z",
+      "type": "owner",
+      "topic": "Develop a local fundraising strategy for US products (e.g., XP)",
+      "msg": "“Develop a local fundraising strategy for US products (e.g., XP)”: owner Luisa  → Luisa R"
+    },
+    {
+      "id": "w4nx4xhe",
+      "ts": "2026-06-19T17:41:06.347Z",
+      "type": "owner",
+      "topic": "Develop a local fundraising strategy for US products (e.g., XP)",
+      "msg": "“Develop a local fundraising strategy for US products (e.g., XP)”: owner Luisa R → Luisa Re"
+    },
+    {
+      "id": "44blmsue",
+      "ts": "2026-06-19T17:41:06.491Z",
+      "type": "owner",
+      "topic": "Develop a local fundraising strategy for US products (e.g., XP)",
+      "msg": "“Develop a local fundraising strategy for US products (e.g., XP)”: owner Luisa Re → Luisa Rei"
+    },
+    {
+      "id": "009nqy6u",
+      "ts": "2026-06-19T17:41:06.592Z",
+      "type": "owner",
+      "topic": "Develop a local fundraising strategy for US products (e.g., XP)",
+      "msg": "“Develop a local fundraising strategy for US products (e.g., XP)”: owner Luisa Rei → Luisa Reis"
+    },
+    {
+      "id": "w0wcut6e",
+      "ts": "2026-06-19T20:11:49.983Z",
+      "type": "health",
+      "topic": "Schedule an offsite & implement a recurring culture meeting",
+      "msg": "“Schedule an offsite & implement a recurring culture meeting”: health set to On track"
+    },
+    {
+      "id": "sqplvna3",
+      "ts": "2026-06-23T23:08:27.861Z",
+      "type": "owner",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "Assigned “Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)” to Daniel Vieira · Aranha"
+    },
+    {
+      "id": "sf4if2qm",
+      "ts": "2026-06-23T23:08:29.554Z",
+      "type": "owner",
+      "topic": "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)",
+      "msg": "Assigned “Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)” to Daniel Vieira · Pedro Aranha"
+    },
+    {
+      "id": "6wj9ygwd",
+      "ts": "2026-06-23T23:08:37.242Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "Assigned “Explore creation of a Consignado company modeled on Lass” to Daniel Vieira · Pedro"
+    },
+    {
+      "id": "84fn81l7",
+      "ts": "2026-06-23T23:08:38.387Z",
+      "type": "owner",
+      "topic": "Explore creation of a Consignado company modeled on Lass",
+      "msg": "Assigned “Explore creation of a Consignado company modeled on Lass” to Daniel Vieira · Pedro Aranha"
+    },
+    {
+      "id": "dderu0r3",
+      "ts": "2026-06-23T23:08:44.614Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "Assigned “Implement red/yellow/green flag reporting across risk layers (AI-monitored)” to Daniel Vieira · Luisa"
+    },
+    {
+      "id": "hnl6u7s5",
+      "ts": "2026-06-23T23:08:46.306Z",
+      "type": "owner",
+      "topic": "Implement red/yellow/green flag reporting across risk layers (AI-monitored)",
+      "msg": "Assigned “Implement red/yellow/green flag reporting across risk layers (AI-monitored)” to Daniel Vieira · Luisa Reis"
+    },
+    {
+      "id": "oe2ulnk8",
+      "ts": "2026-06-23T23:08:51.132Z",
+      "type": "owner",
+      "topic": "Establish an in-office CCO function with AI support",
+      "msg": "Assigned “Establish an in-office CCO function with AI support” to Cesar Collier · Carla Biasi"
+    }
+  ]
+}

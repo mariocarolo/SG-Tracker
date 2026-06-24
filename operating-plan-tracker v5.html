@@ -1,0 +1,2022 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operating Plan — Implementation Tracker</title>
+<style>html,body{margin:0;padding:0;background:#f4f2ec;} #root{min-height:100vh;}
+  #boot{font-family:ui-sans-serif,system-ui,sans-serif;color:#5a6373;display:flex;min-height:100vh;align-items:center;justify-content:center;font-size:14px;}</style>
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.25.9/babel.min.js"></script>
+</head>
+<body>
+<div id="root"><div id="boot">Loading the tracker… (needs internet the first time, to load React)</div></div>
+<script type="text/babel" data-presets="react">
+const { useState, useEffect, useMemo, useRef } = React;
+
+/* ---- inline-SVG icons (drop-in replacements for lucide-react) ---- */
+const mkIcon = (inner) => ({ size = 16, color, style } = {}) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color || "currentColor"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={style}>{inner}</svg>
+);
+const CheckCircle2 = mkIcon(<><circle cx="12" cy="12" r="9"/><path d="M8.5 12.4l2.4 2.4 4.6-5"/></>);
+const Circle = mkIcon(<circle cx="12" cy="12" r="9"/>);
+const Plus = mkIcon(<><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></>);
+const Trash2 = mkIcon(<><polyline points="3 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></>);
+const ChevronDown = mkIcon(<polyline points="6 9 12 15 18 9"/>);
+const ChevronRight = mkIcon(<polyline points="9 6 15 12 9 18"/>);
+const ChevronLeft = mkIcon(<polyline points="15 6 9 12 15 18"/>);
+const Calendar = mkIcon(<><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></>);
+const CalendarDays = mkIcon(<><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="13" x2="8.01" y2="13"/><line x1="12" y1="13" x2="12.01" y2="13"/><line x1="16" y1="13" x2="16.01" y2="13"/></>);
+const User = mkIcon(<><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></>);
+const Users = mkIcon(<><circle cx="9" cy="8" r="3.5"/><path d="M3 21v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M21 21v-1a5 5 0 0 0-3.5-4.8"/></>);
+const Flag = mkIcon(<><path d="M5 21V4"/><path d="M5 4h12l-2.5 4 2.5 4H5"/></>);
+const StickyNote = mkIcon(<><path d="M4 4h16v10l-6 6H4z"/><path d="M14 20v-6h6"/></>);
+const X = mkIcon(<><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></>);
+const LayoutGrid = mkIcon(<><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></>);
+const GanttChartSquare = mkIcon(<><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="7" y1="8" x2="13" y2="8"/><line x1="7" y1="12" x2="16" y2="12"/><line x1="7" y1="16" x2="11" y2="16"/></>);
+const Gauge = mkIcon(<><path d="M4 18a8 8 0 1 1 16 0"/><line x1="12" y1="15" x2="16" y2="10"/></>);
+const Search = mkIcon(<><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></>);
+const RotateCcw = mkIcon(<><path d="M4 12a8 8 0 1 0 2.5-5.8L3 9"/><polyline points="3 4 3 9 8 9"/></>);
+const Clock = mkIcon(<><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></>);
+const AlertCircle = mkIcon(<><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16" x2="12.01" y2="16"/></>);
+const AlertTriangle = mkIcon(<><path d="M12 3l9.5 17H2.5z"/><line x1="12" y1="9" x2="12" y2="14"/><line x1="12" y1="17" x2="12.01" y2="17"/></>);
+const FileText = mkIcon(<><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="14 3 14 9 20 9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></>);
+const Printer = mkIcon(<><polyline points="6 9 6 3 18 3 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7"/></>);
+const Download = mkIcon(<><path d="M12 3v12"/><polyline points="7 10 12 15 17 10"/><line x1="4" y1="21" x2="20" y2="21"/></>);
+const Trophy = mkIcon(<><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v1a3 3 0 0 0 3 3"/><path d="M17 6h3v1a3 3 0 0 1-3 3"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="10" y1="18" x2="14" y2="18"/></>);
+const Sheet = mkIcon(<><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></>);
+
+
+/* ============================== Design tokens ============================== */
+const CSS = `
+.pm, .pm * { box-sizing: border-box; }
+.pm {
+  --paper:#f4f2ec; --card:#ffffff; --ink:#1c2533; --ink-soft:#5a6373;
+  --line:#e2ddd2; --line-soft:#eee9df;
+  --serif: "Iowan Old Style","Palatino Linotype","URW Palladio L",Palatino,Georgia,serif;
+  --sans: ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono: ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --done:#3f7d4e; --prog:#c0892b; --block:#bf3b34; --idle:#9aa0a6;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.45;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.pm h1,.pm h2,.pm h3 { font-family: var(--serif); font-weight: 600; margin:0; letter-spacing:-0.01em; }
+.pm button { font-family: inherit; cursor:pointer; border:none; background:none; color:inherit; }
+.pm input,.pm select,.pm textarea { font-family: inherit; font-size:13px; color:var(--ink); }
+.pm .wrap { max-width:1120px; margin:0 auto; padding:0 22px 90px; }
+
+/* header */
+.pm .top { border-bottom:1px solid var(--line); background:var(--paper); position:sticky; top:0; z-index:30; }
+.pm .top-in { max-width:1120px; margin:0 auto; padding:18px 22px 0; }
+.pm .brand { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
+.pm .brand h1 { font-size:25px; }
+.pm .brand .sub { font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); }
+.pm .startbar { display:flex; align-items:center; gap:8px; margin-left:auto; font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-soft); }
+.pm .startbar input { border:1px solid var(--line); background:var(--card); padding:4px 7px; border-radius:5px; }
+.pm .tabs { display:flex; gap:2px; margin-top:16px; }
+.pm .tab { display:flex; align-items:center; gap:7px; padding:9px 15px; font-size:13px; font-weight:600; color:var(--ink-soft);
+  border-bottom:2px solid transparent; margin-bottom:-1px; border-radius:6px 6px 0 0; transition:color .15s,background .15s; }
+.pm .tab:hover { background:var(--line-soft); }
+.pm .tab.on { color:var(--ink); border-bottom-color:var(--ink); }
+.pm .saved { margin-left:auto; font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); display:flex; align-items:center; gap:6px; padding-bottom:9px; }
+.pm .dot-live { width:7px; height:7px; border-radius:50%; background:var(--done); }
+
+/* cards */
+.pm .card { background:var(--card); border:1px solid var(--line); border-radius:11px; }
+.pm .sec { margin-top:30px; }
+.pm .sec-head { display:flex; align-items:center; gap:12px; margin-bottom:13px; }
+.pm .sec-bar { width:4px; height:30px; border-radius:3px; }
+.pm .sec-head h2 { font-size:19px; }
+.pm .sec-head .meta { font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; color:var(--ink-soft); margin-left:4px; }
+.pm .sec-prog { margin-left:auto; display:flex; align-items:center; gap:9px; min-width:160px; }
+
+/* progress bar */
+.pm .bar { height:7px; border-radius:4px; background:var(--line-soft); overflow:hidden; flex:1; }
+.pm .bar > i { display:block; height:100%; border-radius:4px; transition:width .4s ease; }
+.pm .pct { font-family:var(--mono); font-size:11px; color:var(--ink-soft); min-width:34px; text-align:right; }
+
+/* initiative row */
+.pm .init { border-top:1px solid var(--line-soft); }
+.pm .init:first-child { border-top:none; }
+.pm .init-head { display:flex; align-items:center; gap:12px; padding:13px 16px; transition:background .12s; }
+.pm .init-head:hover { background:#faf8f3; }
+.pm .chev { color:var(--ink-soft); flex-shrink:0; display:flex; }
+.pm .init-title { font-size:14px; font-weight:600; flex:1; min-width:0; }
+.pm .init-sub { font-family:var(--mono); font-size:10.5px; color:var(--ink-soft); margin-top:2px; display:flex; gap:12px; flex-wrap:wrap; }
+.pm .mini-bar { width:62px; }
+
+/* pills */
+.pm .pill { font-family:var(--mono); font-size:10px; letter-spacing:.05em; text-transform:uppercase; padding:3px 8px; border-radius:20px; font-weight:600; white-space:nowrap; border:1px solid transparent; }
+.pm select.pill { -webkit-appearance:none; appearance:none; padding-right:8px; cursor:pointer; }
+.pm .pri { display:inline-flex; align-items:center; gap:4px; font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); }
+
+/* detail panel */
+.pm .detail { padding:4px 16px 20px 40px; background:#faf8f3; border-top:1px solid var(--line-soft); }
+.pm .field-row { display:flex; gap:18px; flex-wrap:wrap; padding:14px 0 16px; border-bottom:1px solid var(--line-soft); }
+.pm .field { display:flex; flex-direction:column; gap:5px; }
+.pm .field label { font-family:var(--mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); }
+.pm .field input, .pm .field select { border:1px solid var(--line); background:var(--card); padding:6px 9px; border-radius:6px; min-width:150px; }
+.pm .col-title { font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); margin:16px 0 9px; display:flex; align-items:center; gap:7px; }
+
+/* checkpoints */
+.pm .cp { display:flex; align-items:center; gap:10px; padding:7px 0; border-bottom:1px dotted var(--line); }
+.pm .cp:last-of-type { border-bottom:none; }
+.pm .cp-check { flex-shrink:0; display:flex; color:var(--idle); transition:color .15s; }
+.pm .cp-check.done { color:var(--done); }
+.pm .cp-label { flex:1; font-size:13px; background:transparent; border:none; padding:2px; border-radius:4px; }
+.pm .cp-label:focus { background:#fff; outline:1px solid var(--line); }
+.pm .cp.done .cp-label { color:var(--ink-soft); text-decoration:line-through; }
+.pm .cp-date { border:1px solid var(--line); background:var(--card); padding:4px 7px; border-radius:6px; font-family:var(--mono); font-size:11px; }
+.pm .icon-btn { color:var(--idle); display:flex; padding:4px; border-radius:5px; transition:color .12s,background .12s; }
+.pm .icon-btn:hover { color:var(--block); background:#fff; }
+
+/* notes */
+.pm .note { display:flex; gap:9px; padding:9px 11px; background:var(--card); border:1px solid var(--line); border-radius:8px; margin-bottom:7px; align-items:flex-start; }
+.pm .note p { margin:0; font-size:13px; flex:1; white-space:pre-wrap; }
+.pm .note .stamp { font-family:var(--mono); font-size:9.5px; color:var(--ink-soft); margin-top:3px; }
+
+/* add row */
+.pm .add-row { display:flex; gap:8px; margin-top:9px; }
+.pm .add-row input, .pm .add-row textarea { flex:1; border:1px solid var(--line); background:var(--card); padding:7px 10px; border-radius:7px; resize:vertical; }
+.pm .btn { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; padding:7px 13px; border-radius:7px;
+  background:var(--ink); color:#fff; transition:opacity .12s; white-space:nowrap; }
+.pm .btn:hover { opacity:.88; }
+.pm .btn.ghost { background:transparent; color:var(--ink-soft); border:1px solid var(--line); }
+.pm .btn.ghost:hover { color:var(--ink); background:var(--line-soft); }
+.pm .add-init { display:flex; gap:8px; padding:12px 16px; border-top:1px solid var(--line-soft); }
+.pm .add-init input { flex:1; border:1px solid var(--line); background:var(--card); padding:7px 10px; border-radius:7px; }
+
+/* overview */
+.pm .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:24px; }
+.pm .stat { padding:18px 18px 16px; }
+.pm .stat .n { font-family:var(--serif); font-size:34px; line-height:1; }
+.pm .stat .l { font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-top:8px; }
+.pm .ov-grid { display:grid; grid-template-columns:1.3fr 1fr; gap:18px; margin-top:24px; align-items:start; }
+.pm .panel { padding:18px 20px 20px; }
+.pm .panel h3 { font-size:16px; margin-bottom:4px; }
+.pm .panel .ph { font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:14px; }
+.pm .cat-line { display:flex; align-items:center; gap:11px; padding:9px 0; border-top:1px solid var(--line-soft); }
+.pm .cat-line:first-of-type { border-top:none; }
+.pm .swatch { width:9px; height:9px; border-radius:3px; flex-shrink:0; }
+.pm .cat-line .name { font-size:13px; font-weight:600; flex:1; }
+.pm .agenda { display:flex; gap:11px; padding:10px 0; border-top:1px solid var(--line-soft); align-items:flex-start; }
+.pm .agenda:first-of-type { border-top:none; }
+.pm .agenda .when { font-family:var(--mono); font-size:11px; color:var(--ink); width:60px; flex-shrink:0; }
+.pm .agenda .what { font-size:12.5px; flex:1; }
+.pm .agenda .who { font-family:var(--mono); font-size:10px; color:var(--ink-soft); }
+.pm .overdue { color:var(--block) !important; }
+
+/* schedule */
+.pm .phase { margin-top:26px; }
+.pm .phase-head { display:flex; align-items:baseline; gap:12px; margin-bottom:12px; }
+.pm .phase-head h2 { font-size:18px; }
+.pm .phase-head .span { font-family:var(--mono); font-size:11px; letter-spacing:.06em; color:var(--ink-soft); }
+.pm .rail-row { display:flex; align-items:center; gap:16px; padding:12px 16px; border-top:1px solid var(--line-soft); }
+.pm .rail-row:first-of-type { border-top:none; }
+.pm .rail-label { width:230px; flex-shrink:0; font-size:13px; font-weight:600; display:flex; gap:8px; align-items:center; }
+.pm .rail-label .swatch { width:7px; height:18px; border-radius:2px; }
+.pm .rail { flex:1; position:relative; height:36px; }
+.pm .rail-line { position:absolute; top:50%; left:0; right:0; height:2px; background:var(--line); transform:translateY(-50%); }
+.pm .node { position:absolute; top:50%; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; gap:4px; }
+.pm .node .ball { width:13px; height:13px; border-radius:50%; background:var(--card); border:2px solid var(--idle); }
+.pm .node.done .ball { background:var(--done); border-color:var(--done); }
+.pm .node .tip { font-family:var(--mono); font-size:9px; color:var(--ink-soft); white-space:nowrap; position:absolute; top:16px; }
+
+.pm .empty { text-align:center; color:var(--ink-soft); font-size:13px; padding:30px; }
+.pm .toolbar { display:flex; gap:10px; margin-top:22px; flex-wrap:wrap; align-items:center; }
+.pm .search { display:flex; align-items:center; gap:7px; border:1px solid var(--line); background:var(--card); padding:6px 11px; border-radius:8px; flex:1; min-width:180px; }
+.pm .search input { border:none; background:transparent; flex:1; }
+.pm .toolbar select { border:1px solid var(--line); background:var(--card); padding:7px 10px; border-radius:8px; }
+
+@media (max-width:760px){
+  .pm .stats { grid-template-columns:repeat(2,1fr); }
+  .pm .ov-grid { grid-template-columns:1fr; }
+  .pm .rail-label { width:140px; }
+  .pm .sec-prog { display:none; }
+  .pm .detail { padding-left:16px; }
+}
+@media (prefers-reduced-motion: reduce){ .pm * { transition:none !important; } }
+
+/* export menu */
+.pm .export-wrap { position:relative; }
+.pm .export-menu { position:absolute; right:0; top:38px; background:var(--card); border:1px solid var(--line);
+  border-radius:10px; box-shadow:0 10px 30px rgba(28,37,51,.14); padding:6px; z-index:40; min-width:236px; }
+.pm .export-menu button { display:flex; align-items:flex-start; gap:10px; width:100%; text-align:left; padding:10px 11px; border-radius:7px; transition:background .12s; }
+.pm .export-menu button:hover { background:var(--line-soft); }
+.pm .export-menu .mt { font-size:13px; font-weight:600; }
+.pm .export-menu .md { font-size:11px; color:var(--ink-soft); margin-top:2px; line-height:1.3; }
+
+/* report overlay */
+.pm .report-overlay { position:fixed; inset:0; background:rgba(28,37,51,.45); z-index:60; overflow:auto; padding:26px 16px 60px; }
+.pm .report-toolbar { max-width:760px; margin:0 auto 14px; display:flex; gap:10px; align-items:center; }
+.pm .report-toolbar .sp { flex:1; }
+.pm .report-toolbar .btn-light { background:#fff; color:var(--ink); }
+.pm .report-sheet { max-width:760px; margin:0 auto; background:#fff; border-radius:6px; padding:46px 52px 56px;
+  box-shadow:0 16px 50px rgba(0,0,0,.3); }
+.pm .rp-eyebrow { font-family:var(--mono); font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-soft); }
+.pm .rp-title { font-family:var(--serif); font-size:27px; margin:7px 0 3px; }
+.pm .rp-meta { font-family:var(--mono); font-size:11px; color:var(--ink-soft); }
+.pm .rp-rule { height:2px; background:var(--ink); margin:18px 0 22px; }
+.pm .rp-h { font-family:var(--serif); font-size:16px; margin:26px 0 11px; padding-bottom:6px; border-bottom:1px solid var(--line); }
+.pm .rp-kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:4px 0 6px; }
+.pm .rp-kpi { border:1px solid var(--line); border-radius:9px; padding:13px 14px; }
+.pm .rp-kpi .n { font-family:var(--serif); font-size:27px; line-height:1; }
+.pm .rp-kpi .l { font-family:var(--mono); font-size:9px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-soft); margin-top:7px; }
+.pm .rp-ws { display:flex; align-items:center; gap:11px; padding:8px 0; border-top:1px solid var(--line-soft); }
+.pm .rp-ws:first-of-type { border-top:none; }
+.pm .rp-ws .nm { flex:1; font-size:13px; font-weight:600; }
+.pm .rp-ws .ct { font-family:var(--mono); font-size:11px; color:var(--ink-soft); width:108px; text-align:right; }
+.pm .rp-li { padding:7px 0; border-top:1px solid var(--line-soft); font-size:13px; display:flex; gap:10px; align-items:baseline; }
+.pm .rp-li:first-of-type { border-top:none; }
+.pm .rp-li .tag { font-family:var(--mono); font-size:10px; color:var(--ink-soft); white-space:nowrap; }
+.pm .rp-owner { margin:18px 0 4px; padding:9px 13px; background:var(--paper); border-radius:8px; display:flex; align-items:center; gap:10px; }
+.pm .rp-owner .who { font-family:var(--serif); font-size:15px; font-weight:600; flex:1; }
+.pm .rp-owner .cnt { font-family:var(--mono); font-size:11px; padding:3px 9px; border-radius:20px; background:#bf3b3416; color:var(--block); font-weight:600; }
+.pm .rp-late { color:var(--block); font-weight:600; }
+.pm .rp-foot { margin-top:34px; padding-top:14px; border-top:1px solid var(--line); font-family:var(--mono); font-size:10px; color:var(--ink-soft); }
+.pm .rp-empty { padding:22px; text-align:center; color:var(--ink-soft); font-size:13px; border:1px dashed var(--line); border-radius:9px; }
+.pm .rp-nudge { font-size:12px; color:var(--ink-soft); margin:5px 0 0; padding-left:2px; font-style:italic; }
+
+@media print {
+  .pm { background:#fff !important; }
+  .pm .top, .pm .wrap, .report-toolbar, .no-print { display:none !important; }
+  .pm .report-overlay { position:static !important; inset:auto !important; background:#fff !important; padding:0 !important; overflow:visible !important; }
+  .pm .report-sheet { box-shadow:none !important; border-radius:0 !important; max-width:none !important; margin:0 !important; padding:0 14px !important; }
+  .pm .rp-owner, .pm .rp-li, .pm .rp-ws { break-inside:avoid; }
+}
+@media (max-width:760px){
+  .pm .report-sheet { padding:30px 22px 40px; }
+  .pm .rp-kpis { grid-template-columns:repeat(2,1fr); }
+}
+
+/* accomplishments by priority */
+.pm .prio-block { padding:13px 0; border-top:1px solid var(--line-soft); }
+.pm .prio-block:first-of-type { border-top:none; }
+.pm .prio-head { display:flex; align-items:center; gap:10px; }
+.pm .prio-name { font-size:13px; font-weight:600; flex:1; }
+.pm .prio-count { font-family:var(--mono); font-size:11px; color:var(--ink-soft); min-width:118px; text-align:right; }
+.pm .prio-list { display:flex; flex-wrap:wrap; gap:7px; margin-top:10px; padding-left:23px; }
+.pm .acc-chip { display:inline-flex; align-items:center; gap:5px; font-size:12px; background:#3f7d4e14; border:1px solid #3f7d4e33; color:var(--ink); padding:4px 10px; border-radius:20px; }
+.pm .prio-none { font-size:12px; color:var(--ink-soft); margin-top:7px; padding-left:23px; font-style:italic; }
+
+/* calendar */
+.pm .cal-head { display:flex; align-items:center; gap:12px; margin-top:24px; margin-bottom:13px; }
+.pm .cal-head h2 { font-size:20px; }
+.pm .cal-nav { display:flex; gap:6px; margin-left:auto; flex-wrap:wrap; }
+.pm .cal-nav button { border:1px solid var(--line); background:var(--card); border-radius:7px; padding:6px 11px; font-size:12px; font-weight:600; display:flex; align-items:center; gap:5px; transition:background .12s; }
+.pm .cal-nav button:hover { background:var(--line-soft); }
+.pm .cal-legend { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:13px; }
+.pm .cal-legend > span { font-size:11px; color:var(--ink-soft); display:flex; align-items:center; gap:6px; }
+.pm .cal-scroll { overflow-x:auto; }
+.pm .cal-grid { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); border:1px solid var(--line); border-radius:11px; overflow:hidden; background:var(--card); min-width:680px; }
+.pm .cal-dow { padding:9px 10px; font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); border-bottom:1px solid var(--line); border-right:1px solid var(--line-soft); background:var(--paper); }
+.pm .cal-dow:nth-child(7n){ border-right:none; }
+.pm .cal-cell { min-height:106px; padding:6px 7px; border-right:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft); }
+.pm .cal-cell:nth-child(7n){ border-right:none; }
+.pm .cal-cell.blank { background:#faf8f3; }
+.pm .cal-cell.is-start { box-shadow:inset 0 0 0 2px var(--block); }
+.pm .cal-daynum { font-family:var(--mono); font-size:12px; color:var(--ink-soft); margin-bottom:5px; display:flex; align-items:center; justify-content:space-between; min-height:21px; }
+.pm .cal-cell.today .cal-daynum b { background:var(--ink); color:#fff; border-radius:50%; width:21px; height:21px; display:inline-flex; align-items:center; justify-content:center; font-weight:600; }
+.pm .cal-start-flag { font-family:var(--mono); font-size:8px; letter-spacing:.04em; text-transform:uppercase; color:#fff; background:var(--block); padding:1px 6px; border-radius:10px; }
+.pm .cal-ev { font-size:10.5px; line-height:1.25; padding:2px 5px; border-radius:4px; margin-bottom:3px; border-left:3px solid; display:flex; gap:4px; align-items:center; }
+.pm .cal-ev .ev-t { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.pm .cal-ev.done { opacity:.55; }
+.pm .cal-ev.done .ev-t { text-decoration:line-through; }
+.pm .cal-more { font-family:var(--mono); font-size:9.5px; color:var(--ink-soft); padding-left:2px; }
+
+/* people view */
+.pm .who-badge { width:30px; height:30px; border-radius:50%; background:var(--ink); color:#fff; font-family:var(--mono); font-size:11px; font-weight:600; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.pm .person-card { padding:4px 16px 16px; }
+.pm .person-kpis { display:flex; gap:26px; padding:14px 0 8px; flex-wrap:wrap; }
+.pm .person-kpis .k { font-family:var(--mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); }
+.pm .person-kpis .k b { font-family:var(--serif); font-size:21px; font-weight:600; color:var(--ink); display:block; margin-bottom:2px; }
+.pm .person-sub { font-family:var(--mono); font-size:10px; letter-spacing:.11em; text-transform:uppercase; color:var(--ink-soft); margin:18px 0 7px; display:flex; align-items:center; gap:7px; padding-bottom:5px; border-bottom:1px solid var(--line); }
+.pm .prow { display:flex; align-items:center; gap:10px; padding:7px 0; border-top:1px solid var(--line-soft); font-size:13px; }
+.pm .prow:first-of-type { border-top:none; }
+.pm .prow .pt { flex:1; min-width:0; }
+.pm .prow .tag { font-family:var(--mono); font-size:10.5px; color:var(--ink-soft); white-space:nowrap; }
+.pm .prow .late { font-family:var(--mono); font-size:11px; color:var(--block); font-weight:600; white-space:nowrap; }
+
+/* RAG health */
+.pm .rag-dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; display:inline-block; }
+.pm .init-head .rag-dot { width:10px; height:10px; }
+.pm .rag-bar { display:flex; height:12px; border-radius:6px; overflow:hidden; background:var(--line-soft); margin:6px 0 12px; }
+.pm .rag-bar > div { height:100%; }
+.pm .rag-counts { display:flex; gap:20px; flex-wrap:wrap; }
+.pm .rag-count { font-size:12.5px; color:var(--ink-soft); display:flex; align-items:center; gap:7px; }
+.pm .rag-count b { font-family:var(--serif); font-size:17px; color:var(--ink); }
+
+/* activity log */
+.pm .act-row { display:flex; gap:12px; padding:7px 0; border-top:1px solid var(--line-soft); font-size:13px; align-items:baseline; }
+.pm .act-row:first-of-type { border-top:none; }
+.pm .act-when { font-family:var(--mono); font-size:10.5px; color:var(--ink-soft); width:108px; flex-shrink:0; }
+.pm .act-msg { flex:1; }
+
+/* confirm dialog */
+.pm .confirm-overlay { position:fixed; inset:0; background:rgba(28,37,51,.5); z-index:80; display:flex; align-items:center; justify-content:center; padding:20px; }
+.pm .confirm-box { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:22px 22px 16px; max-width:430px; width:100%; box-shadow:0 20px 60px rgba(0,0,0,.3); }
+.pm .confirm-msg { font-size:14px; line-height:1.5; margin-bottom:18px; }
+.pm .confirm-actions { display:flex; gap:10px; justify-content:flex-end; }
+
+/* connect screen */
+.pm .connect-wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
+.pm .connect-card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:34px 34px 26px; max-width:540px; width:100%; box-shadow:0 16px 50px rgba(28,37,51,.12); }
+.pm .connect-card h1 { font-size:26px; }
+.pm .connect-sub { font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); margin:4px 0 16px; }
+.pm .connect-text { font-size:13.5px; line-height:1.6; margin:0 0 18px; }
+.pm .connect-actions { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px; }
+.pm .connect-note { font-size:12.5px; line-height:1.5; color:var(--ink-soft); background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:11px 13px; margin:0 0 12px; }
+.pm .connect-fine { font-family:var(--mono); font-size:10px; letter-spacing:.05em; color:var(--ink-soft); margin:14px 0 0; }
+
+@media print {
+  .pm *, .pm *::before, .pm *::after { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .pm .report-sheet + .report-sheet { page-break-before:always; }
+}
+`;
+
+/* ============================== Seed plan ============================== */
+const CATS = [
+  { name: "Team & Culture", color: "#c2683a", items: [
+    { t: "Reestablish the weekly process meeting", ph: 1, pr: "high", cps: ["Define agenda, owner & cadence", "Hold first weekly meeting", "30-day cadence review"] },
+    { t: "Introduce a dedicated AI projects best-practices & status meeting", ph: 1, pr: "high", cps: ["Set format & invite list", "Run first session", "Capture best-practices doc"] },
+    { t: "Upgrade office environment and furniture", ph: 2, pr: "med", cps: ["Assess needs & budget", "Order furniture / fit-out", "Complete installation"] },
+    { t: "Improve audio infrastructure for video conferences", ph: 1, pr: "high", cps: ["Audit current AV gaps", "Procure equipment", "Install & test all rooms"] },
+    { t: "Define and communicate clear roles for all team members", ph: 1, pr: "high", cps: ["Draft role descriptions", "Review with team", "Publish & communicate"] },
+    { t: "CC to individually coach each team member", ph: 2, pr: "med", cps: ["Schedule 1:1 cadence", "First coaching round", "Quarterly progress review"] },
+    { t: "Schedule an offsite & implement a recurring culture meeting", ph: 2, pr: "med", cps: ["Pick date & venue", "Run offsite", "Launch recurring culture meeting"] },
+    { t: "Deliver two to three HBS case-study classes", ph: 3, pr: "med", cps: ["Select cases & facilitator", "Run first class", "Complete class series"] },
+    { t: "Provide training in public speaking & meeting facilitation", ph: 3, pr: "low", cps: ["Choose program / trainer", "First training session", "Practice & feedback round"] },
+    { t: "Expand team social events (happy hours, lunches, sports)", ph: 2, pr: "low", cps: ["Plan events calendar", "Host first events", "Review engagement"] },
+  ]},
+  { name: "Portfolio Management", color: "#2f6b5e", items: [
+    { t: "Build an AI-powered online deal-flow panel", ph: 2, pr: "high", cps: ["Define requirements", "Build MVP", "Roll out to team"] },
+    { t: "Implement a local ERP system with AI integration", ph: 3, pr: "high", cps: ["Select ERP & scope", "Configure & integrate AI", "Go live"] },
+    { t: "Develop an AI-assisted exit calculator tool", ph: 2, pr: "med", cps: ["Define model logic", "Build prototype", "Validate with real deals"] },
+    { t: "Consolidate all controls & systems into a unified AI database (US & Brazil)", ph: 3, pr: "high", cps: ["Map existing systems", "Design unified schema", "Migrate & validate data"] },
+    { t: "Integrate daily legal claims & portfolio movements into the AI ERP", ph: 4, pr: "med", cps: ["Define data feeds", "Build integration", "Confirm daily sync"] },
+    { t: "Improve communication & visibility on settlements & exits", ph: 1, pr: "high", cps: ["Define reporting format", "Set update cadence", "First distribution"] },
+  ]},
+  { name: "Partners & SG Ecosystem", color: "#5b6aa8", items: [
+    { t: "Implement formal governance for invested partners (Lass, VLS, Almina, Ticiano AI tool)", ph: 2, pr: "high", cps: ["Define reports, meetings & controls", "Agree cadence with partners", "First governance cycle"] },
+    { t: "Standardize the Consignado proposal for partners", ph: 1, pr: "high", cps: ["Draft standard proposal", "Internal review", "Approve & circulate"] },
+    { t: "Formalize the BLC proposal for partners", ph: 1, pr: "med", cps: ["Document framework", "Legal / IC review", "Publish final proposal"] },
+    { t: "Standardize the onboarding process for new partners", ph: 2, pr: "med", cps: ["Map onboarding steps", "Build checklist & templates", "Pilot with one partner"] },
+    { t: "Designate a single point of contact for each partner", ph: 1, pr: "high", cps: ["Map partners to owners", "Communicate to partners", "Confirm coverage"] },
+    { t: "Implement a partner risk report (admin, regulatory, development)", ph: 3, pr: "med", cps: ["Define risk indicators", "Build report template", "First reporting cycle"] },
+    { t: "Explore creation of a Consignado company modeled on Lass", ph: 4, pr: "low", cps: ["Feasibility study", "Business case & structure", "Go / no-go decision"] },
+  ]},
+  { name: "Investing, Due Diligence & Risk", color: "#a8443a", items: [
+    { t: "Develop a go/no-go checklist for new deals (pre-IC)", ph: 1, pr: "high", cps: ["Draft checklist", "Pilot on next deal", "Mandate before IC"] },
+    { t: "Establish a pipeline meeting without CC", ph: 1, pr: "med", cps: ["Set format & attendees", "Run first meeting", "Cadence review"] },
+    { t: "Merge the global BLC IC with the Consignado IC", ph: 2, pr: "med", cps: ["Align agendas & members", "Define merged process", "First combined IC"] },
+    { t: "Receive regular reports on legal status of cases & theses", ph: 1, pr: "high", cps: ["Define report scope", "Set cadence", "First report delivered"] },
+    { t: "Sharpen focus & communication in local IC meetings", ph: 1, pr: "med", cps: ["Define IC standards", "Update agenda template", "Review after 2 ICs"] },
+    { t: "Implement red/yellow/green flag reporting across risk layers (AI-monitored)", ph: 3, pr: "high", cps: ["Define flag criteria", "Build AI monitoring", "Roll out dashboard"] },
+    { t: "Establish an in-office CCO function with AI support", ph: 3, pr: "high", cps: ["Define CCO mandate", "Assign & tool up", "Operational review"] },
+    { t: "Create mandatory DD checklists for all asset classes", ph: 2, pr: "high", cps: ["Draft per asset class", "Review with team", "Mandate across deals"] },
+  ]},
+  { name: "Fundraising, PR & Investor Relations", color: "#b08527", items: [
+    { t: "Provide IR with regular portfolio updates", ph: 1, pr: "high", cps: ["Define update pack", "Set cadence", "First update sent"] },
+    { t: "Enhance investor communication with AI-assisted tools", ph: 2, pr: "med", cps: ["Select tools", "Build templates", "Roll out to IR"] },
+    { t: "Increase events with local partners", ph: 2, pr: "med", cps: ["Plan event calendar", "Host first event", "Review pipeline impact"] },
+    { t: "Strengthen local fundraising efforts", ph: 2, pr: "high", cps: ["Define target investors", "Outreach plan", "First commitments"] },
+    { t: "Develop a local fundraising strategy for US products (e.g., XP)", ph: 3, pr: "med", cps: ["Market & product analysis", "Draft strategy", "Approve & launch"] },
+  ]},
+];
+
+const PHASE_LEN = 3; // months per phase
+const STATUSES = [
+  { v: "not_started", l: "Not started", c: "var(--idle)" },
+  { v: "in_progress", l: "In progress", c: "var(--prog)" },
+  { v: "blocked", l: "Blocked", c: "var(--block)" },
+  { v: "done", l: "Done", c: "var(--done)" },
+];
+const PRIORITIES = [
+  { v: "high", l: "High", c: "#bf3b34" },
+  { v: "med", l: "Medium", c: "#c0892b" },
+  { v: "low", l: "Low", c: "#9aa0a6" },
+];
+
+/* ============================== Date utils ============================== */
+const DAY = 86400000;
+const iso = (d) => d.toISOString().slice(0, 10);
+const parse = (s) => { const [y, m, d] = s.split("-").map(Number); return new Date(Date.UTC(y, m - 1, d)); };
+const addMonths = (d, n) => { const x = new Date(d); x.setUTCMonth(x.getUTCMonth() + n); return x; };
+const addDays = (d, n) => new Date(d.getTime() + n * DAY);
+const todayISO = () => iso(new Date());
+const fmt = (s) => s ? parse(s).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }) : "—";
+const fmtShort = (s) => s ? parse(s).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" }) : "—";
+const uid = () => Math.random().toString(36).slice(2, 10);
+
+function defaultStart() {
+  return "2026-06-18"; // overall plan start
+}
+
+function buildSeed(startISO) {
+  const start = parse(startISO);
+  return {
+    version: 1,
+    start: startISO,
+    cats: CATS.map((c) => ({
+      id: uid(),
+      name: c.name,
+      color: c.color,
+      items: c.items.map((it) => {
+        const ph = Math.min(it.ph, 3);
+        const pStart = addMonths(start, (ph - 1) * PHASE_LEN);
+        const span = PHASE_LEN * 30;
+        const k = it.cps.length;
+        const cps = it.cps.map((label, i) => ({
+          id: uid(),
+          label,
+          date: iso(addDays(pStart, Math.round(((i + 1) / (k + 1)) * span))),
+          done: false,
+        }));
+        return {
+          id: uid(),
+          title: it.t,
+          owner: "",
+          owner2: "",
+          status: "not_started",
+          phase: ph,
+          start: iso(pStart),
+          due: cps[cps.length - 1].date,
+          checkpoints: cps,
+          notes: [],
+        };
+      }),
+    })),
+  };
+}
+
+/* ============================== Persistence (shared file) ============================== */
+const FSA_OK = typeof window !== "undefined" && "showOpenFilePicker" in window && "showSaveFilePicker" in window;
+const fileStore = { handle: null, lastText: null };
+async function ensureWrite(h) {
+  try {
+    const opts = { mode: "readwrite" };
+    if (h.queryPermission && (await h.queryPermission(opts)) === "granted") return true;
+    if (h.requestPermission && (await h.requestPermission(opts)) === "granted") return true;
+    return false;
+  } catch (e) { return true; }
+}
+async function readHandle(h) {
+  const f = await h.getFile();
+  const text = await f.text();
+  fileStore.lastText = text;
+  return text && text.trim() ? migrate(JSON.parse(text)) : null;
+}
+async function writeHandle(h, data) {
+  await ensureWrite(h);
+  const text = JSON.stringify(data, null, 2);
+  const w = await h.createWritable();
+  await w.write(text);
+  await w.close();
+  fileStore.lastText = text; // we just wrote this exact text — this is our baseline
+}
+
+/* ============================== Small components ============================== */
+function ProgressBar({ pct, color }) {
+  return (
+    <div className="sec-prog" style={{ minWidth: 0, flex: "none" }}>
+      <div className="bar" style={{ width: 90 }}><i style={{ width: `${pct}%`, background: color }} /></div>
+      <span className="pct">{pct}%</span>
+    </div>
+  );
+}
+
+function pctOf(item) {
+  if (!item.checkpoints.length) return item.status === "done" ? 100 : 0;
+  return Math.round((item.checkpoints.filter((c) => c.done).length / item.checkpoints.length) * 100);
+}
+
+// aggregate progress: simple average of per-topic completion
+function weightedPct(items) {
+  if (!items.length) return 0;
+  return Math.round(items.reduce((a, it) => a + pctOf(it), 0) / items.length);
+}
+
+// combined assignee label: "PIC · Co-responsible"
+const assignLabel = (it) => [it.owner, it.owner2].filter(Boolean).join(" · ") || "Unassigned";
+
+// normalize older data: split "X e Y" owners into PIC + co-responsible, cap phases at 3
+function migrate(d) {
+  if (!d || !Array.isArray(d.cats)) return d;
+  d.cats.forEach((c) => c.items.forEach((it) => {
+    if (!it.owner2) {
+      const m = (it.owner || "").match(/^(.*\S)\s+e\s+(\S.*)$/);
+      if (m) { it.owner = m[1].trim(); it.owner2 = m[2].trim(); }
+      else it.owner2 = "";
+    }
+    if (typeof it.phase === "number" && it.phase > 3) it.phase = 3;
+  }));
+  return d;
+}
+
+/* ---- RAG health: red / amber / green, auto-derived from the schedule ---- */
+const RAG = {
+  green: { l: "On track", c: "#3f7d4e" },
+  amber: { l: "At risk", c: "#c0892b" },
+  red: { l: "Off track", c: "#bf3b34" },
+};
+const dayGap = (aISO, bISO) => Math.round((parse(bISO) - parse(aISO)) / DAY);
+
+function autoHealth(it) {
+  const today = todayISO();
+  if (it.status === "done") return "green";
+  if (it.status === "blocked") return "red";
+  const overdueCp = it.checkpoints.some((cp) => !cp.done && cp.date < today);
+  if (overdueCp || it.due < today) return "red";
+  const soon = it.checkpoints.some((cp) => !cp.done && cp.date >= today && dayGap(today, cp.date) <= 14);
+  const p = pctOf(it);
+  let behind = false;
+  if (it.start <= today && it.due > it.start) {
+    const total = Math.max(1, dayGap(it.start, it.due));
+    const elapsed = Math.max(0, Math.min(total, dayGap(it.start, today)));
+    behind = p < (elapsed / total) * 100 - 25;
+  }
+  if (behind || (soon && p < 50)) return "amber";
+  return "green";
+}
+function healthOf(it) {
+  const h = it.health || "auto";
+  return h === "auto" ? autoHealth(it) : h;
+}
+function healthReason(it) {
+  const today = todayISO();
+  if (it.status === "blocked") return "blocked";
+  const od = it.checkpoints.filter((cp) => !cp.done && cp.date < today);
+  if (od.length) return `${od.length} checkpoint${od.length > 1 ? "s" : ""} overdue`;
+  if (it.due < today && it.status !== "done") return "past target date";
+  const soon = it.checkpoints.some((cp) => !cp.done && cp.date >= today && dayGap(today, cp.date) <= 14);
+  if (soon && pctOf(it) < 50) return "due soon, low progress";
+  return "behind schedule";
+}
+
+/* ---- activity log: only major ("full") changes ---- */
+const MAX_ACTIVITY = 500;
+const stLabel = (v) => (STATUSES.find((s) => s.v === v) || {}).l || v;
+const ev = (type, topic, msg) => ({ id: uid(), ts: new Date().toISOString(), type, topic, msg });
+const fmtDT = (ts) => { try { return new Date(ts).toLocaleString("en-US", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" }); } catch (e) { return ts; } };
+
+function diffActivity(oldD, nextD) {
+  const out = [];
+  const oldItems = {}, nextItems = {};
+  oldD.cats.forEach((c) => c.items.forEach((it) => { oldItems[it.id] = { it, cat: c }; }));
+  nextD.cats.forEach((c) => c.items.forEach((it) => { nextItems[it.id] = { it, cat: c }; }));
+
+  Object.values(nextItems).forEach(({ it, cat }) => {
+    if (!oldItems[it.id]) out.push(ev("add", it.title, `Added “${it.title}” to ${cat.name}`));
+  });
+  Object.values(oldItems).forEach(({ it }) => {
+    if (!nextItems[it.id]) out.push(ev("remove", it.title, `Removed “${it.title}”`));
+  });
+  Object.values(nextItems).forEach(({ it }) => {
+    const o = oldItems[it.id]; if (!o) return; const ot = o.it;
+    // task renamed
+    if (ot.title !== it.title)
+      out.push(ev("rename", it.title, `Task changed from “${ot.title}” to “${it.title}”`));
+    // status changed / completed
+    if (ot.status !== it.status) {
+      out.push(it.status === "done"
+        ? ev("done", it.title, `Completed “${it.title}”`)
+        : ev("status", it.title, `“${it.title}”: ${stLabel(ot.status)} → ${stLabel(it.status)}`));
+    }
+    // assignment changed (PIC and/or co-responsible), shown as one event with both names
+    if (assignLabel(ot) !== assignLabel(it)) {
+      out.push(assignLabel(it) === "Unassigned"
+        ? ev("owner", it.title, `“${it.title}”: unassigned`)
+        : ev("owner", it.title, `Assigned “${it.title}” to ${assignLabel(it)}`));
+    }
+  });
+  return out;
+}
+
+/* ---- history: weekly progress snapshots ---- */
+function weekKey(isoDate) {
+  const d = parse(isoDate);
+  const t = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+  const day = (t.getUTCDay() + 6) % 7;           // Mon = 0
+  t.setUTCDate(t.getUTCDate() - day + 3);         // shift to that week's Thursday
+  const firstThu = new Date(Date.UTC(t.getUTCFullYear(), 0, 4));
+  const fday = (firstThu.getUTCDay() + 6) % 7;
+  firstThu.setUTCDate(firstThu.getUTCDate() - fday + 3);
+  const week = 1 + Math.round((t - firstThu) / (7 * DAY));
+  return `${t.getUTCFullYear()}-W${String(week).padStart(2, "0")}`;
+}
+
+function snapshotOf(d) {
+  const items = d.cats.flatMap((c) => c.items);
+  const total = items.length;
+  const done = items.filter((it) => it.status === "done").length;
+  const overall = weightedPct(items);
+  return {
+    week: weekKey(todayISO()),
+    date: todayISO(),
+    overall, done, total,
+    cats: d.cats.map((c) => ({
+      name: c.name, color: c.color,
+      pct: weightedPct(c.items),
+    })),
+  };
+}
+
+// upsert one snapshot for the current ISO week, so each week has a single point that
+// updates live and freezes once the week passes
+function withSnapshot(d) {
+  const snap = snapshotOf(d);
+  const history = Array.isArray(d.history) ? [...d.history] : [];
+  const idx = history.findIndex((h) => h.week === snap.week);
+  if (idx >= 0) history[idx] = snap; else history.push(snap);
+  history.sort((a, b) => a.week.localeCompare(b.week));
+  return { ...d, history };
+}
+
+/* ============================== Initiative ============================== */
+function Initiative({ item, color, owners, onChange, onDelete, ask }) {
+  const [open, setOpen] = useState(false);
+  const [noteDraft, setNoteDraft] = useState("");
+  const pct = pctOf(item);
+  const st = STATUSES.find((s) => s.v === item.status);
+  const health = healthOf(item);
+  const rg = RAG[health];
+
+  const set = (patch) => onChange({ ...item, ...patch });
+  const setCp = (cid, patch) =>
+    set({ checkpoints: item.checkpoints.map((c) => (c.id === cid ? { ...c, ...patch } : c)) });
+  const changeStatus = (v) => {
+    const patch = { status: v };
+    if (v === "done" && !item.completedAt) patch.completedAt = todayISO();
+    if (v !== "done" && item.completedAt) patch.completedAt = null;
+    set(patch);
+  };
+
+  return (
+    <div className="init">
+      <div className="init-head" onClick={() => setOpen((o) => !o)}>
+        <span className="chev">{open ? <ChevronDown size={16} /> : <ChevronRight size={16} />}</span>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div className="init-title">{item.title}</div>
+          <div className="init-sub">
+            <span><User size={11} style={{ verticalAlign: -1 }} /> {assignLabel(item)}</span>
+            {item.status === "done" && item.completedAt
+              ? <span style={{ color: "var(--done)" }}><CheckCircle2 size={11} style={{ verticalAlign: -1 }} /> done {fmtShort(item.completedAt)}</span>
+              : <span><Calendar size={11} style={{ verticalAlign: -1 }} /> due {fmtShort(item.due)}</span>}
+            <span>Phase {item.phase}</span>
+          </div>
+        </div>
+        <span className="rag-dot" style={{ background: rg.c }}
+          title={`Health: ${rg.l}${item.status !== "done" && health !== "green" ? " — " + healthReason(item) : ""}${item.health && item.health !== "auto" ? " (manual)" : ""}`} />
+        <div className="bar mini-bar"><i style={{ width: `${pct}%`, background: color }} /></div>
+        <span className="pill" style={{ color: st.c, borderColor: st.c, background: st.c + "16" }}>{st.l}</span>
+        <button className="icon-btn" title="Delete initiative"
+          onClick={(e) => { e.stopPropagation(); ask(`Delete “${item.title}”? This can't be undone.`, onDelete, { danger: true, confirmLabel: "Delete" }); }}>
+          <Trash2 size={14} />
+        </button>
+      </div>
+
+      {open && (
+        <div className="detail" onClick={(e) => e.stopPropagation()}>
+          <div className="field-row">
+            <div className="field">
+              <label>Person in charge (PIC)</label>
+              <input list="pm-owners" value={item.owner} placeholder="Assign PIC…"
+                onChange={(e) => set({ owner: e.target.value })} />
+            </div>
+            <div className="field">
+              <label>Co-responsible</label>
+              <input list="pm-owners" value={item.owner2 || ""} placeholder="Optional…"
+                onChange={(e) => set({ owner2: e.target.value })} />
+            </div>
+            <div className="field">
+              <label>Status</label>
+              <select value={item.status} onChange={(e) => changeStatus(e.target.value)}>
+                {STATUSES.map((s) => <option key={s.v} value={s.v}>{s.l}</option>)}
+              </select>
+            </div>
+            <div className="field">
+              <label>Health (RAG)</label>
+              <select value={item.health || "auto"} onChange={(e) => set({ health: e.target.value })}>
+                <option value="auto">Auto · {RAG[autoHealth(item)].l}</option>
+                <option value="green">Green · on track</option>
+                <option value="amber">Amber · at risk</option>
+                <option value="red">Red · off track</option>
+              </select>
+            </div>
+            <div className="field">
+              <label>Phase</label>
+              <select value={item.phase} onChange={(e) => set({ phase: Number(e.target.value) })}>
+                {[1, 2, 3].map((n) => <option key={n} value={n}>Phase {n}</option>)}
+              </select>
+            </div>
+            <div className="field">
+              <label>Start</label>
+              <input type="date" value={item.start} onChange={(e) => set({ start: e.target.value })} />
+            </div>
+            <div className="field">
+              <label>Target date</label>
+              <input type="date" value={item.due} onChange={(e) => set({ due: e.target.value })} />
+            </div>
+          </div>
+
+          {/* checkpoints */}
+          <div className="col-title"><GanttChartSquare size={13} /> Checkpoints — {item.checkpoints.filter(c=>c.done).length}/{item.checkpoints.length} complete</div>
+          {item.checkpoints.map((c) => (
+            <div className={`cp${c.done ? " done" : ""}`} key={c.id}>
+              <button className={`cp-check${c.done ? " done" : ""}`} onClick={() => setCp(c.id, { done: !c.done })}>
+                {c.done ? <CheckCircle2 size={18} /> : <Circle size={18} />}
+              </button>
+              <input className="cp-label" value={c.label} onChange={(e) => setCp(c.id, { label: e.target.value })} />
+              <input className="cp-date" type="date" value={c.date} onChange={(e) => setCp(c.id, { date: e.target.value })} />
+              <button className="icon-btn" onClick={() => set({ checkpoints: item.checkpoints.filter((x) => x.id !== c.id) })}>
+                <X size={14} />
+              </button>
+            </div>
+          ))}
+          <div className="add-row">
+            <button className="btn ghost" onClick={() =>
+              set({ checkpoints: [...item.checkpoints, { id: uid(), label: "New checkpoint", date: item.due, done: false }] })}>
+              <Plus size={13} /> Add checkpoint
+            </button>
+          </div>
+
+          {/* notes */}
+          <div className="col-title"><StickyNote size={13} /> Points & notes</div>
+          {item.notes.map((n) => (
+            <div className="note" key={n.id}>
+              <p>{n.text}<br /><span className="stamp">{fmt(n.date)}</span></p>
+              <button className="icon-btn" onClick={() => set({ notes: item.notes.filter((x) => x.id !== n.id) })}>
+                <X size={14} />
+              </button>
+            </div>
+          ))}
+          <div className="add-row">
+            <textarea rows={1} value={noteDraft} placeholder="Add a point to this topic…"
+              onChange={(e) => setNoteDraft(e.target.value)}
+              onKeyDown={(e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) { addNote(); } }} />
+            <button className="btn" onClick={addNote}><Plus size={13} /> Add</button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+
+  function addNote() {
+    const t = noteDraft.trim();
+    if (!t) return;
+    set({ notes: [...item.notes, { id: uid(), text: t, date: todayISO() }] });
+    setNoteDraft("");
+  }
+}
+
+/* ============================== Board view ============================== */
+function Board({ data, owners, update, ask }) {
+  const [q, setQ] = useState("");
+  const [fStatus, setFStatus] = useState("all");
+  const [fOwner, setFOwner] = useState("all");
+  const [adding, setAdding] = useState({});
+
+  const matches = (it) =>
+    (q === "" || it.title.toLowerCase().includes(q.toLowerCase()) || assignLabel(it).toLowerCase().includes(q.toLowerCase())) &&
+    (fStatus === "all" || it.status === fStatus) &&
+    (fOwner === "all" || it.owner === fOwner || it.owner2 === fOwner);
+
+  return (
+    <>
+      <div className="toolbar">
+        <div className="search"><Search size={15} color="#9aa0a6" />
+          <input placeholder="Search topics or owners…" value={q} onChange={(e) => setQ(e.target.value)} /></div>
+        <select value={fStatus} onChange={(e) => setFStatus(e.target.value)}>
+          <option value="all">All statuses</option>
+          {STATUSES.map((s) => <option key={s.v} value={s.v}>{s.l}</option>)}
+        </select>
+        <select value={fOwner} onChange={(e) => setFOwner(e.target.value)}>
+          <option value="all">All owners</option>
+          {owners.map((o) => <option key={o} value={o}>{o}</option>)}
+        </select>
+      </div>
+
+      {data.cats.map((cat) => {
+        const visible = cat.items.filter(matches);
+        const pct = weightedPct(cat.items);
+        return (
+          <div className="sec" key={cat.id}>
+            <div className="sec-head">
+              <span className="sec-bar" style={{ background: cat.color }} />
+              <h2>{cat.name}</h2>
+              <span className="meta">{cat.items.length} topics</span>
+              <ProgressBar pct={pct} color={cat.color} />
+            </div>
+            <div className="card">
+              {visible.length === 0 && <div className="empty">No topics match the current filters.</div>}
+              {visible.map((it) => (
+                <Initiative key={it.id} item={it} color={cat.color} owners={owners} ask={ask}
+                  onChange={(next) => update((d) => patchItem(d, cat.id, it.id, next))}
+                  onDelete={() => update((d) => deleteItem(d, cat.id, it.id))} />
+              ))}
+              <div className="add-init">
+                <input placeholder="Add a new topic to this workstream…"
+                  value={adding[cat.id] || ""}
+                  onChange={(e) => setAdding({ ...adding, [cat.id]: e.target.value })}
+                  onKeyDown={(e) => { if (e.key === "Enter") addInit(cat); }} />
+                <button className="btn" onClick={() => addInit(cat)}><Plus size={13} /> Add topic</button>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </>
+  );
+
+  function addInit(cat) {
+    const t = (adding[cat.id] || "").trim();
+    if (!t) return;
+    const due = iso(addDays(parse(data.start), 30));
+    const ni = { id: uid(), title: t, owner: "", owner2: "", status: "not_started",
+      phase: 1, start: data.start, due, checkpoints: [], notes: [] };
+    update((d) => ({ ...d, cats: d.cats.map((c) => c.id === cat.id ? { ...c, items: [...c.items, ni] } : c) }));
+    setAdding({ ...adding, [cat.id]: "" });
+  }
+}
+
+function patchItem(d, catId, itemId, next) {
+  return { ...d, cats: d.cats.map((c) => c.id !== catId ? c
+    : { ...c, items: c.items.map((it) => it.id === itemId ? next : it) }) };
+}
+function deleteItem(d, catId, itemId) {
+  return { ...d, cats: d.cats.map((c) => c.id !== catId ? c
+    : { ...c, items: c.items.filter((it) => it.id !== itemId) }) };
+}
+
+/* ============================== Overview ============================== */
+function TrendChart({ history }) {
+  const pts = (history || []).filter((h) => h.total > 0);
+  if (pts.length < 2) {
+    return <div className="empty" style={{ padding: 22 }}>
+      Trend appears once there are at least two weeks of data. This week's progress is being recorded now.
+    </div>;
+  }
+  const W = 640, H = 150, padL = 30, padR = 12, padT = 12, padB = 22;
+  const n = pts.length;
+  const x = (i) => padL + (i / (n - 1)) * (W - padL - padR);
+  const y = (v) => padT + (1 - v / 100) * (H - padT - padB);
+  const line = pts.map((p, i) => `${i === 0 ? "M" : "L"}${x(i).toFixed(1)},${y(p.overall).toFixed(1)}`).join(" ");
+  const area = `${line} L${x(n - 1).toFixed(1)},${y(0).toFixed(1)} L${x(0).toFixed(1)},${y(0).toFixed(1)} Z`;
+  const last = pts[n - 1], prev = pts[n - 2];
+  const delta = last.overall - prev.overall;
+  return (
+    <div>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginBottom: 8 }}>
+        <span style={{ fontFamily: "var(--serif)", fontSize: 30 }}>{last.overall}%</span>
+        <span style={{ fontFamily: "var(--mono)", fontSize: 12, fontWeight: 600, color: delta > 0 ? "var(--done)" : delta < 0 ? "var(--block)" : "var(--ink-soft)" }}>
+          {delta > 0 ? "▲ +" : delta < 0 ? "▼ " : "→ "}{delta !== 0 ? Math.abs(delta) + " pts" : "no change"} vs last week
+        </span>
+      </div>
+      <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", height: "auto", display: "block" }} preserveAspectRatio="none">
+        {[0, 25, 50, 75, 100].map((g) => (
+          <g key={g}>
+            <line x1={padL} y1={y(g)} x2={W - padR} y2={y(g)} stroke="#eee9df" strokeWidth="1" />
+            <text x={padL - 6} y={y(g) + 3} textAnchor="end" fontFamily="monospace" fontSize="9" fill="#5a6373">{g}</text>
+          </g>
+        ))}
+        <path d={area} fill="#1c2533" fillOpacity="0.06" />
+        <path d={line} fill="none" stroke="#1c2533" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+        {pts.map((p, i) => (
+          <g key={i}>
+            <circle cx={x(i)} cy={y(p.overall)} r="3" fill="#ffffff" stroke="#1c2533" strokeWidth="2" />
+            {(i === 0 || i === n - 1 || i % Math.ceil(n / 6) === 0) &&
+              <text x={x(i)} y={H - 7} textAnchor="middle" fontFamily="monospace" fontSize="9" fill="#5a6373">{p.week.replace(/^\d+-/, "")}</text>}
+          </g>
+        ))}
+      </svg>
+    </div>
+  );
+}
+
+function Overview({ data }) {
+  const all = data.cats.flatMap((c) => c.items.map((it) => ({ ...it, cat: c })));
+  const total = all.length;
+  const done = all.filter((it) => it.status === "done").length;
+  const prog = all.filter((it) => it.status === "in_progress").length;
+  const overall = weightedPct(all);
+
+  const today = parse(todayISO());
+  const upcoming = data.cats.flatMap((c) =>
+    c.items.flatMap((it) => it.checkpoints.filter((cp) => !cp.done).map((cp) => ({
+      date: cp.date, label: cp.label, item: it.title, owner: assignLabel(it), color: c.color,
+      overdue: parse(cp.date) < today,
+    })))
+  ).sort((a, b) => a.date.localeCompare(b.date)).slice(0, 12);
+
+  const ragList = all.map((it) => ({ it, h: healthOf(it) }));
+  const rag = { green: 0, amber: 0, red: 0 };
+  ragList.forEach((r) => rag[r.h]++);
+  const attention = ragList.filter((r) => r.h !== "green")
+    .sort((a, b) => (a.h === "red" ? 0 : 1) - (b.h === "red" ? 0 : 1));
+  const activity = (data.activity || []).slice(-15).reverse();
+
+  return (
+    <>
+      <div className="stats">
+        <div className="card stat"><div className="n">{total}</div><div className="l">Topics tracked</div></div>
+        <div className="card stat"><div className="n" style={{ color: "var(--done)" }}>{overall}%</div><div className="l">Overall progress</div></div>
+        <div className="card stat"><div className="n" style={{ color: "var(--prog)" }}>{prog}</div><div className="l">In progress</div></div>
+        <div className="card stat"><div className="n">{done}/{total}</div><div className="l">Topics done</div></div>
+      </div>
+
+      <div className="card panel" style={{ marginTop: 18 }}>
+        <h3>Health (RAG)</h3>
+        <div className="ph">Auto-derived from the schedule · {rag.red} off track, {rag.amber} at risk, {rag.green} on track</div>
+        <div className="rag-bar">
+          {["green", "amber", "red"].map((k) => rag[k] > 0 && (
+            <div key={k} style={{ width: `${(rag[k] / total) * 100}%`, background: RAG[k].c }} title={`${rag[k]} ${RAG[k].l}`} />
+          ))}
+        </div>
+        <div className="rag-counts">
+          {["red", "amber", "green"].map((k) => (
+            <span key={k} className="rag-count"><span className="rag-dot" style={{ background: RAG[k].c }} /> <b>{rag[k]}</b> {RAG[k].l}</span>
+          ))}
+        </div>
+        {attention.length > 0 && (
+          <div style={{ marginTop: 6 }}>
+            <div className="person-sub" style={{ marginTop: 14 }}>Needs attention</div>
+            {attention.map(({ it, h }) => (
+              <div className="prow" key={it.id}>
+                <span className="rag-dot" style={{ background: RAG[h].c }} />
+                <span className="pt">{it.title}</span>
+                <span className="tag">{healthReason(it)}</span>
+                <span className="tag">{assignLabel(it)}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="card panel" style={{ marginTop: 18 }}>
+        <h3>Progress over time</h3>
+        <div className="ph">Overall completion by week — recorded automatically</div>
+        <TrendChart history={data.history} />
+      </div>
+
+      <div className="ov-grid">
+        <div className="card panel">
+          <h3>Progress by workstream</h3>
+          <div className="ph">Average completion across topics</div>
+          {data.cats.map((c) => {
+            const p = weightedPct(c.items);
+            return (
+              <div className="cat-line" key={c.id}>
+                <span className="swatch" style={{ background: c.color }} />
+                <span className="name">{c.name}</span>
+                <div className="bar" style={{ width: 130, flex: "none" }}><i style={{ width: `${p}%`, background: c.color }} /></div>
+                <span className="pct">{p}%</span>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="card panel">
+          <h3>Next checkpoints</h3>
+          <div className="ph">Soonest unfinished milestones</div>
+          {upcoming.length === 0 && <div className="empty">All checkpoints complete.</div>}
+          {upcoming.map((u, i) => (
+            <div className="agenda" key={i}>
+              <span className={`when${u.overdue ? " overdue" : ""}`}>{fmtShort(u.date)}</span>
+              <div className="what">{u.label}
+                <div className="who">{u.item} · {u.owner || "unassigned"}</div>
+              </div>
+              <span className="swatch" style={{ background: u.color, marginTop: 4 }} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="card panel" style={{ marginTop: 18 }}>
+        <h3>Accomplishments by phase</h3>
+        <div className="ph">What's done — and what's still open — in each phase</div>
+        {[1, 2, 3].map((ph) => {
+          const items = all.filter((it) => it.phase === ph);
+          const doneItems = items.filter((it) => it.status === "done");
+          const openCount = items.length - doneItems.length;
+          const pc = items.length ? Math.round((doneItems.length / items.length) * 100) : 0;
+          return (
+            <div className="prio-block" key={ph}>
+              <div className="prio-head">
+                <GanttChartSquare size={13} style={{ color: "var(--ink-soft)" }} />
+                <span className="prio-name">Phase {ph}</span>
+                <div className="bar" style={{ width: 120, flex: "none" }}><i style={{ width: `${pc}%`, background: "var(--ink)" }} /></div>
+                <span className="prio-count">{doneItems.length} done · {openCount} open</span>
+              </div>
+              {doneItems.length === 0
+                ? <div className="prio-none">Nothing completed yet in this phase.</div>
+                : <div className="prio-list">
+                    {doneItems.map((it) => (
+                      <span className="acc-chip" key={it.id} title={it.cat.name}>
+                        <Trophy size={11} style={{ color: "var(--done)" }} /> {it.title}
+                      </span>
+                    ))}
+                  </div>}
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="card panel" style={{ marginTop: 18 }}>
+        <h3>Recent activity</h3>
+        <div className="ph">Latest changes across the plan</div>
+        {activity.length === 0
+          ? <div className="empty" style={{ padding: 18 }}>No changes recorded yet.</div>
+          : activity.map((a) => (
+            <div className="act-row" key={a.id}>
+              <span className="act-when">{fmtDT(a.ts)}</span>
+              <span className="act-msg">{a.msg}</span>
+            </div>
+          ))}
+      </div>
+    </>
+  );
+}
+function Schedule({ data }) {
+  const start = parse(data.start);
+  const phases = [1, 2, 3].map((p) => {
+    const pStart = addMonths(start, (p - 1) * PHASE_LEN);
+    const pEnd = addDays(addMonths(pStart, PHASE_LEN), -1);
+    const items = data.cats.flatMap((c) => c.items.filter((it) => it.phase === p).map((it) => ({ ...it, color: c.color })));
+    return { p, pStart, pEnd, items, span: pEnd.getTime() - pStart.getTime() };
+  });
+
+  return (
+    <>
+      <div className="toolbar"><span className="ph" style={{ marginTop: 4 }}>
+        Suggested rollout across four quarterly phases from {fmt(data.start)}. Drag dates in the Board to adjust.
+      </span></div>
+      {phases.map((ph) => (
+        <div className="phase" key={ph.p}>
+          <div className="phase-head">
+            <h2>Phase {ph.p}</h2>
+            <span className="span">{fmt(iso(ph.pStart))} — {fmt(iso(ph.pEnd))} · {ph.items.length} topics</span>
+          </div>
+          <div className="card">
+            {ph.items.length === 0 && <div className="empty">No topics in this phase.</div>}
+            {ph.items.map((it) => (
+              <div className="rail-row" key={it.id}>
+                <div className="rail-label"><span className="swatch" style={{ background: it.color }} />{it.title}</div>
+                <div className="rail">
+                  <div className="rail-line" />
+                  {it.checkpoints.map((cp) => {
+                    let pos = ((parse(cp.date).getTime() - ph.pStart.getTime()) / ph.span) * 100;
+                    pos = Math.max(3, Math.min(97, pos));
+                    return (
+                      <div className={`node${cp.done ? " done" : ""}`} key={cp.id} style={{ left: `${pos}%` }} title={`${cp.label} · ${fmt(cp.date)}`}>
+                        <span className="ball" />
+                        <span className="tip">{fmtShort(cp.date)}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </>
+  );
+}
+
+/* ============================== Reports ============================== */
+const dayDiff = (aISO, bISO) => Math.round((parse(bISO) - parse(aISO)) / DAY);
+
+// Build a multi-sheet .xlsx that mirrors the app's structure, then download it.
+function exportExcel(data) {
+  try {
+    const today = todayISO();
+    const all = data.cats.flatMap((c) => c.items.map((it) => ({ ...it, cat: c })));
+    const stL = (v) => (STATUSES.find((s) => s.v === v) || {}).l || v;
+    const cpDone = (it) => it.checkpoints.filter((c) => c.done).length;
+    const overdueCp = (it) => it.checkpoints.filter((c) => !c.done && c.date < today).length;
+    const setZ = (ws, r, c, z) => { const a = XLSX.utils.encode_cell({ r, c }); if (ws[a]) ws[a].z = z; };
+    const fmtPctCol = (ws, col, rows) => { for (let r = 1; r <= rows; r++) setZ(ws, r, col, "0%"); };
+
+    const total = all.length;
+    const done = all.filter((it) => it.status === "done").length;
+    const prog = all.filter((it) => it.status === "in_progress").length;
+    const overall = weightedPct(all);
+    const rag = { green: 0, amber: 0, red: 0 };
+    all.forEach((it) => rag[healthOf(it)]++);
+
+    /* ---- Summary ---- */
+    const sAoa = [];
+    sAoa.push(["Operating Plan — Implementation Tracker"]);
+    sAoa.push(["Generated", fmt(today)]);
+    sAoa.push(["Plan start", fmt(data.start)]);
+    sAoa.push([]);
+    const overallRow = sAoa.length; sAoa.push(["Overall progress", overall / 100]);
+    sAoa.push(["Topics complete", `${done} / ${total}`]);
+    sAoa.push(["In progress", prog]);
+    sAoa.push(["Off track (Red)", rag.red]);
+    sAoa.push(["At risk (Amber)", rag.amber]);
+    sAoa.push(["On track (Green)", rag.green]);
+    sAoa.push([]);
+    sAoa.push(["Progress by workstream"]);
+    sAoa.push(["Workstream", "Progress", "Done", "Total"]);
+    const wsStart = sAoa.length;
+    data.cats.forEach((c) => sAoa.push([c.name, weightedPct(c.items) / 100, c.items.filter((it) => it.status === "done").length, c.items.length]));
+    sAoa.push([]);
+    sAoa.push(["Accomplishments by phase"]);
+    sAoa.push(["Phase", "Done", "Open", "Completion"]);
+    const prioStart = sAoa.length;
+    [1, 2, 3].forEach((ph) => { const items = all.filter((it) => it.phase === ph); const d = items.filter((it) => it.status === "done").length; sAoa.push(["Phase " + ph, d, items.length - d, items.length ? d / items.length : 0]); });
+    const wsS = XLSX.utils.aoa_to_sheet(sAoa);
+    wsS["!cols"] = [{ wch: 36 }, { wch: 12 }, { wch: 10 }, { wch: 10 }];
+    setZ(wsS, overallRow, 1, "0%");
+    for (let i = 0; i < data.cats.length; i++) setZ(wsS, wsStart + i, 1, "0%");
+    for (let i = 0; i < 3; i++) setZ(wsS, prioStart + i, 3, "0%");
+
+    /* ---- Topics ---- */
+    const tHead = ["Workstream", "Topic", "PIC", "Co-responsible", "Status", "Health", "Phase", "Progress", "Start", "Target date", "Completed", "Checkpoints", "Overdue", "Notes"];
+    const tRows = all.map((it) => [
+      it.cat.name, it.title, it.owner || "", it.owner2 || "", stL(it.status),
+      RAG[healthOf(it)].l + (it.health && it.health !== "auto" ? " (manual)" : ""),
+      it.phase, pctOf(it) / 100, fmt(it.start), fmt(it.due),
+      it.status === "done" && it.completedAt ? fmt(it.completedAt) : "",
+      `${cpDone(it)} / ${it.checkpoints.length}`, overdueCp(it), it.notes ? it.notes.length : 0,
+    ]);
+    const wsT = XLSX.utils.aoa_to_sheet([tHead, ...tRows]);
+    wsT["!cols"] = [{ wch: 26 }, { wch: 50 }, { wch: 16 }, { wch: 16 }, { wch: 12 }, { wch: 19 }, { wch: 6 }, { wch: 9 }, { wch: 15 }, { wch: 15 }, { wch: 15 }, { wch: 12 }, { wch: 8 }, { wch: 7 }];
+    fmtPctCol(wsT, 7, tRows.length);
+    wsT["!autofilter"] = { ref: XLSX.utils.encode_range({ s: { r: 0, c: 0 }, e: { r: tRows.length, c: tHead.length - 1 } }) };
+
+    /* ---- Checkpoints ---- */
+    const cHead = ["Workstream", "Topic", "Assignees", "Checkpoint", "Date", "Status", "Days late"];
+    const cRows = [];
+    all.forEach((it) => it.checkpoints.forEach((cp) => cRows.push([
+      it.cat.name, it.title, assignLabel(it), cp.label, fmt(cp.date),
+      cp.done ? "Done" : (cp.date < today ? "Overdue" : "Pending"),
+      !cp.done && cp.date < today ? dayGap(cp.date, today) : "",
+    ])));
+    const wsC = XLSX.utils.aoa_to_sheet([cHead, ...cRows]);
+    wsC["!cols"] = [{ wch: 26 }, { wch: 46 }, { wch: 16 }, { wch: 34 }, { wch: 15 }, { wch: 10 }, { wch: 9 }];
+    wsC["!autofilter"] = { ref: XLSX.utils.encode_range({ s: { r: 0, c: 0 }, e: { r: cRows.length, c: cHead.length - 1 } }) };
+
+    /* ---- People ---- */
+    const pHead = ["Person", "Topics", "Concluded", "Open", "Progress", "Overdue"];
+    const pRows = ownerView(data).map((o) => [o.owner, o.items.length, o.done.length, o.open.length, o.prog / 100, o.overdue.length]);
+    const wsP = XLSX.utils.aoa_to_sheet([pHead, ...pRows]);
+    wsP["!cols"] = [{ wch: 22 }, { wch: 9 }, { wch: 11 }, { wch: 8 }, { wch: 10 }, { wch: 9 }];
+    fmtPctCol(wsP, 4, pRows.length);
+
+    /* ---- Activity ---- */
+    const aHead = ["When", "Change"];
+    const aRows = (data.activity || []).slice().reverse().map((a) => [fmtDT(a.ts), a.msg]);
+    const wsA = XLSX.utils.aoa_to_sheet([aHead, ...aRows]);
+    wsA["!cols"] = [{ wch: 20 }, { wch: 80 }];
+
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, wsS, "Summary");
+    XLSX.utils.book_append_sheet(wb, wsT, "Topics");
+    XLSX.utils.book_append_sheet(wb, wsC, "Checkpoints");
+    XLSX.utils.book_append_sheet(wb, wsP, "People");
+    XLSX.utils.book_append_sheet(wb, wsA, "Activity");
+
+    const out = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+    const blob = new Blob([out], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = `Operating-Plan-${today}.xlsx`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 8000);
+  } catch (e) { console.error("excel export failed", e); }
+}
+
+// Export a report by downloading a self-contained, print-ready HTML file.
+// (The artifact frame blocks window.print(); a downloaded page can print freely.)
+function exportReport(node, title) {
+  if (!node) return;
+  const safe = (title || "report").replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "").toLowerCase();
+  const s = "scr" + "ipt";
+  const doc = "<!doctype html><html><head><meta charset=\"utf-8\"><title>" + title + "</title><style>" + CSS + "</style></head>"
+    + "<body class=\"pm\" style=\"background:#fff;padding:24px;\">"
+    + "<div class=\"no-print\" style=\"max-width:760px;margin:0 auto 16px;\"><button class=\"btn\" onclick=\"window.print()\">Print / Save as PDF</button></div>"
+    + node.innerHTML
+    + "<" + s + ">addEventListener('load',function(){setTimeout(function(){try{window.print();}catch(e){}},400);});</" + s + ">"
+    + "</body></html>";
+  try {
+    const blob = new Blob([doc], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = safe + ".html";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 8000);
+  } catch (e) { console.error("export failed", e); }
+}
+
+function ReportShell({ title, onClose, children }) {
+  const ref = useRef(null);
+  return (
+    <div className="report-overlay" role="dialog" aria-modal="true">
+      <div className="report-toolbar no-print">
+        <button className="btn btn-light" onClick={() => exportReport(ref.current, title)}><Download size={14} /> Download / Print PDF</button>
+        <span className="sp" />
+        <button className="btn btn-light" onClick={onClose}><X size={14} /> Close</button>
+      </div>
+      <div ref={ref}><div className="report-sheet">{children}</div></div>
+      <div className="report-toolbar no-print" style={{ marginTop: 14, justifyContent: "center", color: "#fff", fontSize: 12 }}>
+        Downloads an HTML file that opens ready to print — choose “Save as PDF” as the destination.
+      </div>
+    </div>
+  );
+}
+
+function BoardReport({ data, onClose }) {
+  const today = todayISO();
+  const stL = (v) => (STATUSES.find((s) => s.v === v) || {}).l || v;
+  const totalTopics = data.cats.reduce((a, c) => a + c.items.length, 0);
+  return (
+    <ReportShell title="Board" onClose={onClose}>
+      <div className="rp-eyebrow">Operating Plan · Board</div>
+      <div className="rp-title">Implementation Board</div>
+      <div className="rp-meta">Generated {fmt(today)} · Plan start {fmt(data.start)} · {totalTopics} topics across {data.cats.length} workstreams</div>
+      <div className="rp-rule" />
+      {data.cats.map((c) => (
+        <div className="rp-ws-block" key={c.id} style={{ breakInside: "avoid" }}>
+          <div className="rp-h">
+            <span className="swatch" style={{ background: c.color, display: "inline-block", width: 10, height: 10, borderRadius: 3, marginRight: 8, verticalAlign: 1 }} />
+            {c.name}
+            <span style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--ink-soft)", fontWeight: 400, marginLeft: 8 }}>
+              {weightedPct(c.items)}% · {c.items.filter((it) => it.status === "done").length}/{c.items.length} done
+            </span>
+          </div>
+          {c.items.length === 0
+            ? <div className="rp-empty">No topics.</div>
+            : c.items.map((it) => {
+                const h = healthOf(it);
+                return (
+                  <div className="rp-li" key={it.id}>
+                    <span className="rag-dot" style={{ background: RAG[h].c, flexShrink: 0 }} />
+                    <span style={{ flex: 1 }}>{it.title}</span>
+                    <span className="tag">{assignLabel(it)}</span>
+                    <span className="tag">Ph {it.phase} · {pctOf(it)}%</span>
+                    <span className="tag">{stL(it.status)} · {it.status === "done" && it.completedAt ? "done " + fmtShort(it.completedAt) : "due " + fmtShort(it.due)}</span>
+                  </div>
+                );
+              })}
+        </div>
+      ))}
+      <div className="rp-foot">Operating Plan board · {fmt(today)}</div>
+    </ReportShell>
+  );
+}
+
+function ManagementReport({ data, onClose }) {
+  const today = todayISO();
+  const all = data.cats.flatMap((c) => c.items.map((it) => ({ ...it, cat: c })));
+  const total = all.length;
+  const done = all.filter((it) => it.status === "done").length;
+  const prog = all.filter((it) => it.status === "in_progress").length;
+  const blocked = all.filter((it) => it.status === "blocked");
+  const overall = weightedPct(all);
+  const overdueCount = all.reduce((a, it) => a + it.checkpoints.filter((cp) => !cp.done && cp.date < today).length, 0);
+  const inFocus = all.filter((it) => it.status === "in_progress");
+  const upcoming = all.flatMap((it) => it.checkpoints
+    .filter((cp) => !cp.done && cp.date >= today && dayDiff(today, cp.date) <= 14)
+    .map((cp) => ({ date: cp.date, label: cp.label, topic: it.title, owner: assignLabel(it) })))
+    .sort((a, b) => a.date.localeCompare(b.date));
+  const hist = (data.history || []).filter((h) => h.total > 0);
+  const prevSnap = hist.length >= 2 ? hist[hist.length - 2] : null;
+  const delta = prevSnap ? overall - prevSnap.overall : null;
+  const ragList = all.map((it) => ({ it, h: healthOf(it) }));
+  const rag = { green: 0, amber: 0, red: 0 };
+  ragList.forEach((r) => rag[r.h]++);
+  const ragAttention = ragList.filter((r) => r.h !== "green")
+    .sort((a, b) => (a.h === "red" ? 0 : 1) - (b.h === "red" ? 0 : 1));
+  const cutoff = iso(addDays(parse(today), -7));
+  const changes = (data.activity || []).filter((a) => a.ts.slice(0, 10) >= cutoff).slice().reverse();
+
+  return (
+    <ReportShell title="Weekly status report" onClose={onClose}>
+      <div className="rp-eyebrow">Operating Plan · Weekly Status</div>
+      <div className="rp-title">Implementation Status Report</div>
+      <div className="rp-meta">Generated {fmt(today)} · Plan start {fmt(data.start)} · {total} topics across {data.cats.length} workstreams</div>
+      {delta !== null && (
+        <div className="rp-meta" style={{ marginTop: 4, color: delta > 0 ? "var(--done)" : delta < 0 ? "var(--block)" : "var(--ink-soft)", fontWeight: 600 }}>
+          {delta > 0 ? `Up ${delta} pts` : delta < 0 ? `Down ${Math.abs(delta)} pts` : "No change"} vs last week (was {prevSnap.overall}%)
+        </div>
+      )}
+      <div className="rp-rule" />
+
+      <div className="rp-kpis">
+        <div className="rp-kpi"><div className="n">{overall}%</div><div className="l">Overall progress</div></div>
+        <div className="rp-kpi"><div className="n">{done}/{total}</div><div className="l">Topics complete</div></div>
+        <div className="rp-kpi"><div className="n">{prog}</div><div className="l">In progress</div></div>
+        <div className="rp-kpi"><div className="n" style={{ color: overdueCount ? "var(--block)" : "var(--ink)" }}>{overdueCount}</div><div className="l">Overdue checkpoints</div></div>
+      </div>
+
+      <div className="rp-h">Progress by workstream</div>
+      {data.cats.map((c) => {
+        const p = weightedPct(c.items);
+        const d = c.items.filter((it) => it.status === "done").length;
+        return (
+          <div className="rp-ws" key={c.id}>
+            <span className="swatch" style={{ background: c.color }} />
+            <span className="nm">{c.name}</span>
+            <div className="bar" style={{ width: 150, flex: "none" }}><i style={{ width: `${p}%`, background: c.color }} /></div>
+            <span className="ct">{p}% · {d}/{c.items.length} done</span>
+          </div>
+        );
+      })}
+
+      <div className="rp-h">Health (RAG)</div>
+      <div className="rag-counts" style={{ marginBottom: 4 }}>
+        {["red", "amber", "green"].map((k) => (
+          <span key={k} className="rag-count"><span className="rag-dot" style={{ background: RAG[k].c }} /> <b>{rag[k]}</b> {RAG[k].l}</span>
+        ))}
+      </div>
+      {ragAttention.length === 0
+        ? <div className="rp-empty">Everything is on track.</div>
+        : ragAttention.map(({ it, h }) => (
+          <div className="rp-li" key={it.id}>
+            <span className="rag-dot" style={{ background: RAG[h].c, flexShrink: 0 }} />
+            <span style={{ flex: 1 }}>{it.title}</span>
+            <span className="tag">{healthReason(it)}</span>
+            <span className="tag">{assignLabel(it)}</span>
+          </div>
+        ))}
+
+      <div className="rp-h">Changes since last week</div>
+      {changes.length === 0
+        ? <div className="rp-empty">No tracked changes in the past 7 days.</div>
+        : <>
+          {changes.slice(0, 40).map((a) => (
+            <div className="rp-li" key={a.id}>
+              <span className="tag" style={{ width: 64 }}>{fmtShort(a.ts.slice(0, 10))}</span>
+              <span style={{ flex: 1 }}>{a.msg}</span>
+            </div>
+          ))}
+          {changes.length > 40 && <div className="rp-li"><span className="tag">+{changes.length - 40} more changes</span></div>}
+        </>}
+
+      <div className="rp-h">In focus this week</div>
+      {inFocus.length === 0 && <div className="rp-empty">No topics currently marked in progress.</div>}
+      {inFocus.map((it) => (
+        <div className="rp-li" key={it.id}>
+          <span style={{ flex: 1 }}>{it.title}</span>
+          <span className="tag">{assignLabel(it)} · {pctOf(it)}% · due {fmtShort(it.due)}</span>
+        </div>
+      ))}
+
+      {blocked.length > 0 && <>
+        <div className="rp-h">Blocked — needs attention</div>
+        {blocked.map((it) => (
+          <div className="rp-li" key={it.id}>
+            <AlertCircle size={14} style={{ color: "var(--block)" }} />
+            <span style={{ flex: 1 }}>{it.title}</span>
+            <span className="tag">{assignLabel(it)}</span>
+          </div>
+        ))}
+      </>}
+
+      <div className="rp-h">Upcoming checkpoints (next 14 days)</div>
+      {upcoming.length === 0 && <div className="rp-empty">Nothing due in the next two weeks.</div>}
+      {upcoming.map((u, i) => (
+        <div className="rp-li" key={i}>
+          <span className="tag" style={{ width: 64 }}>{fmtShort(u.date)}</span>
+          <span style={{ flex: 1 }}>{u.label}</span>
+          <span className="tag">{u.topic} · {u.owner || "unassigned"}</span>
+        </div>
+      ))}
+
+      <div className="rp-foot">Operating Plan implementation tracker · confidential · {fmt(today)}</div>
+    </ReportShell>
+  );
+}
+
+function PendingReport({ data, onClose }) {
+  const today = todayISO();
+  const all = data.cats.flatMap((c) => c.items.map((it) => ({ ...it, cat: c })));
+
+  // overdue checkpoints, grouped by owner
+  const rows = all.flatMap((it) =>
+    it.checkpoints.filter((cp) => !cp.done && cp.date < today).map((cp) => ({
+      owner: assignLabel(it), topic: it.title, ws: it.cat.name,
+      label: cp.label, date: cp.date, late: dayDiff(cp.date, today),
+    }))
+  );
+  // topics overdue by target date with no checkpoints at all
+  all.forEach((it) => {
+    if (it.checkpoints.length === 0 && it.status !== "done" && it.due < today) {
+      rows.push({ owner: assignLabel(it), topic: it.title, ws: it.cat.name,
+        label: "Target date passed", date: it.due, late: dayDiff(it.due, today) });
+    }
+  });
+
+  const byOwner = {};
+  rows.forEach((r) => { (byOwner[r.owner] = byOwner[r.owner] || []).push(r); });
+  const owners = Object.keys(byOwner).sort((a, b) => byOwner[b].length - byOwner[a].length);
+  owners.forEach((o) => byOwner[o].sort((a, b) => b.late - a.late));
+
+  const dueSoon = all.flatMap((it) => it.checkpoints
+    .filter((cp) => !cp.done && cp.date >= today && dayDiff(today, cp.date) <= 7)
+    .map((cp) => ({ date: cp.date, label: cp.label, topic: it.title, owner: assignLabel(it) })))
+    .sort((a, b) => a.date.localeCompare(b.date));
+
+  return (
+    <ReportShell title="Pending items report" onClose={onClose}>
+      <div className="rp-eyebrow">Operating Plan · Weekly Follow-up</div>
+      <div className="rp-title">Pending &amp; Overdue Items</div>
+      <div className="rp-meta">Generated {fmt(today)} · {rows.length} overdue item{rows.length === 1 ? "" : "s"} across {owners.length} owner{owners.length === 1 ? "" : "s"}</div>
+      <div className="rp-rule" />
+
+      {rows.length === 0 && <div className="rp-empty" style={{ padding: 36 }}>Nothing overdue — every checkpoint is on or ahead of schedule.</div>}
+
+      {owners.map((o) => (
+        <div key={o}>
+          <div className="rp-owner">
+            <Users size={15} />
+            <span className="who">{o}</span>
+            <span className="cnt">{byOwner[o].length} overdue</span>
+          </div>
+          {byOwner[o].map((r, i) => (
+            <div className="rp-li" key={i}>
+              <span style={{ flex: 1 }}>{r.label} <span className="tag">— {r.topic}</span></span>
+              <span className="tag">{r.ws}</span>
+              <span className="rp-late" style={{ width: 86, textAlign: "right" }}>{r.late}d late · {fmtShort(r.date)}</span>
+            </div>
+          ))}
+          <p className="rp-nudge">Please update these items or flag any blocker before the next process meeting.</p>
+        </div>
+      ))}
+
+      {dueSoon.length > 0 && <>
+        <div className="rp-h">Due within 7 days — heads up</div>
+        {dueSoon.map((u, i) => (
+          <div className="rp-li" key={i}>
+            <span className="tag" style={{ width: 64 }}>{fmtShort(u.date)}</span>
+            <span style={{ flex: 1 }}>{u.label}</span>
+            <span className="tag">{u.topic} · {u.owner}</span>
+          </div>
+        ))}
+      </>}
+
+      <div className="rp-foot">Send the section above to each owner, or review together at the weekly meeting · {fmt(today)}</div>
+    </ReportShell>
+  );
+}
+
+/* ============================== Calendar view ============================== */
+const DOW = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const MONTH_CAP = 3;
+
+function CalendarView({ data }) {
+  const start = parse(data.start);
+  const [cur, setCur] = useState({ y: start.getUTCFullYear(), m: start.getUTCMonth() });
+
+  const events = useMemo(() => {
+    const evs = [];
+    data.cats.forEach((c) => c.items.forEach((it) => it.checkpoints.forEach((cp) => {
+      evs.push({ date: cp.date, label: cp.label, topic: it.title, color: c.color, done: cp.done });
+    })));
+    return evs;
+  }, [data]);
+
+  const first = new Date(Date.UTC(cur.y, cur.m, 1));
+  const startDow = first.getUTCDay();
+  const daysIn = new Date(Date.UTC(cur.y, cur.m + 1, 0)).getUTCDate();
+  const cells = [];
+  for (let i = 0; i < startDow; i++) cells.push(null);
+  for (let d = 1; d <= daysIn; d++) cells.push(d);
+  while (cells.length % 7 !== 0) cells.push(null);
+
+  const monthLabel = first.toLocaleDateString("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
+  const shift = (n) => { let m = cur.m + n, y = cur.y; while (m < 0) { m += 12; y--; } while (m > 11) { m -= 12; y++; } setCur({ y, m }); };
+
+  return (
+    <>
+      <div className="cal-head">
+        <h2>{monthLabel}</h2>
+        <div className="cal-nav">
+          <button onClick={() => shift(-1)}><ChevronLeft size={14} /> Prev</button>
+          <button onClick={() => setCur({ y: start.getUTCFullYear(), m: start.getUTCMonth() })}>Plan start</button>
+          <button onClick={() => { const n = new Date(); setCur({ y: n.getFullYear(), m: n.getMonth() }); }}>Today</button>
+          <button onClick={() => shift(1)}>Next <ChevronRight size={14} /></button>
+        </div>
+      </div>
+
+      <div className="cal-legend">
+        {data.cats.map((c) => (
+          <span key={c.id}><span className="swatch" style={{ background: c.color }} />{c.name}</span>
+        ))}
+      </div>
+
+      <div className="cal-scroll">
+        <div className="cal-grid">
+          {DOW.map((d) => <div className="cal-dow" key={d}>{d}</div>)}
+          {cells.map((d, i) => {
+            if (d === null) return <div className="cal-cell blank" key={i} />;
+            const dISO = iso(new Date(Date.UTC(cur.y, cur.m, d)));
+            const evs = events.filter((e) => e.date === dISO);
+            const isStart = dISO === data.start;
+            const isToday = dISO === todayISO();
+            return (
+              <div className={`cal-cell${isToday ? " today" : ""}${isStart ? " is-start" : ""}`} key={i}>
+                <div className="cal-daynum">
+                  <span>{isToday ? <b>{d}</b> : d}</span>
+                  {isStart && <span className="cal-start-flag">Start</span>}
+                </div>
+                {evs.slice(0, MONTH_CAP).map((e, j) => (
+                  <div className={`cal-ev${e.done ? " done" : ""}`} key={j}
+                    style={{ borderLeftColor: e.color, background: e.color + "16" }}
+                    title={`${e.label} — ${e.topic}${e.done ? " (done)" : ""}`}>
+                    {e.done && <CheckCircle2 size={10} style={{ flexShrink: 0 }} />}
+                    <span className="ev-t">{e.label}</span>
+                  </div>
+                ))}
+                {evs.length > MONTH_CAP && <div className="cal-more">+{evs.length - MONTH_CAP} more</div>}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </>
+  );
+}
+
+/* ============================== People view ============================== */
+const initials = (name) => name === "Unassigned" ? "—"
+  : name.split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+
+function ownerView(data) {
+  const today = todayISO();
+  const map = {};
+  const add = (name, it, role) => { (map[name] = map[name] || []).push({ ...it, role }); };
+  data.cats.forEach((c) => c.items.forEach((it) => {
+    const wc = { ...it, cat: c };
+    if (it.owner) add(it.owner, wc, "PIC");
+    if (it.owner2) add(it.owner2, wc, "Co");
+    if (!it.owner && !it.owner2) add("Unassigned", wc, "PIC");
+  }));
+  return Object.keys(map)
+    .sort((a, b) => a === "Unassigned" ? 1 : b === "Unassigned" ? -1 : a.localeCompare(b))
+    .map((owner) => {
+      const items = map[owner];
+      const done = items.filter((it) => it.status === "done");
+      const open = items.filter((it) => it.status !== "done");
+      const prog = weightedPct(items);
+      const overdue = items.flatMap((it) => it.checkpoints
+        .filter((cp) => !cp.done && cp.date < today)
+        .map((cp) => ({ label: cp.label, date: cp.date, topic: it.title, color: it.cat.color, late: dayDiff(cp.date, today) })))
+        .sort((a, b) => b.late - a.late);
+      const upcoming = items.flatMap((it) => it.checkpoints
+        .filter((cp) => !cp.done && cp.date >= today)
+        .map((cp) => ({ label: cp.label, date: cp.date, topic: it.title, color: it.cat.color })))
+        .sort((a, b) => a.date.localeCompare(b.date));
+      return { owner, items, done, open, prog, overdue, upcoming };
+    });
+}
+
+function OwnerCard({ o }) {
+  const upcoming = o.upcoming.slice(0, 5);
+  return (
+    <div className="sec">
+      <div className="sec-head">
+        <span className="who-badge">{initials(o.owner)}</span>
+        <h2>{o.owner}</h2>
+        <span className="meta">{o.items.length} topics</span>
+        <ProgressBar pct={o.prog} color="#1c2533" />
+      </div>
+      <div className="card person-card">
+        <div className="person-kpis">
+          <span className="k"><b>{o.items.length}</b>In scope</span>
+          <span className="k"><b style={{ color: "var(--done)" }}>{o.done.length}</b>Concluded</span>
+          <span className="k"><b>{o.open.length}</b>Open</span>
+          <span className="k"><b style={{ color: o.overdue.length ? "var(--block)" : "var(--ink)" }}>{o.overdue.length}</b>Overdue</span>
+        </div>
+
+        {o.overdue.length > 0 && <>
+          <div className="person-sub"><AlertTriangle size={13} style={{ color: "var(--block)" }} /> Needs attention now</div>
+          {o.overdue.map((cp, i) => (
+            <div className="prow" key={i}>
+              <span className="swatch" style={{ background: cp.color }} />
+              <span className="pt">{cp.label} <span className="tag">— {cp.topic}</span></span>
+              <span className="late">{cp.late}d late · {fmtShort(cp.date)}</span>
+            </div>
+          ))}
+        </>}
+
+        <div className="person-sub"><Clock size={13} /> Coming up next</div>
+        {upcoming.length === 0
+          ? <div className="prio-none" style={{ paddingLeft: 0 }}>No upcoming checkpoints.</div>
+          : upcoming.map((cp, i) => (
+            <div className="prow" key={i}>
+              <span className="swatch" style={{ background: cp.color }} />
+              <span className="pt">{cp.label} <span className="tag">— {cp.topic}</span></span>
+              <span className="tag">{fmtShort(cp.date)}</span>
+            </div>
+          ))}
+
+        <div className="person-sub"><LayoutGrid size={13} /> In scope</div>
+        {o.items.map((it) => {
+          const st = STATUSES.find((s) => s.v === it.status);
+          return (
+            <div className="prow" key={it.id}>
+              <span className="swatch" style={{ background: it.cat.color }} />
+              <span className="pt">{it.title}</span>
+              <span className="tag" style={{ color: it.role === "Co" ? "var(--ink-soft)" : "var(--ink)" }}>{it.role}</span>
+              <span className="tag">due {fmtShort(it.due)}</span>
+              <span className="pill" style={{ color: st.c, borderColor: st.c, background: st.c + "16" }}>{st.l}</span>
+            </div>
+          );
+        })}
+
+        {o.done.length > 0 && <>
+          <div className="person-sub"><Trophy size={13} style={{ color: "var(--done)" }} /> Concluded</div>
+          {o.done.map((it) => (
+            <div className="prow" key={it.id}>
+              <CheckCircle2 size={14} style={{ color: "var(--done)", flexShrink: 0 }} />
+              <span className="pt">{it.title}</span>
+              <span className="tag">{it.cat.name}</span>
+            </div>
+          ))}
+        </>}
+      </div>
+    </div>
+  );
+}
+
+function People({ data }) {
+  const owners = ownerView(data);
+  const [sel, setSel] = useState("all");
+  const [printing, setPrinting] = useState(false);
+  const shown = sel === "all" ? owners : owners.filter((o) => o.owner === sel);
+  return (
+    <>
+      <div className="toolbar">
+        <select value={sel} onChange={(e) => setSel(e.target.value)}>
+          <option value="all">All people ({owners.length})</option>
+          {owners.map((o) => <option key={o.owner} value={o.owner}>{o.owner} — {o.items.length} topics</option>)}
+        </select>
+        <span style={{ flex: 1 }} />
+        <button className="btn" onClick={() => setPrinting(true)}>
+          <Printer size={14} /> Save {sel === "all" ? "all briefs" : "this brief"} as PDF
+        </button>
+      </div>
+      {owners.length === 0 && <div className="empty">No topics yet — assign owners on the Board.</div>}
+      {shown.map((o) => <OwnerCard key={o.owner} o={o} />)}
+      {printing && <PersonReport owners={shown} onClose={() => setPrinting(false)} />}
+    </>
+  );
+}
+
+function PersonReport({ owners, onClose }) {
+  const today = todayISO();
+  const ref = useRef(null);
+  const fname = owners.length === 1 ? `Brief — ${owners[0].owner}` : "Individual briefs";
+  return (
+    <div className="report-overlay" role="dialog" aria-modal="true">
+      <div className="report-toolbar no-print">
+        <button className="btn btn-light" onClick={() => exportReport(ref.current, fname)}><Download size={14} /> Download / Print PDF</button>
+        <span className="sp" />
+        <button className="btn btn-light" onClick={onClose}><X size={14} /> Close</button>
+      </div>
+      <div ref={ref}>
+      {owners.map((o, idx) => (
+        <div className="report-sheet" key={o.owner}
+          style={{ marginTop: idx > 0 ? 22 : 0, pageBreakBefore: idx > 0 ? "always" : "auto" }}>
+          <div className="rp-eyebrow">Operating Plan · Individual Scope</div>
+          <div className="rp-title">{o.owner}</div>
+          <div className="rp-meta">Generated {fmt(today)} · {o.items.length} topics · {o.done.length} concluded · {o.open.length} open</div>
+          <div className="rp-rule" />
+          <div className="rp-kpis">
+            <div className="rp-kpi"><div className="n">{o.items.length}</div><div className="l">In scope</div></div>
+            <div className="rp-kpi"><div className="n" style={{ color: "var(--done)" }}>{o.done.length}</div><div className="l">Concluded</div></div>
+            <div className="rp-kpi"><div className="n">{o.prog}%</div><div className="l">Progress</div></div>
+            <div className="rp-kpi"><div className="n" style={{ color: o.overdue.length ? "var(--block)" : "var(--ink)" }}>{o.overdue.length}</div><div className="l">Overdue</div></div>
+          </div>
+
+          {o.overdue.length > 0 && <>
+            <div className="rp-h">Overdue — needs action</div>
+            {o.overdue.map((cp, i) => (
+              <div className="rp-li" key={i}>
+                <span style={{ flex: 1 }}>{cp.label} <span className="tag">— {cp.topic}</span></span>
+                <span className="rp-late" style={{ width: 96, textAlign: "right" }}>{cp.late}d late · {fmtShort(cp.date)}</span>
+              </div>
+            ))}
+          </>}
+
+          <div className="rp-h">Attention next (per schedule)</div>
+          {o.upcoming.length === 0 ? <div className="rp-empty">No upcoming checkpoints scheduled.</div>
+            : o.upcoming.slice(0, 8).map((cp, i) => (
+              <div className="rp-li" key={i}>
+                <span className="tag" style={{ width: 64 }}>{fmtShort(cp.date)}</span>
+                <span style={{ flex: 1 }}>{cp.label}</span>
+                <span className="tag">{cp.topic}</span>
+              </div>
+            ))}
+
+          <div className="rp-h">Full scope</div>
+          {o.items.map((it) => {
+            const st = STATUSES.find((s) => s.v === it.status);
+            return (
+              <div className="rp-li" key={it.id}>
+                <span style={{ flex: 1 }}>{it.title}</span>
+                <span className="tag">{it.role}</span>
+                <span className="tag">{it.cat.name}</span>
+                <span className="tag" style={{ width: 116, textAlign: "right" }}>{st.l} · due {fmtShort(it.due)}</span>
+              </div>
+            );
+          })}
+
+          {o.done.length > 0 && <>
+            <div className="rp-h">Concluded</div>
+            {o.done.map((it) => (
+              <div className="rp-li" key={it.id}>
+                <CheckCircle2 size={13} style={{ color: "var(--done)", flexShrink: 0 }} />
+                <span style={{ flex: 1 }}>{it.title}</span>
+                <span className="tag">{it.cat.name}</span>
+              </div>
+            ))}
+          </>}
+
+          <div className="rp-foot">Operating Plan · {o.owner} · {fmt(today)}</div>
+        </div>
+      ))}
+      </div>
+      {owners.length > 1 && (
+        <div className="report-toolbar no-print" style={{ marginTop: 14, justifyContent: "center", color: "#fff", fontSize: 12 }}>
+          {owners.length} individual briefs — each prints on its own page, so you can send each person theirs.
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ============================== App ============================== */
+function ConfirmDialog({ message, confirmLabel, danger, onConfirm, onCancel }) {
+  return (
+    <div className="confirm-overlay" onClick={onCancel}>
+      <div className="confirm-box" onClick={(e) => e.stopPropagation()}>
+        <div className="confirm-msg">{message}</div>
+        <div className="confirm-actions">
+          <button className="btn ghost" onClick={onCancel}>Cancel</button>
+          <button className="btn" style={danger ? { background: "var(--block)" } : undefined} onClick={onConfirm}>{confirmLabel || "Confirm"}</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const [data, setData] = useState(null);
+  const [tab, setTab] = useState("board");
+  const [savedAt, setSavedAt] = useState(null);
+  const [report, setReport] = useState(null);
+  const [exportOpen, setExportOpen] = useState(false);
+  const [confirmState, setConfirmState] = useState(null);
+  const [conn, setConn] = useState({ status: "idle", name: "" });
+  const saveTimer = useRef(null);
+  const ask = (message, onConfirm, opts = {}) => setConfirmState({ message, onConfirm, ...opts });
+
+  // connect to a data file (or work in memory)
+  const openFile = async () => {
+    let h;
+    try { const picked = await window.showOpenFilePicker({ multiple: false, types: [{ description: "Tracker data", accept: { "application/json": [".json"] } }] }); h = picked[0]; }
+    catch (e) { return; } // user cancelled
+    fileStore.handle = h;
+    try { await ensureWrite(h); } catch (e) {}
+    let loaded = null;
+    try { loaded = await readHandle(h); } catch (e) { console.error("read failed", e); }
+    if (loaded) { setData(withSnapshot(loaded)); }
+    else { fileStore.lastText = ""; const seed = withSnapshot(buildSeed(defaultStart())); setData(seed); try { await writeHandle(h, seed); } catch (e) { console.error(e); } }
+    setConn({ status: "connected", name: h.name });
+  };
+  const createFile = async () => {
+    let h;
+    try { h = await window.showSaveFilePicker({ suggestedName: "tracker.json", types: [{ description: "Tracker data", accept: { "application/json": [".json"] } }] }); }
+    catch (e) { return; } // user cancelled
+    fileStore.handle = h;
+    fileStore.lastText = "";
+    const seed = withSnapshot(buildSeed(defaultStart()));
+    setData(seed);
+    setConn({ status: "connected", name: h.name });
+    try { await writeHandle(h, seed); } catch (e) { console.error("initial write failed", e); }
+  };
+  const importJson = async (file) => {
+    try { const text = await file.text(); const d = migrate(JSON.parse(text)); setData(withSnapshot(d)); setConn({ status: "memory", name: file.name }); }
+    catch (e) { alert("That file couldn't be read as tracker data."); }
+  };
+  const exploreMemory = () => { setData(withSnapshot(buildSeed(defaultStart()))); setConn({ status: "memory", name: "" }); };
+  const reloadFromFile = async () => {
+    if (!fileStore.handle) return;
+    try { const loaded = await readHandle(fileStore.handle); if (loaded) setData(loaded); }
+    catch (e) { console.error(e); }
+  };
+  const downloadData = () => {
+    try {
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob); const a = document.createElement("a");
+      a.href = url; a.download = "tracker-backup-" + todayISO() + ".json";
+      document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 6000);
+    } catch (e) { console.error(e); }
+  };
+
+  // persist to the shared file (debounced) — simple save on every change
+  useEffect(() => {
+    if (!data || conn.status !== "connected" || !fileStore.handle) return;
+    if (saveTimer.current) clearTimeout(saveTimer.current);
+    saveTimer.current = setTimeout(async () => {
+      try { await writeHandle(fileStore.handle, data); setSavedAt(Date.now()); }
+      catch (e) { console.error("save failed", e); }
+    }, 600);
+  }, [data, conn]);
+
+  const update = (fn) => setData((d) => {
+    const next = fn(d);
+    const events = diffActivity(d, next);
+    const merged = events.length
+      ? { ...next, activity: [...(next.activity || []), ...events].slice(-MAX_ACTIVITY) }
+      : next;
+    return withSnapshot(merged);
+  });
+
+  const owners = useMemo(() => {
+    if (!data) return [];
+    return [...new Set(data.cats.flatMap((c) => c.items.flatMap((it) => [it.owner, it.owner2])).filter(Boolean))].sort();
+  }, [data]);
+
+  if (!data) return (
+    <div className="pm">
+      <style>{CSS}</style>
+      <div className="connect-wrap">
+        <div className="connect-card">
+          <h1>Operating Plan</h1>
+          <div className="connect-sub">Implementation Tracker</div>
+          <p className="connect-text">Choose where this tracker's data lives. To share it with your team, keep the data file in a shared or network folder — everyone opens this page and connects to that same file, and edits save straight back to it.</p>
+          {FSA_OK ? (
+            <div className="connect-actions">
+              <button className="btn" onClick={openFile}><Download size={14} /> Open existing data file</button>
+              <button className="btn ghost" onClick={createFile}><Plus size={14} /> Create new data file</button>
+            </div>
+          ) : (
+            <div className="connect-note">Saving directly to a shared file needs Chrome or Edge on desktop. In this browser you can still work below and use Import / Back up to move data manually.</div>
+          )}
+          <div className="connect-actions">
+            <label className="btn ghost" style={{ cursor: "pointer" }}>
+              <Download size={14} /> Import a JSON file
+              <input type="file" accept="application/json,.json" style={{ display: "none" }}
+                onChange={(e) => { if (e.target.files && e.target.files[0]) importJson(e.target.files[0]); }} />
+            </label>
+            <button className="btn ghost" onClick={exploreMemory}>Just explore (no saving)</button>
+          </div>
+          <div className="connect-fine">Chrome / Edge recommended · the shared file uses last-write-wins</div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const reseed = () => {
+    ask("Reset to the original suggested plan? This clears all your edits, owners, and notes. (Progress history and activity log are kept.)", () => {
+      setData((d) => withSnapshot({
+        ...buildSeed(d.start), history: d.history,
+        activity: [...(d.activity || []), ev("reset", "", "Reset plan to the suggested template")].slice(-MAX_ACTIVITY),
+      }));
+    }, { danger: true, confirmLabel: "Reset plan" });
+  };
+  const setStart = (s) => {
+    ask(`Regenerate all suggested dates from ${fmtShort(s)}? Owners, statuses, notes and history are kept; checkpoint dates are recomputed.`, () => {
+      const fresh = buildSeed(s);
+      setData((d) => withSnapshot({
+        ...fresh,
+        history: d.history,
+        activity: [...(d.activity || []), ev("date", "", `Plan start set to ${fmtShort(s)}; suggested dates regenerated`)].slice(-MAX_ACTIVITY),
+        cats: fresh.cats.map((fc, ci) => ({
+          ...fc,
+          items: fc.items.map((fi, ii) => {
+            const old = d.cats[ci]?.items[ii];
+            return old ? { ...fi, owner: old.owner, owner2: old.owner2 || "", status: old.status, notes: old.notes, completedAt: old.completedAt, health: old.health } : fi;
+          }),
+        })),
+      }));
+    }, { confirmLabel: "Regenerate dates" });
+  };
+
+  return (
+    <div className="pm">
+      <style>{CSS}</style>
+      <datalist id="pm-owners">{owners.map((o) => <option key={o} value={o} />)}</datalist>
+
+      <div className="top">
+        <div className="top-in">
+          <div className="brand">
+            <h1>Operating Plan</h1>
+            <span className="sub">Implementation Tracker</span>
+            <div className="startbar">
+              <span>Plan start</span>
+              <input type="date" value={data.start} onChange={(e) => setStart(e.target.value)} />
+              <button className="btn ghost" onClick={reseed} title="Reset to suggested plan"><RotateCcw size={12} /> Reset</button>
+            </div>
+          </div>
+          <div className="tabs">
+            <button className={`tab${tab === "overview" ? " on" : ""}`} onClick={() => setTab("overview")}><Gauge size={15} /> Overview</button>
+            <button className={`tab${tab === "board" ? " on" : ""}`} onClick={() => setTab("board")}><LayoutGrid size={15} /> Board</button>
+            <button className={`tab${tab === "schedule" ? " on" : ""}`} onClick={() => setTab("schedule")}><GanttChartSquare size={15} /> Schedule</button>
+            <button className={`tab${tab === "calendar" ? " on" : ""}`} onClick={() => setTab("calendar")}><CalendarDays size={15} /> Calendar</button>
+            <button className={`tab${tab === "people" ? " on" : ""}`} onClick={() => setTab("people")}><Users size={15} /> People</button>
+            <div className="export-wrap no-print" style={{ marginLeft: "auto" }}>
+              <button className="tab" onClick={() => setExportOpen((o) => !o)}><Download size={15} /> Export</button>
+              {exportOpen && (
+                <>
+                  <div style={{ position: "fixed", inset: 0, zIndex: 39 }} onClick={() => setExportOpen(false)} />
+                  <div className="export-menu">
+                    <button onClick={() => { setReport("board"); setExportOpen(false); }}>
+                      <LayoutGrid size={17} style={{ marginTop: 1, color: "#b08527", flexShrink: 0 }} />
+                      <span style={{ display: "flex", flexDirection: "column" }}>
+                        <span className="mt">Board (PDF)</span>
+                        <span className="md">The full board — every topic by workstream. Save as PDF.</span>
+                      </span>
+                    </button>
+                    <button onClick={() => { setReport("mgmt"); setExportOpen(false); }}>
+                      <FileText size={17} style={{ marginTop: 1, color: "#2f6b5e", flexShrink: 0 }} />
+                      <span style={{ display: "flex", flexDirection: "column" }}>
+                        <span className="mt">Weekly status report</span>
+                        <span className="md">Progress summary for the whole team. Save as PDF.</span>
+                      </span>
+                    </button>
+                    <button onClick={() => { setReport("pending"); setExportOpen(false); }}>
+                      <AlertTriangle size={17} style={{ marginTop: 1, color: "#bf3b34", flexShrink: 0 }} />
+                      <span style={{ display: "flex", flexDirection: "column" }}>
+                        <span className="mt">Pending items report</span>
+                        <span className="md">Overdue topics grouped by owner, for the weekly nudge.</span>
+                      </span>
+                    </button>
+                    <button onClick={() => { setReport("people"); setExportOpen(false); }}>
+                      <Users size={17} style={{ marginTop: 1, color: "#5b6aa8", flexShrink: 0 }} />
+                      <span style={{ display: "flex", flexDirection: "column" }}>
+                        <span className="mt">Individual briefs</span>
+                        <span className="md">One page per person — scope, done, and what's next.</span>
+                      </span>
+                    </button>
+                    <button onClick={() => { exportExcel(data); setExportOpen(false); }}>
+                      <Sheet size={17} style={{ marginTop: 1, color: "#3f7d4e", flexShrink: 0 }} />
+                      <span style={{ display: "flex", flexDirection: "column" }}>
+                        <span className="mt">Excel workbook (.xlsx)</span>
+                        <span className="md">All topics, checkpoints, people & activity across tabs.</span>
+                      </span>
+                    </button>
+                    <button onClick={() => { downloadData(); setExportOpen(false); }}>
+                      <Download size={17} style={{ marginTop: 1, color: "#1c2533", flexShrink: 0 }} />
+                      <span style={{ display: "flex", flexDirection: "column" }}>
+                        <span className="mt">Back up data (.json)</span>
+                        <span className="md">Download a copy of all data you can re-import later.</span>
+                      </span>
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+            {conn.status === "connected" && (
+              <button className="tab no-print" onClick={reloadFromFile} title="Reload from the shared file"><RotateCcw size={13} /> Reload</button>
+            )}
+            <span className="saved" style={{ marginLeft: conn.status === "connected" ? 0 : 14 }}>
+              {conn.status === "connected"
+                ? <><span className="dot-live" /> {conn.name || "data file"} · saved</>
+                : <><Clock size={11} /> not saving — explore mode</>}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div className="wrap">
+        {tab === "overview" && <Overview data={data} />}
+        {tab === "board" && <Board data={data} owners={owners} update={update} ask={ask} />}
+        {tab === "schedule" && <Schedule data={data} />}
+        {tab === "calendar" && <CalendarView data={data} />}
+        {tab === "people" && <People data={data} />}
+      </div>
+
+      {report === "board" && <BoardReport data={data} onClose={() => setReport(null)} />}
+      {report === "mgmt" && <ManagementReport data={data} onClose={() => setReport(null)} />}
+      {report === "pending" && <PendingReport data={data} onClose={() => setReport(null)} />}
+      {report === "people" && <PersonReport owners={ownerView(data)} onClose={() => setReport(null)} />}
+      {confirmState && (
+        <ConfirmDialog {...confirmState}
+          onConfirm={() => { confirmState.onConfirm(); setConfirmState(null); }}
+          onCancel={() => setConfirmState(null)} />
+      )}
+    </div>
+  );
+}
+
+
+/* ---- mount ---- */
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+</script>
+</body>
+</html>
