@@ -4,6 +4,7 @@ import { db } from "@/db";
 import { planMeta, categories, items, activity, history } from "@/db/schema";
 import type { ItemRowData } from "@/db/schema";
 import { auth } from "@/auth";
+import { AUTH_ENABLED } from "@/lib/flags";
 import { defaultStart } from "@/lib/plan-template";
 import { snapshotOf } from "@/lib/logic";
 import type { Plan, Item, ActivityEvent, Category } from "@/lib/types";
@@ -73,6 +74,7 @@ export async function refreshSnapshot(plan?: Plan): Promise<void> {
 }
 
 export async function getActor(): Promise<string | null> {
+  if (!AUTH_ENABLED) return null;
   const session = await auth();
   return session?.user?.email ?? null;
 }

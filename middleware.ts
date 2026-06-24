@@ -1,9 +1,11 @@
 import NextAuth from "next-auth";
+import type { NextRequest, NextFetchEvent } from "next/server";
 import authConfig from "./auth.config";
+import { AUTH_ENABLED } from "./lib/flags";
 
 const { auth } = NextAuth(authConfig);
 
-export default auth((req) => {
+const protect = auth((req) => {
   const { pathname } = req.nextUrl;
   // Public paths: the login page and the auth API endpoints.
   if (pathname.startsWith("/login") || pathname.startsWith("/api/auth")) return;
@@ -12,6 +14,12 @@ export default auth((req) => {
     return Response.redirect(url);
   }
 });
+
+// When auth is off (no email key configured), let every request through.
+export default function middleware(req: NextRequest, ev: NextFetchEvent) {
+  if (!AUTH_ENABLED) return;
+  return (protect as unknown as (r: NextRequest, e: NextFetchEvent) => unknown)(req, ev);
+}
 
 export const config = {
   // Run on everything except Next.js internals and static assets.

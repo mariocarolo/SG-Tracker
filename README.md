@@ -44,8 +44,16 @@ Everything above has a free tier that comfortably covers ~10 users.
 
 ## One-time setup
 
-You'll need free accounts at **Vercel**, **Neon** (or Vercel Postgres), and
-**Resend**. Total time: ~20 minutes. You do this once.
+> **Want it live fast, without logins?** You can. Email sign-in stays **off
+> until you set `AUTH_RESEND_KEY`**, so you only need steps 1, 2, 4 and 5 below
+> (skip Resend/step 3 and skip the allowlist/step 6). The site will be open to
+> anyone with the link. When you're ready to lock it down, add the email key +
+> allowlist and redeploy — no code changes. See
+> [Turning on sign-in later](#turning-on-sign-in-later).
+
+You'll need free accounts at **Vercel**, **Neon** (or Vercel Postgres), and —
+only when you want logins — **Resend**. Total time: ~10–20 minutes. You do this
+once.
 
 ### 1. Get the code into your own GitHub
 This repository is already on GitHub. Make sure your Vercel account can access
@@ -116,8 +124,18 @@ Set these in **Vercel → Settings → Environment Variables** (and in
 | `AUTH_RESEND_KEY` | Resend API key (step 3) | `re_xxx` |
 | `EMAIL_FROM` | The "from" address for sign-in emails | `onboarding@resend.dev` or `login@yourcompany.com` |
 
-`AUTH_URL` is optional on Vercel (detected automatically). For local dev keep it
-as `http://localhost:3000`.
+Only **`DATABASE_URL`** is required. Leave `AUTH_RESEND_KEY` blank to run open
+(no login). `AUTH_URL` is optional on Vercel (detected automatically); for local
+dev keep it as `http://localhost:3000`.
+
+### Turning on sign-in later
+
+1. Do step 3 (create a Resend API key).
+2. In Vercel, set `AUTH_RESEND_KEY`, `EMAIL_FROM`, and `AUTH_SECRET`
+   (`openssl rand -base64 32`).
+3. Add the allowed people: `npm run allow -- add you@yourcompany.com …`.
+4. Redeploy (push any commit, or hit "Redeploy" in Vercel). Sign-in is now
+   required and limited to the allowlist — your data is untouched.
 
 ---
 

@@ -20,7 +20,13 @@ import {
 type Tab = "overview" | "board" | "schedule" | "calendar" | "people";
 type ReportKind = "board" | "mgmt" | "pending" | "people" | null;
 
-export default function TrackerApp({ userEmail }: { userEmail: string | null }) {
+export default function TrackerApp({
+  userEmail,
+  authEnabled = true,
+}: {
+  userEmail: string | null;
+  authEnabled?: boolean;
+}) {
   const {
     plan, error, isLoading, busy, toasts, dismissToast,
     mutateItem, createItem, deleteItem, setStart, resetPlan, refresh,
@@ -177,13 +183,15 @@ export default function TrackerApp({ userEmail }: { userEmail: string | null }) 
                 <><span className="dot-live" /> live · all changes saved</>
               )}
             </span>
-            <button
-              className="tab no-print"
-              title={userEmail ? `Signed in as ${userEmail}` : "Sign out"}
-              onClick={() => signOut({ callbackUrl: "/login" })}
-            >
-              <LogOut size={14} /> Sign out
-            </button>
+            {authEnabled && (
+              <button
+                className="tab no-print"
+                title={userEmail ? `Signed in as ${userEmail}` : "Sign out"}
+                onClick={() => signOut({ callbackUrl: "/login" })}
+              >
+                <LogOut size={14} /> Sign out
+              </button>
+            )}
           </div>
         </div>
       </div>
