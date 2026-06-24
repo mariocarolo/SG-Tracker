@@ -28,8 +28,8 @@ export default function TrackerApp({
   authEnabled?: boolean;
 }) {
   const {
-    plan, error, isLoading, busy, toasts, dismissToast,
-    mutateItem, createItem, deleteItem, setStart, resetPlan, refresh,
+    plan, error, isLoading, busy, saveState, toasts, dismissToast,
+    mutateItem, createItem, deleteItem, setStart, resetPlan, retry, refresh,
   } = usePlan();
 
   const [tab, setTab] = useState<Tab>("board");
@@ -176,13 +176,24 @@ export default function TrackerApp({
             </div>
 
             <button className="tab no-print" onClick={() => refresh()} title="Refresh from the server"><RotateCcw size={13} /> Reload</button>
-            <span className="saved">
-              {busy ? (
-                <><span className="dot-sync" /> saving…</>
-              ) : (
-                <><span className="dot-live" /> live · all changes saved</>
-              )}
-            </span>
+            {saveState === "error" ? (
+              <span className="saved" style={{ color: "#ffd9d4" }}>
+                <span className="dot-sync" style={{ background: "var(--block)", animation: "none" }} /> save failed
+                <button className="btn ghost" style={{ marginLeft: 8, padding: "3px 9px" }} onClick={() => retry()}>
+                  <RotateCcw size={12} /> Retry
+                </button>
+              </span>
+            ) : (
+              <span className="saved">
+                {busy ? (
+                  <><span className="dot-sync" /> saving…</>
+                ) : saveState === "saved" ? (
+                  <><span className="dot-live" /> saved</>
+                ) : (
+                  <><span className="dot-live" /> live · all changes saved</>
+                )}
+              </span>
+            )}
             {authEnabled && (
               <button
                 className="tab no-print"

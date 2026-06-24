@@ -4,6 +4,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { Plan, Item } from "@/lib/types";
 import type { ItemRowData } from "@/db/schema";
 
+const MAX_RETRIES = 3;
+const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+
 const fetcher = async (url: string) => {
   const r = await fetch(url, { cache: "no-store" });
   if (!r.ok) {
@@ -18,13 +21,8 @@ const toData = (it: Item): ItemRowData => {
   return rest as ItemRowData;
 };
 
-/**
- * Merge a freshly-polled server plan into the current local plan WITHOUT losing
- * in-progress edits or downgrading versions. The server is the base; for each
- * item we keep the local copy if it's being edited (dirty) or if local holds a
- * newer/equal version we already adopted from a save. This prevents a stale
- * in-flight poll from clobbering a just-saved change.
- */
+/** Merge a polled server plan into local state without losing in-progress
+ *  edits or downgrading versions (see fix notes). */
 function mergePlan(local: Plan, server: Plan, dirty: Set<string>): Plan {
   const localItems = new Map<string, Item>();
   local.cats.forEach((c) => c.items.forEach((it) => localItems.set(it.id, it)));
@@ -36,37 +34,36 @@ function mergePlan(local: Plan, server: Plan, dirty: Set<string>): Plan {
       return si;
     }),
   }));
-  // Keep any dirty item the server doesn't know about yet (e.g. mid-create).
   const serverIds = new Set(server.cats.flatMap((c) => c.items.map((it) => it.id)));
   cats.forEach((c, ci) => {
     const localCat = local.cats.find((lc) => lc.id === c.id);
-    if (!localCat) return;
-    localCat.items.forEach((li) => {
+    localCat?.items.forEach((li) => {
       if (dirty.has(li.id) && !serverIds.has(li.id)) cats[ci].items.push(li);
     });
   });
   return { ...server, cats };
 }
 
+export type SaveState = "idle" | "saving" | "saved" | "error";
 export interface Toast {
   id: string;
   msg: string;
   warn?: boolean;
+  key?: string;
 }
 
 export function usePlan() {
-  const dirty = useRef<Set<string>>(new Set());
-  const savingNow = useRef(false);
+  const dirty = useRef<Set<string>>(new Set()); // ids with edits waiting to save
+  const failed = useRef<Set<string>>(new Set()); // ids whose save failed permanently
+  const attempts = useRef<Record<string, number>>({}); // transient retry counters
+  const pumping = useRef(false); // only one save loop at a time
   const timers = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
   const dataRef = useRef<Plan | undefined>(undefined);
-  // Authoritative version per item — the single source of truth for what we
-  // send on the next save, immune to render/poll timing.
-  const versionRef = useRef<Record<string, number>>({});
-  const [busy, setBusy] = useState(false);
+  const versionRef = useRef<Record<string, number>>({}); // authoritative version per item
+
+  const [saveState, setSaveState] = useState<SaveState>("idle");
   const [toasts, setToasts] = useState<Toast[]>([]);
 
-  // SWR is used only as a cache + the initial load. All refreshing is manual
-  // (see poll) so we can MERGE instead of overwrite.
   const { data, error, isLoading, mutate } = useSWR<Plan>("/api/plan", fetcher, {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
@@ -85,43 +82,115 @@ export function usePlan() {
     }
   }, [data]);
 
-  const pushToast = useCallback((msg: string, warn = false) => {
+  // One visible toast per key (prevents the "stacked duplicates" problem).
+  const pushToast = useCallback((msg: string, warn = false, key?: string) => {
     const id = Math.random().toString(36).slice(2);
-    setToasts((t) => [...t, { id, msg, warn }]);
+    setToasts((t) => (key && t.some((x) => x.key === key) ? t : [...t, { id, msg, warn, key }]));
     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4800);
   }, []);
+  const dismissToast = useCallback((id: string) => setToasts((t) => t.filter((x) => x.id !== id)), []);
 
-  const cacheItem = (id: string): Item | undefined => {
+  const cacheItem = useCallback((id: string): Item | undefined => {
     for (const c of dataRef.current?.cats || []) {
       const found = c.items.find((it) => it.id === id);
       if (found) return found;
     }
     return undefined;
-  };
-
-  const refreshBusy = () => setBusy(dirty.current.size > 0 || savingNow.current);
+  }, []);
 
   const setItemInCache = useCallback(
     (id: string, next: Item) => {
       mutate(
         (cur) =>
-          cur
-            ? { ...cur, cats: cur.cats.map((c) => ({ ...c, items: c.items.map((it) => (it.id === id ? next : it)) })) }
-            : cur,
+          cur ? { ...cur, cats: cur.cats.map((c) => ({ ...c, items: c.items.map((it) => (it.id === id ? next : it)) })) } : cur,
         { revalidate: false },
       );
     },
     [mutate],
   );
 
-  // Pull the latest from the server and MERGE (never clobber local edits).
+  // Single serialized save loop. Drains the dirty set, with bounded retries and
+  // backoff. Never loops forever; never fires duplicate concurrent saves.
+  const pump = useCallback(async () => {
+    if (pumping.current) return;
+    pumping.current = true;
+    setSaveState("saving");
+    try {
+      while (dirty.current.size > 0) {
+        const id = dirty.current.values().next().value as string;
+        dirty.current.delete(id);
+        const item = cacheItem(id);
+        if (!item) {
+          delete attempts.current[id];
+          failed.current.delete(id);
+          continue;
+        }
+        const expected = versionRef.current[id] ?? item.version;
+        let ok = false;
+        try {
+          const res = await fetch(`/api/items/${id}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ version: expected, data: toData(item) }),
+          });
+          if (res.status === 409) {
+            const body = await res.json().catch(() => ({}));
+            if (body?.current) {
+              versionRef.current[id] = body.current.version;
+              if (!dirty.current.has(id)) setItemInCache(id, body.current);
+            }
+            pushToast("Someone else just updated that item — showing the latest version.", true, "conflict");
+            ok = true;
+          } else if (!res.ok) {
+            const body = await res.json().catch(() => ({}));
+            console.error(`[save] PATCH ${id} -> HTTP ${res.status}`, body);
+          } else {
+            const { item: saved } = (await res.json()) as { item: Item };
+            versionRef.current[id] = saved.version;
+            if (dirty.current.has(id)) {
+              const live = cacheItem(id);
+              if (live) setItemInCache(id, { ...live, version: saved.version });
+            } else {
+              setItemInCache(id, saved);
+            }
+            ok = true;
+          }
+        } catch (e) {
+          console.error(`[save] PATCH ${id} network error`, e);
+        }
+
+        if (ok) {
+          delete attempts.current[id];
+          failed.current.delete(id);
+        } else {
+          const n = (attempts.current[id] || 0) + 1;
+          attempts.current[id] = n;
+          if (n <= MAX_RETRIES) {
+            await sleep(Math.min(5000, 700 * n)); // backoff, then retry
+            dirty.current.add(id);
+          } else {
+            delete attempts.current[id];
+            failed.current.add(id); // give up; keep the edit on screen for manual retry
+            pushToast("Couldn’t save a change. Your edit is still here — click “Retry” in the header.", true, "save-error");
+          }
+        }
+      }
+    } finally {
+      pumping.current = false;
+      const hasFailures = failed.current.size > 0;
+      setSaveState(hasFailures ? "error" : "saved");
+      if (!hasFailures) setTimeout(() => setSaveState((s) => (s === "saved" ? "idle" : s)), 1500);
+    }
+  }, [cacheItem, pushToast, setItemInCache]);
+
+  // Pull latest from server and MERGE (never clobber local edits / lower versions).
   const poll = useCallback(async () => {
-    if (savingNow.current || dirty.current.size > 0) return; // stay out of the way while editing/saving
+    if (pumping.current || dirty.current.size > 0 || failed.current.size > 0) return;
     try {
       const server: Plan = await fetcher("/api/plan");
       mutate((cur) => (cur ? mergePlan(cur, server, dirty.current) : server), { revalidate: false });
     } catch {
-      /* transient — try again next tick */
+      /* transient — try next tick */
     }
   }, [mutate]);
 
@@ -135,92 +204,38 @@ export function usePlan() {
     };
   }, [poll]);
 
-  const save = useCallback(
-    async (id: string) => {
-      if (savingNow.current) {
-        timers.current[id] = setTimeout(() => save(id), 300); // serialize
-        return;
-      }
-      const item = cacheItem(id);
-      if (!item) {
-        dirty.current.delete(id);
-        refreshBusy();
-        return;
-      }
-      savingNow.current = true;
-      dirty.current.delete(id);
-      refreshBusy();
-      const expected = versionRef.current[id] ?? item.version;
-      try {
-        const res = await fetch(`/api/items/${id}`, {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ version: expected, data: toData(item) }),
-        });
-
-        if (res.status === 409) {
-          // A genuine conflict: another client saved a newer version first.
-          const body = await res.json().catch(() => ({}));
-          const current: Item | undefined = body?.current;
-          if (current) {
-            versionRef.current[id] = current.version;
-            if (!dirty.current.has(id)) setItemInCache(id, current);
-          }
-          pushToast("Someone else just updated that item — showing the latest version.", true);
-        } else if (!res.ok) {
-          dirty.current.add(id); // keep pending so a later edit retries
-          pushToast("Couldn't save that change. Edit again to retry.", true);
-        } else {
-          const { item: saved } = (await res.json()) as { item: Item };
-          versionRef.current[id] = saved.version;
-          // If the user kept editing while we saved, keep their newer data and
-          // just adopt the version; otherwise take the saved item verbatim.
-          if (dirty.current.has(id)) {
-            const live = cacheItem(id);
-            if (live) setItemInCache(id, { ...live, version: saved.version });
-          } else {
-            setItemInCache(id, saved);
-          }
-        }
-      } catch {
-        dirty.current.add(id);
-        pushToast("Network problem saving — edit again to retry.", true);
-      } finally {
-        savingNow.current = false;
-        refreshBusy();
-        if (dirty.current.has(id)) {
-          clearTimeout(timers.current[id]);
-          timers.current[id] = setTimeout(() => save(id), 250);
-        }
-      }
-    },
-    [pushToast, setItemInCache],
-  );
-
-  // Edit one initiative — instant local update, then save. Discrete actions
-  // (add/remove/toggle checkpoint, status, dates…) save immediately; free-text
-  // typing is debounced. Either way it always reaches the database.
+  // Edit one initiative. Discrete actions save immediately; typing is debounced.
   const mutateItem = useCallback(
     (next: Item, immediate = false) => {
       setItemInCache(next.id, next);
       dirty.current.add(next.id);
-      refreshBusy();
-      clearTimeout(timers.current[next.id]);
+      delete attempts.current[next.id];
+      failed.current.delete(next.id); // a fresh edit clears the prior error for this item
       if (immediate) {
-        save(next.id);
+        pump();
       } else {
-        timers.current[next.id] = setTimeout(() => save(next.id), 400);
+        clearTimeout(timers.current[next.id]);
+        timers.current[next.id] = setTimeout(() => pump(), 400);
       }
     },
-    [save, setItemInCache],
+    [pump, setItemInCache],
   );
 
-  // Last-resort guarantee: if the page is hidden/closed/reloaded while edits
-  // are still pending, fire them now with keepalive so they finish in flight.
+  const retry = useCallback(() => {
+    failed.current.forEach((id) => {
+      delete attempts.current[id];
+      dirty.current.add(id);
+    });
+    failed.current.clear();
+    pump();
+  }, [pump]);
+
+  // Flush still-pending edits if the page is hidden/closed/reloaded.
   const flushAll = useCallback(() => {
-    for (const id of Array.from(dirty.current)) {
+    const ids = new Set<string>([...dirty.current, ...failed.current]);
+    ids.forEach((id) => {
       const item = cacheItem(id);
-      if (!item) continue;
+      if (!item) return;
       const expected = versionRef.current[id] ?? item.version;
       try {
         fetch(`/api/items/${id}`, {
@@ -230,10 +245,10 @@ export function usePlan() {
           keepalive: true,
         });
       } catch {
-        /* nothing more we can do as the page unloads */
+        /* page is going away */
       }
-    }
-  }, []);
+    });
+  }, [cacheItem]);
 
   useEffect(() => {
     const onHide = () => {
@@ -249,28 +264,30 @@ export function usePlan() {
 
   const createItem = useCallback(
     async (categoryId: string, title: string) => {
-      setBusy(true);
+      setSaveState("saving");
       try {
         const res = await fetch("/api/items", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ categoryId, title }),
         });
-        if (!res.ok) throw new Error();
+        if (!res.ok) {
+          const body = await res.json().catch(() => ({}));
+          console.error(`[create] POST -> HTTP ${res.status}`, body);
+          throw new Error();
+        }
         const { item } = (await res.json()) as { item: Item };
         versionRef.current[item.id] = item.version;
-        // add it to the cache directly so it appears immediately
         mutate(
           (cur) =>
-            cur
-              ? { ...cur, cats: cur.cats.map((c) => (c.id === categoryId ? { ...c, items: [...c.items, item] } : c)) }
-              : cur,
+            cur ? { ...cur, cats: cur.cats.map((c) => (c.id === categoryId ? { ...c, items: [...c.items, item] } : c)) } : cur,
           { revalidate: false },
         );
+        setSaveState("saved");
+        setTimeout(() => setSaveState((s) => (s === "saved" ? "idle" : s)), 1500);
       } catch {
-        pushToast("Couldn't add the topic. Please try again.", true);
-      } finally {
-        refreshBusy();
+        setSaveState("error");
+        pushToast("Couldn’t add the topic. Please try again.", true, "create-error");
       }
     },
     [mutate, pushToast],
@@ -279,6 +296,8 @@ export function usePlan() {
   const deleteItem = useCallback(
     async (id: string) => {
       dirty.current.delete(id);
+      failed.current.delete(id);
+      delete attempts.current[id];
       delete versionRef.current[id];
       mutate(
         (cur) => (cur ? { ...cur, cats: cur.cats.map((c) => ({ ...c, items: c.items.filter((it) => it.id !== id) })) } : cur),
@@ -288,7 +307,7 @@ export function usePlan() {
         const res = await fetch(`/api/items/${id}`, { method: "DELETE" });
         if (!res.ok) throw new Error();
       } catch {
-        pushToast("Couldn't delete the topic — refreshing.", true);
+        pushToast("Couldn’t delete the topic — refreshing.", true, "delete-error");
         await poll();
       }
     },
@@ -297,7 +316,7 @@ export function usePlan() {
 
   const setStart = useCallback(
     async (start: string) => {
-      setBusy(true);
+      setSaveState("saving");
       try {
         const res = await fetch("/api/plan/start", {
           method: "POST",
@@ -308,17 +327,17 @@ export function usePlan() {
         const plan = (await res.json()) as Plan;
         plan.cats.forEach((c) => c.items.forEach((it) => (versionRef.current[it.id] = it.version)));
         mutate(plan, { revalidate: false });
+        setSaveState("idle");
       } catch {
-        pushToast("Couldn't update the plan start.", true);
-      } finally {
-        refreshBusy();
+        setSaveState("error");
+        pushToast("Couldn’t update the plan start.", true, "start-error");
       }
     },
     [mutate, pushToast],
   );
 
   const resetPlan = useCallback(async () => {
-    setBusy(true);
+    setSaveState("saving");
     try {
       const res = await fetch("/api/reset", { method: "POST" });
       if (!res.ok) throw new Error();
@@ -326,20 +345,19 @@ export function usePlan() {
       versionRef.current = {};
       plan.cats.forEach((c) => c.items.forEach((it) => (versionRef.current[it.id] = it.version)));
       mutate(plan, { revalidate: false });
+      setSaveState("idle");
     } catch {
-      pushToast("Couldn't reset the plan.", true);
-    } finally {
-      refreshBusy();
+      setSaveState("error");
+      pushToast("Couldn’t reset the plan.", true, "reset-error");
     }
   }, [mutate, pushToast]);
-
-  const dismissToast = useCallback((id: string) => setToasts((t) => t.filter((x) => x.id !== id)), []);
 
   return {
     plan: data,
     error,
     isLoading,
-    busy,
+    saveState,
+    busy: saveState === "saving",
     toasts,
     dismissToast,
     pushToast,
@@ -348,6 +366,7 @@ export function usePlan() {
     deleteItem,
     setStart,
     resetPlan,
+    retry,
     refresh: () => poll(),
   };
 }

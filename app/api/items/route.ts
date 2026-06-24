@@ -46,13 +46,19 @@ export async function POST(req: NextRequest) {
       .values({ id, categoryId, position: (max ?? -1) + 1, data, version: 0, updatedBy: actor })
       .returning();
 
-    await appendActivity([ev("add", title, `Added “${title}”`, actor)]);
-    await refreshSnapshot();
-
+    // Item is persisted — success guaranteed. Bookkeeping must not fail the create.
     console.log(`[items POST] created id=${id} cat=${categoryId} by=${actor ?? "anon"}`);
+    try {
+      await appendActivity([ev("add", title, `Added “${title}”`, actor)]);
+      await refreshSnapshot();
+    } catch (e) {
+      console.error("[items POST] non-fatal bookkeeping error (item WAS created):", e);
+    }
+
     return NextResponse.json({ item: rowToItem(row) }, { status: 201 });
-  } catch (e) {
-    console.error("POST /api/items failed", e);
-    return NextResponse.json({ error: "Could not create the topic." }, { status: 500 });
+  } catch (e: any) {
+    const detail = String(e?.message || e);
+    console.error("[items POST] FAILED:", detail);
+    return NextResponse.json({ error: "Could not create the topic.", detail }, { status: 500 });
   }
 }
