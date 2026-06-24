@@ -12,6 +12,7 @@
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:seed": "tsx db/seed.ts",
+    "db:sql": "drizzle-kit generate && tsx db/make-setup-sql.ts",
     "allow": "tsx db/allow.ts"
   },
   "dependencies": {
