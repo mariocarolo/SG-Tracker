@@ -8,7 +8,8 @@ export const dynamic = "force-dynamic";
 // wrong if the tracker can't load its data.
 export async function GET() {
   const databaseUrlSet = !!process.env.DATABASE_URL;
-  const out: Record<string, unknown> = { databaseUrlSet };
+  const commit = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) || "local";
+  const out: Record<string, unknown> = { databaseUrlSet, commit };
 
   if (!databaseUrlSet) {
     return NextResponse.json(
